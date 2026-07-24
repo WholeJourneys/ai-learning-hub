@@ -286,6 +286,30 @@ document.head.appendChild(l);}catch(e){}})();
       <p>Think of GitHub as <b>Dropbox for code, with a time machine.</b> It's not where visitors go — it's your backup and history. Replit can connect to GitHub with a couple of clicks (a two-way sync), so every project gets a safe, versioned copy you could restore or hand to a developer later. Worth setting up for Travel Dragon and any experiment you care about; skip it for throwaway drafts.</p>
       <p class="lead">👉 <b>Do this next:</b> pick which projects are "keepers," and I'll walk you through connecting Replit to GitHub for those. When you're ready for the domain move, I can prep the Replit side and audit your Airtable data (I'm connected to both) — you'd only handle the GoDaddy clicks, which I'll hand you step by step.</p>
     </div>
+
+    <div class="scard">
+      <h2>📲 Publish a page live on GitHub Pages</h2>
+      <p class="lead">This is how a single static file (like this hub) becomes a real web address you can open on your phone. Two parts: get the file in, then flip Pages on. The green highlights are the steps that are <b>not automatic</b> — you do them by hand once.</p>
+      <h3>Part A — Put the file in the repo</h3>
+      <ol class="steps">
+        <li>Open your repo and make sure you're on the <b>Code</b> tab.</li>
+        <li>Top-right of the file list, click <b>Add file → Upload files</b>. Drag in your <code>index.html</code> → <b>Commit changes</b>.</li>
+      </ol>
+      <h3>Part B — Turn Pages on (the manual branch step)</h3>
+      <ol class="steps">
+        <li>Go to <b>Settings → Pages</b>.</li>
+        <li>Under <b>Source</b>, choose <b>"Deploy from a branch."</b></li>
+        <li>Set <b>Branch: main</b> and <b>Folder: / (root)</b>, then <b>Save</b>. <i>This branch pick isn't automatic — you must select it once.</i></li>
+        <li>Wait 1–2 min → a green <b>"Your site is live at…"</b> banner appears. The <b>Actions</b> tab shows the build go green.</li>
+      </ol>
+      <ul class="rules">
+        <li>📄 The file must be named exactly <code>index.html</code> and sit at the <b>top level</b> of the repo — not inside a folder.</li>
+        <li>🌍 The repo must be <b>Public</b> for free Pages hosting.</li>
+        <li>🔄 <b>To update later:</b> upload a new <code>index.html</code> to the same repo — the live URL refreshes automatically.</li>
+        <li>🙈 <b>Don't see "Add file"?</b> Make sure you're signed in and on the <b>Code</b> tab. On a phone the button can hide — use a computer, or click <b>Add file → Create new file</b>, name it <code>index.html</code>, and paste the contents in.</li>
+      </ul>
+      <p class="lead" style="margin-top:12px">Your live address will be: <b>https://wholejourneys.github.io/&lt;repo-name&gt;/</b> — open it on your phone and <b>Add to Home Screen</b> for an app icon.</p>
+    </div>
   </div>
 
   <footer>
