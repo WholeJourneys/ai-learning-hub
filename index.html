@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Learning Hub — ATWS 2026 Panel Prep</title>
+<meta name="theme-color" content="#244f45">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AI Hub">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEqElEQVR4nO3dP27UQBiG8QRFokFCok+XM9BRpkJKqlwQKCJRR9yDW1DkBikoRiIR63fXHs98//b5lQHikebxZ+9qvVze3N9eAEveeS8AcREHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKAdOW9ALx6eng5/OHXn257RBz+Fps4/FP7SojD0/EsFv+yZSLcc7jZVMbOf9WHOHzs2WOzPojDwf7dtemDOKyN2leDPojD1Ngdnd0HcUAiDjszTvSpw4M4IBEHJOIwMm/+z/vNxAGJOCARByTigEQckIgDEnEYmfchnXm/mTggEQck4rAzY/5P/UgpcUAiDlNjT/TZn0QnDmujdtTgGQXicLB/X22eXiEOH3t21+y5JuJw07fHlk+88Tikp7bTKz+tw7Oy5+jfrvOUPSTHDhYVvOf4/f2H9xKKqBZHK4M+hqgWBwYqFcfbgcHw2K9UHBirThyHo4LhsVORONT7SJZfklRPkTiu7x43/RxrVIhj5Vc1Yqv0cTw9vBwfD9d3j/TRJ30cay4cXFz65I5j/UhgeHTIHcf6kcDw6JA4jq3DgOGxVdY4Tt6HHuLOdKusccBAyjg6xkbD8NgkXxxZvji8gHxxXOx76cHLlvUub+5vvdewwcCTPtoHNgNKOTkK+Pbhj/cSTssUR67/cuCIVkb8PtLEke5b5QtIE0cZbwdG8OGRI46MXxy+6LCGyH0kiGP2/pn1EbmDRQniKC9sNNHjsDmtDY5yvICYfUSPo4aYe39S6Dgs7xbnHWtlGQEDihuH/ZsQ7m97ROsjbhw1RNvvTYLG4XUSjz1uRxmhYooYh+94H3X07m2O00fEOBBEuDjc7wqHrGHn2R9keISLo4AhWxuhj1hxRBgbTfdKImzqKIHiiFNG474e984CxVHA8O307SNKHO6n6aJNq3I/0YcLEUfMMpqVa5tXhmNzIeLAcV59+McReWw0J1dY74LS+MeRnU0ZLv05xxF/bDRqnZZ7Zt+HZxxZymhyrXYILiv97E9l4yO6xZHxRHy7Zq+bUMvj+sSRsYymrbzqy5P/cFnJxyxNhzjyjo0mwtiwWQOTY5vnX8/eS7BjHUfqsRGqDIPhYRpH6jICmt0Hl5W1Qo0NG3ZxpB4bYcuYOjyM4qCMeeb1wWUFkkUcjI3ZJg0PJscxKcpoZvQxPY68YyNRGZPMjSNvGRkNHx5cVpYlHRtj+5gYR96xkbSM4WbFQRleBg4PLisFjepjShyMjRqYHK8qlTFkeIyPI+nYqFRGs7+PwXEkLQOLuKxcXFQcG83O4TEyjqRjo2oZzZ4+hsVBGfVwWamve3iMiYOxEVxfH+c7Oc6njG4D4sg4Ns6wjI7hsTeOjGWcra19nONl5QzHRp/L6y+fvdeAoM5xcmAl4oBEHJCIAxJxQCIOSMQBiTggEQck4oB09f7TR+81ICgmByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgD0l+JcZAcFX1vgQAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEqElEQVR4nO3dP27UQBiG8QRFokFCok+XM9BRpkJKqlwQKCJRR9yDW1DkBikoRiIR63fXHs98//b5lQHikebxZ+9qvVze3N9eAEveeS8AcREHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKAdOW9ALx6eng5/OHXn257RBz+Fps4/FP7SojD0/EsFv+yZSLcc7jZVMbOf9WHOHzs2WOzPojDwf7dtemDOKyN2leDPojD1Ngdnd0HcUAiDjszTvSpw4M4IBEHJOIwMm/+z/vNxAGJOCARByTigEQckIgDEnEYmfchnXm/mTggEQck4rAzY/5P/UgpcUAiDlNjT/TZn0QnDmujdtTgGQXicLB/X22eXiEOH3t21+y5JuJw07fHlk+88Tikp7bTKz+tw7Oy5+jfrvOUPSTHDhYVvOf4/f2H9xKKqBZHK4M+hqgWBwYqFcfbgcHw2K9UHBirThyHo4LhsVORONT7SJZfklRPkTiu7x43/RxrVIhj5Vc1Yqv0cTw9vBwfD9d3j/TRJ30cay4cXFz65I5j/UhgeHTIHcf6kcDw6JA4jq3DgOGxVdY4Tt6HHuLOdKusccBAyjg6xkbD8NgkXxxZvji8gHxxXOx76cHLlvUub+5vvdewwcCTPtoHNgNKOTkK+Pbhj/cSTssUR67/cuCIVkb8PtLEke5b5QtIE0cZbwdG8OGRI46MXxy+6LCGyH0kiGP2/pn1EbmDRQniKC9sNNHjsDmtDY5yvICYfUSPo4aYe39S6Dgs7xbnHWtlGQEDihuH/ZsQ7m97ROsjbhw1RNvvTYLG4XUSjz1uRxmhYooYh+94H3X07m2O00fEOBBEuDjc7wqHrGHn2R9keISLo4AhWxuhj1hxRBgbTfdKImzqKIHiiFNG474e984CxVHA8O307SNKHO6n6aJNq3I/0YcLEUfMMpqVa5tXhmNzIeLAcV59+McReWw0J1dY74LS+MeRnU0ZLv05xxF/bDRqnZZ7Zt+HZxxZymhyrXYILiv97E9l4yO6xZHxRHy7Zq+bUMvj+sSRsYymrbzqy5P/cFnJxyxNhzjyjo0mwtiwWQOTY5vnX8/eS7BjHUfqsRGqDIPhYRpH6jICmt0Hl5W1Qo0NG3ZxpB4bYcuYOjyM4qCMeeb1wWUFkkUcjI3ZJg0PJscxKcpoZvQxPY68YyNRGZPMjSNvGRkNHx5cVpYlHRtj+5gYR96xkbSM4WbFQRleBg4PLisFjepjShyMjRqYHK8qlTFkeIyPI+nYqFRGs7+PwXEkLQOLuKxcXFQcG83O4TEyjqRjo2oZzZ4+hsVBGfVwWamve3iMiYOxEVxfH+c7Oc6njG4D4sg4Ns6wjI7hsTeOjGWcra19nONl5QzHRp/L6y+fvdeAoM5xcmAl4oBEHJCIAxJxQCIOSMQBiTggEQck4oB09f7TR+81ICgmByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgD0l+JcZAcFX1vgQAAAABJRU5ErkJggg==">
+<style>
+  :root{
+    --ink:#1d2b2a; --muted:#5c6f6c; --line:#e3ddd0; --bg:#f6f2e9; --card:#fffdf8;
+    --accent:#c65b2e; --accent2:#2f6f5e; --gold:#d9a441; --audio:#7b5ea7; --watch:#c65b2e; --read:#2f6f5e; --do:#b3771a;
+    --shadow:0 2px 14px rgba(40,30,20,.07);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 80px}
+  header.hero{padding:34px 20px 26px;text-align:center;background:
+    radial-gradient(120% 90% at 50% -20%, #2f6f5e 0%, #244f45 55%, #1d3d36 100%);color:#f6f2e9;position:relative;overflow:hidden}
+  header.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:38px;
+    background:repeating-linear-gradient(90deg,transparent 0 26px,rgba(246,242,233,.10) 26px 27px)}
+  .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--gold)}
+  h1{margin:6px 0 4px;font-size:30px;line-height:1.15}
+  .sub{color:#cfe0d8;font-size:15px;margin:0 auto;max-width:640px}
+  .countdown{display:inline-flex;gap:14px;margin-top:16px;flex-wrap:wrap;justify-content:center}
+  .cd{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:8px 14px;min-width:78px}
+  .cd b{display:block;font-size:22px}
+  .cd span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#bcd3cb}
+
+  .bar{position:sticky;top:0;z-index:20;background:rgba(246,242,233,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .modes,.views{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px;box-shadow:var(--shadow)}
+  .modes button,.views button{border:0;background:transparent;padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  .modes button.on{background:var(--accent2);color:#fff}
+  .modes button.on.audio{background:var(--audio)}
+  .views button.on{background:var(--ink);color:#fff}
+  .views{margin-right:auto}
+  .progwrap{flex:1;min-width:220px}
+  .progtop{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:4px}
+  .track{height:9px;background:#e7e0d2;border-radius:99px;overflow:hidden}
+  .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent2),var(--gold));transition:width .35s ease}
+
+  .intro{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:22px 0 8px;box-shadow:var(--shadow)}
+  .intro h2{margin:0 0 6px;font-size:18px}
+  .intro p{margin:6px 0;color:#3f4f4c;font-size:14.5px}
+  .modehint{font-size:13px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+
+  .week{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:18px;box-shadow:var(--shadow);overflow:hidden}
+  .whead{display:flex;gap:14px;align-items:flex-start;padding:18px 22px;cursor:pointer;user-select:none}
+  .wnum{flex:none;width:44px;height:44px;border-radius:12px;background:var(--accent2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;text-align:center;line-height:1.05}
+  .wtitle{flex:1}
+  .wtitle h3{margin:0;font-size:17px}
+  .wtitle .why{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+  .wmeta{flex:none;text-align:right;font-size:12px;color:var(--muted);white-space:nowrap}
+  .chev{transition:transform .25s;display:inline-block;margin-left:6px}
+  .week.open .chev{transform:rotate(90deg)}
+  .wbody{display:none;padding:2px 22px 20px}
+  .week.open .wbody{display:block}
+
+  .res{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+  .res label.chk{flex:none;margin-top:2px}
+  .res input{width:19px;height:19px;accent-color:var(--accent2);cursor:pointer}
+  .rmain{flex:1}
+  .rtop{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .tag{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:99px;color:#fff}
+  .tag.audio{background:var(--audio)} .tag.watch{background:var(--watch)} .tag.read{background:var(--read)} .tag.do{background:var(--do)}
+  .rtitle{font-weight:650;font-size:15px}
+  .rsrc{font-size:12.5px;color:var(--muted)}
+  .rdesc{font-size:13.5px;color:#42514e;margin-top:3px}
+  .res.done .rtitle{text-decoration:line-through;color:var(--muted)}
+  .res.hide{display:none}
+  .noneleft{font-size:13px;color:var(--muted);padding:14px 0;font-style:italic}
+
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:16px;box-shadow:var(--shadow);overflow:hidden}
+  .thead{display:flex;gap:14px;align-items:center;padding:16px 20px;cursor:pointer;user-select:none}
+  .tico{flex:none;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;background:#efeadd}
+  .tname{flex:1}
+  .tname h3{margin:0;font-size:16.5px}
+  .tname .tag2{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
+  .tver{flex:none;font-size:11px;font-weight:700;color:#fff;background:var(--accent);padding:3px 9px;border-radius:99px;white-space:nowrap}
+  .tool .chev{transition:transform .25s;display:inline-block;margin-left:8px;color:var(--muted)}
+  .tool.open .chev{transform:rotate(90deg)}
+  .tbody{display:none;padding:0 20px 18px}
+  .tool.open .tbody{display:block}
+  .block{padding:12px 0;border-top:1px solid var(--line)}
+  .block h4{margin:0 0 4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2)}
+  .block.whatsnew h4{color:var(--accent)}
+  .block.try h4{color:var(--do)}
+  .block p{margin:0;font-size:14px;color:#3f4f4c}
+  .block.try p{background:#fbf4e6;border:1px solid #f0e2c4;border-radius:10px;padding:10px 12px}
+  .toolsintro{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:22px 0 4px;box-shadow:var(--shadow)}
+  .toolsintro h2{margin:0 0 6px;font-size:18px}
+  .toolsintro p{margin:0;font-size:14.5px;color:#3f4f4c}
+
+  .scard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-top:16px;box-shadow:var(--shadow)}
+  .scard h2{margin:0 0 4px;font-size:19px}
+  .scard h3{margin:18px 0 8px;font-size:15.5px}
+  .scard p{font-size:14.5px;color:#3f4f4c;margin:8px 0}
+  .lead{color:var(--muted);font-size:14px;margin:2px 0 0}
+  .layers{margin:14px 0 4px}
+  .layer{display:flex;gap:14px;align-items:flex-start;border-radius:12px;padding:13px 15px;margin:8px 0;border:1px solid var(--line)}
+  .layer.l1{background:#eef4f0} .layer.l2{background:#fbf1e8} .layer.l3{background:#f2eee2}
+  .lnum{flex:none;font-size:22px;line-height:1}
+  .layer b{font-size:14.5px} .layer .ld{font-size:13px;color:var(--muted);margin-top:2px}
+  .layer .chip{display:inline-block;font-size:11.5px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:2px 7px;margin:4px 5px 0 0}
+  .arrowrow{text-align:center;color:var(--muted);font-size:15px;margin:-2px 0}
+  .maprow{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+  .maprow:first-of-type{border-top:0}
+  .mproj{flex:none;width:180px;font-weight:650;font-size:14px}
+  .mproj small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+  .mhome{flex:1;font-size:13.5px;color:#42514e}
+  .home-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:99px;padding:2px 9px;margin-right:6px}
+  .b-replit{background:#c65b2e} .b-lovable{background:#c2529b} .b-air{background:#3a7d63} .b-keep{background:#6b7b78} .b-github{background:#2d333b}
+  ol.steps{margin:8px 0;padding-left:0;counter-reset:s;list-style:none}
+  ol.steps li{position:relative;padding:8px 0 8px 40px;font-size:14px;color:#3f4f4c;border-top:1px solid var(--line)}
+  ol.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:9px;width:26px;height:26px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+  .rules{background:#fbf4e6;border:1px solid #f0e2c4;border-radius:12px;padding:6px 16px;margin-top:12px}
+  .rules li{font-size:13.5px;color:#5a4a20;margin:9px 0}
+  @media(max-width:560px){ .mproj{width:auto} .maprow{flex-direction:column;gap:4px} }
+
+  footer{margin-top:34px;text-align:center;font-size:12.5px;color:var(--muted)}
+  .reset{margin-top:8px;background:none;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:6px 14px;font-size:12px;cursor:pointer}
+  .reset:hover{color:var(--accent)}
+  @media(max-width:560px){ h1{font-size:24px} .wmeta{display:none} }
+</style>
+<script>
+(function(){try{var ic=document.querySelector('link[rel="apple-touch-icon"]').href;
+var m={name:"AI Learning Hub",short_name:"AI Hub",display:"standalone",background_color:"#f6f2e9",theme_color:"#244f45",start_url:".",icons:[{src:ic,sizes:"180x180",type:"image/png",purpose:"any"}]};
+var l=document.createElement('link');l.rel='manifest';
+l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}));
+document.head.appendChild(l);}catch(e){}})();
+</script>
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">Adventure Travel World Summit · Québec City</div>
+  <h1>AI Learning Hub</h1>
+  <p class="sub">Your self-paced course to walk on stage credible, current, and hands-on — built from podcasts, videos, and newsletters. Pick how you want to learn: headphones on a walk, or at the screen.</p>
+  <div class="countdown" id="countdown"></div>
+</header>
+
+<div class="bar">
+  <div class="views" id="views">
+    <button data-view="course" class="on">📚 Course</button>
+    <button data-view="tools">🧰 Tool 101s</button>
+    <button data-view="stack">🗺️ Your Stack</button>
+  </div>
+  <div class="modes" id="modes">
+    <button data-mode="audio" class="audio">🎧 Walking / Audio</button>
+    <button data-mode="screen">💻 At the screen</button>
+    <button data-mode="all" class="on">📋 Everything</button>
+  </div>
+  <div class="progwrap">
+    <div class="progtop"><span id="proglabel">0 of 0 done</span><span id="progpct">0%</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="courseview">
+    <div class="intro">
+      <h2>How to use this</h2>
+      <p><b>Six weeks, six themes.</b> Each week builds toward the panel: foundations → marketing → AI findability (GEO) → website tech → agents & workflows → strategy + your talking points. Work top to bottom, or jump to whatever's calling you.</p>
+      <p><b>Two ways to learn.</b> Toggle <b>🎧 Walking / Audio</b> to see only things you can listen to, or <b>💻 At the screen</b> for videos, guides, and hands-on tasks. <b>📋 Everything</b> shows it all.</p>
+      <p><b>It remembers you.</b> Check things off as you go — your progress is saved on this device, so close it and come back anytime.</p>
+      <div class="modehint" id="modehint"></div>
+    </div>
+    <div id="weeks"></div>
+  </div>
+
+  <div id="toolsview" style="display:none">
+    <div class="toolsintro">
+      <h2>Your toolkit — the quick 101s</h2>
+      <p>A plain-English primer on each tool you're already using: what it is, how it's changing in 2026, and one thing worth trying next. Tap any tool to expand. Perfect panel prep — these are the exact tools operators will ask about.</p>
+    </div>
+    <div id="tools"></div>
+  </div>
+
+  <div id="stackview" style="display:none">
+    <div class="scard">
+      <h2>Understand & manage what you've built</h2>
+      <p class="lead">You've made a lot of things across a lot of tools. The trick to not feeling lost is realizing every project lives in <b>three separate layers</b>. Get these straight and "where does this belong?" answers itself.</p>
+      <div class="layers">
+        <div class="layer l1"><div class="lnum">🌐</div><div>
+          <b>1. The address — Domains (GoDaddy)</b>
+          <div class="ld">A domain like <b>traveldragon.com</b> is just a signpost. GoDaddy's DNS points it at wherever your live site actually runs. Key rule: <b>one domain points to one live place at a time</b> — but you can add subdomains (like <b>legacy.traveldragon.com</b>) that point somewhere else.</div>
+        </div></div>
+        <div class="arrowrow">↑ points to ↑</div>
+        <div class="layer l2"><div class="lnum">⚙️</div><div>
+          <b>2. The engine — Hosting / live apps</b>
+          <div class="ld">Where your apps actually <i>run</i> and are served to visitors. <b>Replit and Lovable already host your apps for you</b> and give each a live URL. Whole Journeys runs on its own host. This is the layer that "goes live."</div>
+          <span class="chip">Replit</span><span class="chip">Lovable</span><span class="chip">Whole Journeys host</span>
+        </div></div>
+        <div class="arrowrow">↑ built from ↑</div>
+        <div class="layer l3"><div class="lnum">💾</div><div>
+          <b>3. The backup — Code & version history (GitHub)</b>
+          <div class="ld">GitHub is a <b>filing cabinet for your code</b>, not a live host for your apps. It keeps a safe copy and a history you can roll back to. (GitHub Pages can only serve simple static sites — not your database-backed apps.)</div>
+        </div></div>
+      </div>
+      <p class="lead" style="margin-top:12px">💡 <b>The one-liner:</b> GoDaddy = the address · Replit/Lovable = the engine that runs it · GitHub = the safety backup. Three different jobs — don't expect one to do another's.</p>
+    </div>
+
+    <div class="scard">
+      <h2>Where each of your projects should live</h2>
+      <div class="maprow"><div class="mproj">Whole Journeys<small>working site + admin</small></div>
+        <div class="mhome"><span class="home-badge b-keep">LEAVE AS-IS</span>Separate brand, separate site. Don't touch it while you sort out Travel Dragon.</div></div>
+      <div class="maprow"><div class="mproj">Travel Dragon Reimagined<small>Replit</small></div>
+        <div class="mhome"><span class="home-badge b-replit">REPLIT → traveldragon.com</span>Deploy it on Replit, then point the domain at it. Back the code up to GitHub.</div></div>
+      <div class="maprow"><div class="mproj">Old traveldragon.com<small>current live site</small></div>
+        <div class="mhome"><span class="home-badge b-keep">ARCHIVE</span>My recommendation: download a full backup, then park it at <b>legacy.traveldragon.com</b> so it stays reachable. Don't delete until the new one is confirmed live.</div></div>
+      <div class="maprow"><div class="mproj">Journey Builder, Catalan Adventure, Portfolio, etc.<small>Replit experiments</small></div>
+        <div class="mhome"><span class="home-badge b-replit">STAY IN REPLIT</span>Keep as drafts. Publish only the ones you want public (each gets a replit.app URL or a subdomain). Back up to GitHub.</div></div>
+      <div class="maprow"><div class="mproj">Camino Companion, Trail Companion<small>Lovable</small></div>
+        <div class="mhome"><span class="home-badge b-lovable">STAY ON LOVABLE</span>Fine where they are on their .lovable.app URLs. No need to move them.</div></div>
+      <div class="maprow"><div class="mproj">Travel Dragon curator database<small>Airtable — ATTA & others</small></div>
+        <div class="mhome"><span class="home-badge b-air">AIRTABLE</span>This is your data / back end. It feeds the Travel Dragon app — keep it in Airtable as the single source of truth.</div></div>
+    </div>
+
+    <div class="scard">
+      <h2>The Travel Dragon domain swap — the plan</h2>
+      <p class="lead">Big picture, in order. (Each step has click-by-click detail when you're ready — just ask.)</p>
+      <ol class="steps">
+        <li><b>Back up the old site first.</b> Download a full copy so nothing is ever truly lost.</li>
+        <li><b>Deploy Travel Dragon Reimagined on Replit</b> (Autoscale, Reserved VM, or Static deployment).</li>
+        <li><b>Preserve the old site:</b> park it at <b>legacy.traveldragon.com</b> and keep its current host active for now.</li>
+        <li><b>In GoDaddy DNS,</b> point <b>traveldragon.com</b> to Replit — add the A records + the <code>replit-verify</code> TXT record Replit gives you.</li>
+        <li><b>Wait for it to take</b> (up to ~48h). Replit auto-adds the https padlock (SSL). Confirm the new site loads.</li>
+        <li><b>Only then</b> retire the old host if you want — <b>wholejourneys.com stays completely untouched</b> the whole time.</li>
+      </ol>
+      <ul class="rules">
+        <li>🔒 <b>Keep the <code>replit-verify</code> TXT record forever</b> — if you delete it later, the site's security cert breaks and the site goes down.</li>
+        <li>🧭 <b>One domain = one live target.</b> Want the old one too? Give it a subdomain (legacy.traveldragon.com).</li>
+        <li>🪢 <b>Never delete the old until the new is verified live.</b> DNS changes are reversible, but a good backup means zero risk.</li>
+      </ul>
+    </div>
+
+    <div class="scard">
+      <h2>GitHub, in plain English</h2>
+      <p>Think of GitHub as <b>Dropbox for code, with a time machine.</b> It's not where visitors go — it's your backup and history. Replit can connect to GitHub with a couple of clicks (a two-way sync), so every project gets a safe, versioned copy you could restore or hand to a developer later. Worth setting up for Travel Dragon and any experiment you care about; skip it for throwaway drafts.</p>
+      <p class="lead">👉 <b>Do this next:</b> pick which projects are "keepers," and I'll walk you through connecting Replit to GitHub for those. When you're ready for the domain move, I can prep the Replit side and audit your Airtable data (I'm connected to both) — you'd only handle the GoDaddy clicks, which I'll hand you step by step.</p>
+    </div>
+  </div>
+
+  <footer>
+    Built for Kathy · Travel Dragon / Whole Journeys · ATWS 2026 panel prep.<br>
+    Links open in a new tab. Progress is stored locally in this browser.
+    <br><button class="reset" id="reset">↺ Reset my progress</button>
+  </footer>
+</div>
+
+<script>
+const SUMMIT = new Date("2026-09-14T09:00:00-04:00");
+
+const WEEKS = [
+  {
+    n:"Week 1", title:"Get the lay of the land",
+    why:"Build a current mental model of the AI landscape so nothing on the panel catches you flat-footed.",
+    res:[
+      {mode:"audio",type:"audio",title:"The Artificial Intelligence Show",src:"Podcast · Paul Roetzer & Mike Kaput (Marketing AI Institute)",desc:"The single best weekly show for turning AI news into business implications. Start with the 2–3 most recent episodes to sound current.",url:"https://podcasts.apple.com/us/podcast/the-artificial-intelligence-show/id1548733275"},
+      {mode:"screen",type:"watch",title:"Matt Wolfe — weekly AI news & tools",src:"YouTube channel",desc:"Fast, visual roundups of what's new and what actually matters. Watch one recent episode to calibrate.",url:"https://www.youtube.com/results?search_query=matt+wolfe+ai"},
+      {mode:"screen",type:"read",title:"Superhuman AI",src:"Newsletter (3-min daily)",desc:"Strict, skimmable daily briefing. Subscribe and read for a week to build a news habit.",url:"https://www.superhuman.ai/"},
+      {mode:"screen",type:"do",title:"Map your own stack",src:"Hands-on · 30 min",desc:"List the tools you already use for Travel Dragon (ChatGPT, Gemini, Claude, Perplexity, Lovable, Replit) and one thing each does well. This is your credibility on stage.",url:""}
+    ]
+  },
+  {
+    n:"Week 2", title:"AI for marketing output",
+    why:"The panel explicitly covers 'maximizing your marketing team's output.' Know the tools and the tactics.",
+    res:[
+      {mode:"audio",type:"audio",title:"AI-Driven Marketer",src:"Podcast",desc:"Practical AI for real marketers — tools, workflows, honest takes. Great walking listen; pick episodes on copy & campaigns.",url:"https://podcasts.apple.com/us/podcast/ai-driven-marketer-master-practical-ai-marketing-skills/id1719663520"},
+      {mode:"screen",type:"watch",title:"Sabrina Ramonov — AI systems for lean teams",src:"YouTube",desc:"Prompts, playbooks, and automations built for solo/small teams. Very applicable to a small travel brand.",url:"https://www.youtube.com/results?search_query=sabrina+ramonov+ai"},
+      {mode:"screen",type:"read",title:"Behind the Craft",src:"Newsletter · Peter Yang",desc:"Hands-on AI tutorials with a go-to-market angle (building campaigns with Claude and other tools).",url:"https://creatoreconomy.so/"},
+      {mode:"screen",type:"do",title:"Rebuild one real asset with AI",src:"Hands-on · 45 min",desc:"Take one Travel Dragon email or social post and rebuild it with AI end-to-end. Note where it saved time and where it fell short — that's a panel anecdote.",url:""}
+    ]
+  },
+  {
+    n:"Week 3", title:"AI Findability / GEO",
+    why:"The newest, fastest-moving topic on the agenda — and where you can stand out. GEO = getting cited by ChatGPT, Perplexity, Gemini & AI Overviews.",
+    res:[
+      {mode:"audio",type:"audio",title:"Marketing podcasts for the AI & GEO era",src:"Curated list · NetRanks",desc:"Shortlist of shows covering AI search visibility. Queue one GEO-focused episode for a walk.",url:"https://www.netranks.ai/blog/top-marketing-podcasts-for-the-ai-and-geo-era/"},
+      {mode:"screen",type:"read",title:"Generative Engine Optimization: Complete 2026 Guide",src:"Guide · Enrich Labs",desc:"Clear primer on how GEO differs from SEO and what earns citations in AI answers. Your core reading this week.",url:"https://www.enrichlabs.ai/blog/generative-engine-optimization-geo-complete-guide-2026"},
+      {mode:"screen",type:"read",title:"GEO: How to rank in AI search (2026)",src:"Guide · LLM Pulse",desc:"A second angle on the same topic — practical tactics for showing up in generative engines.",url:"https://llmpulse.ai/blog/geo-guide/"},
+      {mode:"screen",type:"do",title:"Ask the AIs about you",src:"Hands-on · 20 min",desc:"Ask ChatGPT, Perplexity & Gemini: 'best adventure travel operators for [your niche]' and 'what is Travel Dragon.' Screenshot what they say (or don't). Instant GEO baseline + a killer live example for the panel.",url:""}
+    ]
+  },
+  {
+    n:"Week 4", title:"Website technical: schema & content",
+    why:"Covers the agenda's 'schema markup, writing code, content management.' You don't need to code it — you need to speak to it.",
+    res:[
+      {mode:"screen",type:"read",title:"Schema Markup Guide: SEO & AI Search in 2026",src:"Guide · Discoverability",desc:"What structured data is, why it now decides whether AI cites you, and the 5 schema types that matter. Read this once, slowly.",url:"https://discoverability.co/resources/schema-markup-guide/"},
+      {mode:"screen",type:"read",title:"Structured Data for AI Search",src:"Guide · Stackmatix",desc:"Reinforces the practical 'how' — generating JSON-LD and where it goes. Skim to cement the vocabulary.",url:"https://www.stackmatix.com/blog/structured-data-ai-search"},
+      {mode:"screen",type:"watch",title:"Julian Goldie — AI SEO & content",src:"YouTube",desc:"Daily, practical videos on AI SEO and content ops. Watch one on schema or AI content workflows.",url:"https://www.youtube.com/results?search_query=julian+goldie+schema+ai+seo"},
+      {mode:"screen",type:"do",title:"Add schema to one page",src:"Hands-on · 40 min",desc:"Use a free schema generator to create Organization or LocalBusiness JSON-LD for Travel Dragon, and paste it into one page (or have your dev do it). Now you've actually done the thing the panel discusses.",url:""}
+    ]
+  },
+  {
+    n:"Week 5", title:"AI agents & workflows",
+    why:"The agenda's 'AI agents for copy & design, social/email, and project management.' This is where hype meets real automation.",
+    res:[
+      {mode:"screen",type:"watch",title:"Nate Herk — AI automation with n8n",src:"YouTube",desc:"Full agent builds from prompt to deployed workflow. The clearest intro to what an 'agent' actually is.",url:"https://www.youtube.com/results?search_query=nate+herk+ai+automation"},
+      {mode:"screen",type:"read",title:"Best AI agents for marketing (2026)",src:"Guide · Tofu HQ",desc:"Landscape of marketing agent tools and what each is for — good for naming names confidently on stage.",url:"https://www.tofuhq.com/post/best-ai-agents-for-marketing"},
+      {mode:"audio",type:"audio",title:"The Artificial Intelligence Show — agents episodes",src:"Podcast",desc:"Search the feed for recent 'agents' episodes for the strategic view of where autonomous workflows are headed.",url:"https://podcasts.apple.com/us/podcast/the-artificial-intelligence-show/id1548733275"},
+      {mode:"screen",type:"do",title:"Build one tiny agent",src:"Hands-on · 1 hr",desc:"In Lovable or Replit, wire up one small workflow (e.g. draft-a-trip-summary, or auto-format a social post). Even a rough one gives you a concrete 'here's what I built' story.",url:""}
+    ]
+  },
+  {
+    n:"Week 6", title:"Strategy + adventure-travel examples + panel prep",
+    why:"Tie it together: where should adventure businesses actually place their AI bets — and what real travel examples can you cite?",
+    res:[
+      {mode:"audio",type:"audio",title:"Small Business Big AI",src:"Podcast",desc:"Frameworks for adopting AI strategically in a small business (governance, high-ROI workflows). Perfect for the 'strategy' portion.",url:"https://podcasts.apple.com/us/podcast/small-business-big-ai/id1768659876"},
+      {mode:"screen",type:"read",title:"How Generative AI Is Revolutionizing Travel & Tourism",src:"Article · Arival",desc:"Travel-specific examples you can quote — personalization, itinerary building, agents answering travelers.",url:"https://arival.travel/article/generative-ai-in-travel-tourism/"},
+      {mode:"screen",type:"read",title:"2026 Travel Trends for Tour Operators",src:"Article · Rezgo",desc:"Operator-focused view of AI + demand trends. Grounds your points in your own industry.",url:"https://www.rezgo.com/blog/global-travel-trends-2026-what-tour-and-activity-operators-need-to-know/"},
+      {mode:"screen",type:"read",title:"ATTA Adventure Travel Education",src:"Adventure Travel Trade Association",desc:"The summit host's own education hub — worth a scan for how the community is framing AI.",url:"https://learn.adventuretravel.biz/education/"},
+      {mode:"screen",type:"do",title:"Write your 3 panel talking points",src:"Hands-on · 45 min",desc:"Draft three things you believe about AI in adventure travel, each backed by something you built or tested (from Weeks 1–5). This is your panel, distilled.",url:""}
+    ]
+  }
+];
+
+const MODE_HINTS = {
+  audio:"🎧 Showing listen-anywhere resources — podcasts and audio. Great for a walk or a drive.",
+  screen:"💻 Showing videos, guides, and hands-on tasks — the stuff you do at a screen.",
+  all:"📋 Showing everything across both modes."
+};
+
+const KEY="atws-ai-hub-v1";
+let state = JSON.parse(localStorage.getItem(KEY) || "{}");
+let mode = state._mode || "all";
+
+// build stable ids
+WEEKS.forEach((w,wi)=>w.res.forEach((r,ri)=>r.id="w"+wi+"r"+ri));
+
+function save(){ state._mode=mode; localStorage.setItem(KEY, JSON.stringify(state)); }
+function inMode(r){ return mode==="all" || (mode==="audio" ? r.mode==="audio" : r.mode==="screen"); }
+
+function render(){
+  const host=document.getElementById("weeks");
+  host.innerHTML="";
+  WEEKS.forEach((w,wi)=>{
+    const visible=w.res.filter(inMode);
+    const total=w.res.length, done=w.res.filter(r=>state[r.id]).length;
+    const openByDefault = wi===0;
+    const isOpen = state["_open"+wi] ?? openByDefault;
+    const el=document.createElement("div");
+    el.className="week"+(isOpen?" open":"");
+    el.innerHTML=`
+      <div class="whead" data-w="${wi}">
+        <div class="wnum">${w.n.replace(" ","<br>")}</div>
+        <div class="wtitle"><h3>${w.title}</h3><div class="why">${w.why}</div></div>
+        <div class="wmeta">${done}/${total} done<span class="chev">›</span></div>
+      </div>
+      <div class="wbody">
+        ${visible.length? visible.map(r=>resHTML(r)).join("") :
+          `<div class="noneleft">Nothing in this mode for this week — switch to 📋 Everything to see the rest.</div>`}
+      </div>`;
+    host.appendChild(el);
+  });
+  bind();
+  updateProgress();
+}
+
+function resHTML(r){
+  const done=state[r.id]?"done":"";
+  const link = r.url ? `<a href="${r.url}" target="_blank" rel="noopener">${r.title} ↗</a>` : r.title;
+  return `<div class="res ${done}" data-id="${r.id}">
+    <label class="chk"><input type="checkbox" ${state[r.id]?"checked":""} data-id="${r.id}"></label>
+    <div class="rmain">
+      <div class="rtop"><span class="tag ${r.type}">${labelFor(r.type)}</span>
+        <span class="rtitle">${link}</span></div>
+      <div class="rsrc">${r.src}</div>
+      <div class="rdesc">${r.desc}</div>
+    </div></div>`;
+}
+function labelFor(t){return {audio:"Listen",watch:"Watch",read:"Read",do:"Do"}[t]||t;}
+
+function bind(){
+  document.querySelectorAll('.res input').forEach(cb=>cb.onchange=()=>{
+    state[cb.dataset.id]=cb.checked; save();
+    cb.closest('.res').classList.toggle('done',cb.checked);
+    // update the week counter without full rerender
+    refreshCounters(); updateProgress();
+  });
+  document.querySelectorAll('.whead').forEach(h=>h.onclick=(e)=>{
+    if(e.target.tagName==="A") return;
+    const wi=h.dataset.w; const wk=h.closest('.week');
+    const open=wk.classList.toggle('open'); state["_open"+wi]=open; save();
+  });
+}
+function refreshCounters(){
+  WEEKS.forEach((w,wi)=>{
+    const done=w.res.filter(r=>state[r.id]).length;
+    const meta=document.querySelectorAll('.wmeta')[wi];
+    if(meta) meta.innerHTML=`${done}/${w.res.length} done<span class="chev">›</span>`;
+  });
+}
+function updateProgress(){
+  const all=WEEKS.flatMap(w=>w.res);
+  const done=all.filter(r=>state[r.id]).length;
+  const pct=all.length?Math.round(done/all.length*100):0;
+  document.getElementById("fill").style.width=pct+"%";
+  document.getElementById("progpct").textContent=pct+"%";
+  document.getElementById("proglabel").textContent=`${done} of ${all.length} done`;
+}
+
+function setMode(m){
+  mode=m; save();
+  document.querySelectorAll('#modes button').forEach(b=>{
+    const on=b.dataset.mode===m; b.classList.toggle('on',on);
+    b.classList.toggle('audio', b.dataset.mode==="audio"&&on);
+  });
+  document.getElementById("modehint").textContent=MODE_HINTS[m];
+  render();
+}
+document.querySelectorAll('#modes button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+
+document.getElementById("reset").onclick=()=>{
+  if(confirm("Reset all progress? This can't be undone.")){
+    const m=mode; state={}; mode=m; save(); render();
+  }
+};
+
+const TOOLS = [
+  {icon:"💬",name:"ChatGPT",vendor:"OpenAI",ver:"GPT-5.6",
+    is:"Your general-purpose workhorse — chat, writing, analysis, images, and voice in one place. Best first stop for drafting and brainstorming.",
+    nu:"Now on GPT-5.6 with capability tiers (Sol / Terra / Luna) so you pick intelligence vs. speed vs. cost. The big shift is agents: the new <b>Work</b> agent pulls context across your connected apps and files to build docs, spreadsheets, and decks across web, phone, and computer. Plus a File Library, Shopping, and Images 2.0.",
+    tr:"Connect a couple of apps and let the Work agent draft a Travel Dragon itinerary or trip summary from your notes.",
+    url:"https://openai.com/index/gpt-5-6/"},
+  {icon:"🟠",name:"Claude",vendor:"Anthropic",ver:"Opus 4.8 · Cowork",
+    is:"Strong at long-form writing, careful reasoning, and coding. It's what you're using right now — Cowork is Claude working as a desktop agent with access to your files and connectors.",
+    nu:"Cowork went fully available in 2026 (Mac, Windows, web, iPhone, Android), running Opus 4.8 with a 1-million-token memory and cloud sessions that keep working after you close your laptop. Added Agent Teams and a memory system that learns your preferences between runs.",
+    tr:"You're already in it — keep letting Cowork connect Replit + Airtable and do multi-step jobs like building this hub or auditing your database.",
+    url:"https://claude.com/product/claude-code"},
+  {icon:"✦",name:"Gemini",vendor:"Google",ver:"2026 · Spark",
+    is:"Google's AI, woven into Search, Gmail, Docs, and Android. Most useful when your work already lives in Google Workspace.",
+    nu:"2026 added a <b>Daily Brief</b> (a digest from your inbox, calendar, and tasks), <b>Gemini Spark</b> — a 24/7 personal agent that can act on your behalf — a new <b>Omni</b> video model, and a redesigned, more expressive interface.",
+    tr:"If you use Gmail/Calendar, switch on Daily Brief for a morning digest; try Gemini inside Google Docs to draft your panel notes.",
+    url:"https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/"},
+  {icon:"🔎",name:"Perplexity",vendor:"Perplexity AI",ver:"Comet · Deep Research",
+    is:"An answer engine — ask a question, get an answer with cited sources. Your tool for research and fact-checking, not long creative writing.",
+    nu:"2026 was its 'browser year': <b>Comet</b>, an agentic AI browser (iOS, Android, Mac, Windows) that reads the tab you're on, does voice, and can click, scroll, and fill forms across a whole workflow. Deep Research now runs on Claude Opus and can output decks, spreadsheets, and sites.",
+    tr:"Use Deep Research for your Week 3 GEO baseline; try Comet to research adventure-travel competitors hands-free while you review a site.",
+    url:"https://beginnersinai.org/whats-new-perplexity-2026/"},
+  {icon:"🛠️",name:"Replit",vendor:"Replit",ver:"Agent 3 → 4",fav:true,
+    is:"Cloud coding + AI app builder. Describe an app and it writes, hosts, and deploys it — no setup on your computer. This is home base for Travel Dragon.",
+    nu:"<b>Agent 3</b> now tests and fixes the app it builds — it watches its own browser preview, clicks buttons, catches bugs, and repairs them without you asking. Add <b>Custom Instructions</b> and <b>Skills</b> for a reusable stack/style, frontend-first prototyping, and mobile apps so you can build from your phone. Agent 4 (10× faster) is coming.",
+    tr:"Turn on App Testing in Agent 3 for Travel Dragon Reimagined, and save a Skill with your preferred stack so every build matches your style.",
+    url:"https://replit.com/blog/introducing-agent-3-our-most-autonomous-agent-yet"},
+  {icon:"💗",name:"Lovable",vendor:"Lovable",ver:"2026 · Themes",
+    is:"AI app builder that turns prompts into full-stack React apps with a database and a live URL. Where your Camino Companion and Trail Companion live.",
+    nu:"In March 2026 it expanded beyond apps into data analysis, BI, decks, and marketing workflows. Added <b>Themes</b> (brand colors, type, and spacing controlled from one panel) and built-in image generation, now with transparent backgrounds for icons and UI.",
+    tr:"Since you prefer Replit, keep Lovable for fast, design-forward prototypes — try Themes to lock Travel Dragon's brand colors across a mockup.",
+    url:"https://lovable.dev/guides/best-ai-app-builders"},
+  {icon:"🎨",name:"Beautiful.ai",vendor:"Beautiful.ai",ver:"3.0 · Smart Slides",
+    is:"AI presentation maker with 'smart' slides that auto-format as you add content, so you stop fighting with alignment and focus on the story.",
+    nu:"Version <b>3.0</b> (March 2026) generates genuinely usable decks from a prompt, adds an <b>outline-preview</b> step to check your narrative before design, and supports adaptive decks — one core deck that condenses for a briefing or expands for a workshop.",
+    tr:"Draft your ATWS panel deck: feed it your three Week-6 talking points, let it build, then tighten the flow in the outline preview.",
+    url:"https://www.beautiful.ai/product-updates"},
+  {icon:"🗂️",name:"Airtable",vendor:"Airtable",ver:"Omni · AI-native",
+    is:"A spreadsheet-database hybrid for organizing records and building views and interfaces on top — where your Travel Dragon curator data (ATTA and others) lives.",
+    nu:"Relaunched in 2026 as an 'AI-native app platform.' <b>Omni</b> is a conversational AI that builds tables, interfaces, and automations from a description, analyzes records with field agents, and can research the web. Cobuilder and Hyperagent add more autonomous agents.",
+    tr:"Point Omni at your curator base to dedupe ATTA entries or spin up an interface — or just ask me here (I'm connected to Airtable) to audit it for you.",
+    url:"https://www.airtable.com/platform/app-building"}
+];
+
+function renderTools(){
+  const host=document.getElementById("tools");
+  host.innerHTML=TOOLS.map((t,i)=>{
+    const open = state["_topen"+i] ?? false;
+    return `<div class="tool${open?" open":""}" data-t="${i}">
+      <div class="thead" data-t="${i}">
+        <div class="tico">${t.icon}</div>
+        <div class="tname"><h3>${t.name}${t.fav?' <span style="font-size:12px;color:var(--do)">★ your go-to</span>':''}</h3>
+          <div class="tag2">${t.vendor}</div></div>
+        <div class="tver">${t.ver}</div><span class="chev">›</span>
+      </div>
+      <div class="tbody">
+        <div class="block"><h4>The 101</h4><p>${t.is}</p></div>
+        <div class="block whatsnew"><h4>What's changing (2026)</h4><p>${t.nu}</p></div>
+        <div class="block try"><h4>Try this next</h4><p>${t.tr} &nbsp;<a href="${t.url}" target="_blank" rel="noopener">Learn more ↗</a></p></div>
+      </div>
+    </div>`;
+  }).join("");
+  host.querySelectorAll('.thead').forEach(h=>h.onclick=(e)=>{
+    if(e.target.tagName==="A") return;
+    const i=h.dataset.t, tool=h.closest('.tool');
+    const op=tool.classList.toggle('open'); state["_topen"+i]=op; save();
+  });
+}
+
+let view = state._view || "course";
+function setView(v){
+  view=v; state._view=v; save();
+  document.querySelectorAll('#views button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+  const course=v==="course";
+  document.getElementById("courseview").style.display=course?"block":"none";
+  document.getElementById("toolsview").style.display=v==="tools"?"block":"none";
+  document.getElementById("stackview").style.display=v==="stack"?"block":"none";
+  document.getElementById("modes").style.display=course?"inline-flex":"none";
+  document.querySelector(".progwrap").style.display=course?"block":"none";
+  if(v==="tools") renderTools();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll('#views button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+
+function countdown(){
+  const now=new Date(); let diff=SUMMIT-now;
+  const el=document.getElementById("countdown");
+  if(diff<=0){ el.innerHTML=`<div class="cd"><b>🎤</b><span>It's summit time</span></div>`; return;}
+  const d=Math.floor(diff/864e5); const wk=Math.floor(d/7);
+  el.innerHTML=`
+    <div class="cd"><b>${d}</b><span>days to ATWS</span></div>
+    <div class="cd"><b>~${wk}</b><span>weeks left</span></div>
+    <div class="cd"><b>Sep 14</b><span>Québec City</span></div>`;
+}
+
+countdown();
+document.getElementById("modehint").textContent=MODE_HINTS[mode];
+setMode(mode);
+setView(view);
+</script>
+</body>
+</html>
