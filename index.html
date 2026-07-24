@@ -221,6 +221,31 @@ document.head.appendChild(l);}catch(e){}})();
       <p>A plain-English primer on each tool you're already using: what it is, how it's changing in 2026, and one thing worth trying next. Tap any tool to expand. Perfect panel prep — these are the exact tools operators will ask about.</p>
     </div>
     <div id="tools"></div>
+
+    <div class="listencard">
+      <h2>🔭 Keep finding new tools to test</h2>
+      <p class="lead">The toolkit above will go stale — new AI tools launch every day. These sources surface them automatically, so you always have something fresh to try (and current talking points on what's new). Pick <b>one</b> directory to bookmark and <b>one</b> newsletter to subscribe to — that's enough to stay sharp without drowning.</p>
+      <div class="prow">
+        <div class="pname">There's An AI For That<small>The biggest directory + newsletter — pure new-tool discovery. Start here.</small></div>
+        <div class="plinks"><a class="pbtn spot" style="background:var(--accent2)" href="https://theresanaiforthat.com/" target="_blank" rel="noopener">Open ↗</a></div>
+      </div>
+      <div class="prow">
+        <div class="pname">Future Tools<small>Matt Wolfe's hand-picked new tools, updated constantly</small></div>
+        <div class="plinks"><a class="pbtn spot" style="background:var(--accent2)" href="https://www.futuretools.io/" target="_blank" rel="noopener">Open ↗</a></div>
+      </div>
+      <div class="prow">
+        <div class="pname">Product Hunt · AI<small>Brand-new tool launches every single day</small></div>
+        <div class="plinks"><a class="pbtn spot" style="background:var(--accent2)" href="https://www.producthunt.com/topics/artificial-intelligence" target="_blank" rel="noopener">Open ↗</a></div>
+      </div>
+      <div class="prow">
+        <div class="pname">The Rundown AI<small>Newsletter — new tools + AI news in your inbox, daily</small></div>
+        <div class="plinks"><a class="pbtn spot" style="background:var(--accent2)" href="https://www.therundown.ai/" target="_blank" rel="noopener">Open ↗</a></div>
+      </div>
+      <div class="prow">
+        <div class="pname">Ben's Bites<small>Newsletter — a builder's-eye view of what's worth adopting</small></div>
+        <div class="plinks"><a class="pbtn spot" style="background:var(--accent2)" href="https://bensbites.com/" target="_blank" rel="noopener">Open ↗</a></div>
+      </div>
+    </div>
   </div>
 
   <div id="stackview" style="display:none">
@@ -531,6 +556,17 @@ const TOOLS = [
     url:"https://www.airtable.com/platform/app-building"}
 ];
 
+const HOMES={
+  "ChatGPT":"https://openai.com/chatgpt/",
+  "Claude":"https://www.anthropic.com/claude",
+  "Gemini":"https://gemini.google/about/",
+  "Perplexity":"https://www.perplexity.ai/",
+  "Replit":"https://replit.com/",
+  "Lovable":"https://lovable.dev/",
+  "Beautiful.ai":"https://www.beautiful.ai/",
+  "Airtable":"https://www.airtable.com/"
+};
+
 function renderTools(){
   const host=document.getElementById("tools");
   host.innerHTML=TOOLS.map((t,i)=>{
@@ -543,7 +579,7 @@ function renderTools(){
         <div class="tver">${t.ver}</div><span class="chev">›</span>
       </div>
       <div class="tbody">
-        <div class="block"><h4>The 101</h4><p>${t.is}</p></div>
+        <div class="block"><h4>The 101</h4><p>${t.is} &nbsp;<a href="${HOMES[t.name]||t.url}" target="_blank" rel="noopener">Official site ↗</a></p></div>
         <div class="block whatsnew"><h4>What's changing (2026)</h4><p>${t.nu}</p></div>
         <div class="block try"><h4>Try this next</h4><p>${t.tr} &nbsp;<a href="${t.url}" target="_blank" rel="noopener">Learn more ↗</a></p></div>
       </div>
