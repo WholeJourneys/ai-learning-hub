@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Learning Toolkit</title>
+<title>AI Learning Hub</title>
 <style>
   :root {
     --bg: #f6f7f9; --card: #ffffff; --ink: #1a1d23; --muted: #5c6470;
@@ -15,31 +15,40 @@
   * { box-sizing: border-box; margin: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
          background: var(--bg); color: var(--ink); line-height: 1.5; }
-  header { position: sticky; top: 0; z-index: 10; background: var(--card);
-           border-bottom: 1px solid var(--line); padding: 14px 24px;
-           display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  header h1 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
-  .version { font-size: 0.72rem; background: var(--accent-soft); color: var(--accent);
-             padding: 3px 10px; border-radius: 999px; font-weight: 600; }
-  .search { margin-left: auto; flex: 0 1 300px; }
-  .search input { width: 100%; padding: 9px 14px; border: 1px solid var(--line);
-                  border-radius: 8px; font-size: 0.88rem; background: var(--bg); }
+  header { background: var(--card); border-bottom: 1px solid var(--line);
+           padding: 22px 24px 16px; }
+  .header-inner { max-width: 1180px; margin: 0 auto; }
+  header h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
+  .tagline { font-size: 0.9rem; color: var(--muted); margin-top: 4px; max-width: 560px; }
+  .version { display: inline-block; font-size: 0.72rem; background: var(--accent-soft);
+             color: var(--accent); padding: 3px 10px; border-radius: 999px;
+             font-weight: 600; margin-top: 10px; }
+  .toolbar { position: sticky; top: 0; z-index: 10; background: var(--bg);
+             padding: 14px 24px 6px; border-bottom: 1px solid var(--line); }
+  .toolbar-inner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .search { flex: 1 1 260px; }
+  .search input { width: 100%; padding: 10px 14px; border: 1px solid var(--line);
+                  border-radius: 8px; font-size: 0.9rem; background: var(--card); }
   .search input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
-  nav { display: flex; gap: 8px; flex-wrap: wrap; padding: 16px 24px 4px; }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; }
   .tab { border: 1px solid var(--line); background: var(--card); color: var(--muted);
          padding: 7px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
          cursor: pointer; transition: all 0.15s; }
   .tab:hover { border-color: var(--accent); color: var(--accent); }
   .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
   main { max-width: 1180px; margin: 0 auto; padding: 18px 24px 60px; }
-  .count { font-size: 0.8rem; color: var(--muted); margin: 6px 2px 14px; }
+  .count { font-size: 0.8rem; color: var(--muted); margin: 4px 2px 14px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
-          padding: 16px 18px; display: flex; flex-direction: column; gap: 8px;
-          transition: box-shadow 0.15s, transform 0.15s; }
-  .card:hover { box-shadow: 0 4px 14px rgba(20, 25, 40, 0.08); transform: translateY(-2px); }
+  a.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+           padding: 16px 18px; display: flex; flex-direction: column; gap: 8px;
+           text-decoration: none; color: inherit;
+           transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s; }
+  a.card:hover { box-shadow: 0 4px 14px rgba(20, 25, 40, 0.10); transform: translateY(-2px);
+                 border-color: var(--accent); }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-  .card h3 { font-size: 0.98rem; font-weight: 650; }
+  .card h3 { font-size: 1rem; font-weight: 650; }
+  .arrow { color: var(--accent); font-weight: 700; font-size: 1rem; line-height: 1; }
+  .domain { font-size: 0.75rem; color: var(--accent); font-weight: 600; }
   .meta { font-size: 0.78rem; color: var(--muted); }
   .desc { font-size: 0.85rem; color: #3d4450; }
   .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
@@ -50,146 +59,100 @@
   .tag.travel { background: var(--travel); } .tag.communities { background: var(--communities); }
   .badge { font-size: 0.68rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
            background: var(--green-soft); color: var(--green); }
-  section.protocol { margin-top: 40px; background: var(--card); border: 1px solid var(--line);
-                     border-radius: 12px; padding: 24px; }
-  section.protocol h2 { font-size: 1.05rem; margin-bottom: 4px; }
-  section.protocol .sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; }
-  .prompt { display: flex; gap: 10px; align-items: center; background: var(--bg);
-            border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
-  .prompt p { font-size: 0.84rem; flex: 1; font-style: italic; color: #3d4450; }
-  .copy { border: 1px solid var(--line); background: var(--card); border-radius: 6px;
-          font-size: 0.75rem; font-weight: 600; padding: 5px 12px; cursor: pointer; color: var(--accent); }
-  .copy:hover { background: var(--accent-soft); }
-  .checklist { margin: 18px 0; padding-left: 4px; }
-  .checklist li { font-size: 0.85rem; list-style: none; padding: 4px 0 4px 26px; position: relative; }
-  .checklist li::before { content: "\2610"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
-  table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 0.82rem; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
-  th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
-  h4.step { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
-            color: var(--muted); margin: 20px 0 10px; }
-  .hidden { display: none; }
-  footer { text-align: center; font-size: 0.75rem; color: var(--muted); padding: 30px 0; }
-  @media (max-width: 640px) { .search { flex: 1 1 100%; margin-left: 0; } }
+  footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 30px 20px; }
+  @media (max-width: 640px) { .toolbar { position: static; } }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>AI Learning Toolkit</h1>
-  <span class="version">v1.0 &middot; Updated Aug 28, 2026</span>
-  <div class="search"><input id="q" type="text" placeholder="Search resources&hellip; (e.g. podcast, Karpathy, travel)"></div>
+  <div class="header-inner">
+    <h1>AI Learning Hub</h1>
+    <p class="tagline">Free, highly rated resources for learning AI &mdash; curated for people in travel. No jargon, no hype. Tap any card to visit the source.</p>
+    <span class="version">Updated August 2026</span>
+  </div>
 </header>
 
-<nav id="tabs">
-  <button class="tab active" data-cat="all">All</button>
-  <button class="tab" data-cat="courses">Courses</button>
-  <button class="tab" data-cat="podcasts">Podcasts</button>
-  <button class="tab" data-cat="substacks">Substacks</button>
-  <button class="tab" data-cat="youtube">YouTube</button>
-  <button class="tab" data-cat="travel">Travel AI</button>
-  <button class="tab" data-cat="communities">Communities</button>
-</nav>
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="search"><input id="q" type="text" placeholder="Search&hellip; (e.g. podcast, Karpathy, tour operators)"></div>
+    <nav id="tabs">
+      <button class="tab active" data-cat="all">All</button>
+      <button class="tab" data-cat="courses">Courses</button>
+      <button class="tab" data-cat="podcasts">Podcasts</button>
+      <button class="tab" data-cat="substacks">Newsletters</button>
+      <button class="tab" data-cat="youtube">YouTube</button>
+      <button class="tab" data-cat="travel">Travel AI</button>
+      <button class="tab" data-cat="communities">Communities</button>
+    </nav>
+  </div>
+</div>
 
 <main>
   <p class="count" id="count"></p>
   <div class="grid" id="grid"></div>
-
-  <section class="protocol">
-    <h2>Update Protocol</h2>
-    <p class="sub">Run quarterly. Discover &rarr; vet &rarr; prune &rarr; log. Copy any prompt straight into Perplexity.</p>
-
-    <h4 class="step">Step 1 &mdash; Discover new sources</h4>
-    <div id="prompts"></div>
-
-    <h4 class="step">Step 2 &mdash; Vet candidates (must pass 4 of 5)</h4>
-    <ul class="checklist">
-      <li>Free tier with real substance, not a teaser</li>
-      <li>Updated within the last 90 days</li>
-      <li>Verifiable author credentials (frontier lab, university, practitioner, established journalist)</li>
-      <li>Cites primary sources / original analysis, not press-release rehash</li>
-      <li>Recommended by at least two independent communities or curated lists</li>
-    </ul>
-
-    <h4 class="step">Step 3 &mdash; Prune</h4>
-    <p class="desc">Remove sources that went quiet for 6+ months, moved fully behind a paywall, or shifted to low-signal promotional content.</p>
-
-    <h4 class="step">Step 4 &mdash; Version log</h4>
-    <table>
-      <tr><th>Version</th><th>Date</th><th>Changes</th></tr>
-      <tr><td>1.0</td><td>2026-08-28</td><td>Initial toolkit: courses, podcasts, Substacks, YouTube, travel vertical, communities, update protocol</td></tr>
-    </table>
-  </section>
 </main>
 
-<footer>AI Learning Toolkit v1.0 &middot; hosted on GitHub Pages &middot; mirrors ai-learning-toolkit.md</footer>
+<footer>Curated by Kathy Dragon &middot; Whole Journeys &middot; 56 free resources &middot; Updated August 2026</footer>
 
 <script>
 const DATA = [
-  {n:"Elements of AI", m:"University of Helsinki \u00b7 ~30 hrs", d:"The standard free intro to AI concepts; consistently top-rated in free-course roundups.", c:"courses", b:"Free"},
-  {n:"AI Foundations", m:"IBM SkillsBuild \u00b7 ~10 hrs", d:"Free credential (AI Fundamentals); good for professional vocabulary.", c:"courses", b:"Free cert"},
-  {n:"AI Skills Navigator", m:"Microsoft \u00b7 self-paced", d:"Free, practical, business-oriented AI fluency.", c:"courses", b:"Free"},
-  {n:"OpenAI Academy", m:"OpenAI \u00b7 ~5 hrs", d:"Free short courses directly from a frontier lab.", c:"courses", b:"Free"},
-  {n:"Google AI Essentials", m:"Google / Coursera \u00b7 ~10 hrs", d:"Free to audit; solid non-technical grounding.", c:"courses", b:"Free audit"},
-  {n:"DeepLearning.AI Short Courses", m:"DeepLearning.AI \u00b7 1\u20135 hrs each", d:"Prompt engineering and more, taught with OpenAI/Anthropic/Google staff; constantly refreshed.", c:"courses", b:"Free"},
-  {n:"Generative AI Path", m:"Google Cloud Skills Boost", d:"Free labs and badges on applied generative AI.", c:"courses", b:"Free"},
-  {n:"AI Agents Course", m:"Hugging Face \u00b7 self-paced", d:"Free, hands-on, open-source agent building.", c:"courses", b:"Free"},
-  {n:"AWS Skill Builder (AI/ML)", m:"Amazon \u00b7 self-paced", d:"Free-tier courses on applied AI.", c:"courses", b:"Free tier"},
-  {n:"CS50 Intro to AI with Python", m:"HarvardX / edX \u00b7 7 weeks", d:"Free to audit; rigorous classic.", c:"courses", b:"Free audit"},
-  {n:"Practical Deep Learning", m:"fast.ai \u00b7 7 parts", d:"Free, top-down, build-first philosophy; cult following.", c:"courses", b:"Free"},
-  {n:"Neural Networks: Zero to Hero", m:"Andrej Karpathy \u00b7 ~10 hrs", d:"Build GPT from scratch; the most-recommended free deep-dive series.", c:"courses", b:"Free"},
-  {n:"MIT OpenCourseWare AI/ML", m:"MIT \u00b7 semester-length", d:"Free full university courses (6.034 and ML).", c:"courses", b:"Free"},
-  {n:"The AI Daily Brief", m:"Nathaniel Whittemore \u00b7 daily", d:"Stay current in 15\u201320 min; daily AI news plus analysis.", c:"podcasts", b:"Free"},
-  {n:"Hard Fork", m:"Roose & Newton (NYT) \u00b7 weekly", d:"Accessible AI + tech industry coverage with strong interviews.", c:"podcasts", b:"Free"},
-  {n:"Latent Space", m:"swyx & Alessio \u00b7 weekly", d:"How AI engineers actually ship; practitioner favorite.", c:"podcasts", b:"Free"},
-  {n:"Dwarkesh Podcast", m:"Dwarkesh Patel \u00b7 ~weekly", d:"Deep long-form interviews with frontier-lab leaders.", c:"podcasts", b:"Free"},
-  {n:"The Cognitive Revolution", m:"Nathan Labenz \u00b7 weekly", d:"AI capabilities and implications at practitioner depth.", c:"podcasts", b:"Free"},
-  {n:"No Priors", m:"Sarah Guo & Elad Gil \u00b7 weekly", d:"AI investing and research; market and startup lens.", c:"podcasts", b:"Free"},
-  {n:"Lex Fridman Podcast", m:"Lex Fridman \u00b7 weekly", d:"Long interviews with AI leaders; big-picture conversations.", c:"podcasts", b:"Free"},
-  {n:"Practical AI", m:"Changelog \u00b7 weekly", d:"Applied ML and business use cases for non-researchers.", c:"podcasts", b:"Free"},
-  {n:"Eye on AI", m:"Craig S. Smith \u00b7 2x/week", d:"Balanced research and industry interviews.", c:"podcasts", b:"Free"},
-  {n:"ML Street Talk", m:"Tim Scarfe et al. \u00b7 weekly", d:"Technical research discussions; deeper chops.", c:"podcasts", b:"Free"},
-  {n:"One Useful Thing", m:"Ethan Mollick (Wharton)", d:"Practical, evidence-based AI use; tops best-AI-newsletter lists.", c:"substacks", b:"Free core"},
-  {n:"The Batch", m:"Andrew Ng / DeepLearning.AI", d:"Weekly AI news with expert framing.", c:"substacks", b:"Free"},
-  {n:"Import AI", m:"Jack Clark (Anthropic)", d:"Research analysis and policy; running since 2016.", c:"substacks", b:"Free"},
-  {n:"Ahead of AI", m:"Sebastian Raschka", d:"Technical but readable LLM internals.", c:"substacks", b:"Free core"},
-  {n:"Interconnects", m:"Nathan Lambert", d:"Frontier model analysis; strong open-model coverage.", c:"substacks", b:"Free core"},
-  {n:"AI Snake Oil", m:"Narayanan & Kapoor", d:"Debunks hype; a critical counterweight.", c:"substacks", b:"Free core"},
-  {n:"The Sequence", m:"Jesus Rodriguez et al.", d:"ML research and industry, accessible.", c:"substacks", b:"Free core"},
-  {n:"Superhuman AI", m:"Zain Kahn", d:"Largest AI newsletter globally; daily tools and news.", c:"substacks", b:"Free"},
-  {n:"The Algorithmic Bridge", m:"Alberto Romero", d:"AI explained plus society implications.", c:"substacks", b:"Free core"},
-  {n:"Mindstream", m:"Biddlecombe & Village", d:"Daily AI tools and business use.", c:"substacks", b:"Free"},
-  {n:"ChinAI", m:"Jeff Ding", d:"Chinese AI ecosystem \u2014 increasingly essential.", c:"substacks", b:"Free"},
-  {n:"Exponential View", m:"Azeem Azhar", d:"AI, society, and business strategy.", c:"substacks", b:"Free core"},
-  {n:"3Blue1Brown", m:"Grant Sanderson", d:"Neural network visual series; best intuitive math explanations.", c:"youtube", b:"Free"},
-  {n:"Andrej Karpathy", m:"Karpathy", d:"Zero to Hero plus 'Deep Dive into LLMs'.", c:"youtube", b:"Free"},
-  {n:"Two Minute Papers", m:"K\u00e1roly Zsolnai-Feh\u00e9r", d:"Research paper summaries.", c:"youtube", b:"Free"},
-  {n:"AI Explained", m:"Philip", d:"Model releases, benchmarks, skeptical takes.", c:"youtube", b:"Free"},
-  {n:"Yannic Kilcher", m:"Yannic Kilcher", d:"Technical paper deep-dives.", c:"youtube", b:"Free"},
-  {n:"Everything AI in Travel", m:"Newsletter", d:"Dedicated AI-in-travel curation for operators.", c:"travel", b:"Free"},
-  {n:"Skift AI Digest", m:"Skift \u00b7 weekly", d:"Flagship travel-industry coverage plus the Data + AI Summit.", c:"travel", b:"Free core"},
-  {n:"PhocusWire / Phocuswright", m:"News + research", d:"Travel tech and distribution depth; weekly research newsletter.", c:"travel", b:"Free core"},
-  {n:"Travel Tech Essentialist", m:"Mauricio Prieto \u00b7 bi-weekly", d:"Sharp takes on travel tech, AI, and platform shifts.", c:"travel", b:"Free"},
-  {n:"Peter Syme", m:"LinkedIn / YouTube", d:"Tour-operator-focused practical AI guidance.", c:"travel", b:"Free"},
-  {n:"Arival", m:"Podcast + research", d:"Tours, activities and experiences sector; operator lens.", c:"travel", b:"Free core"},
-  {n:"Tourpreneur", m:"Podcast + community", d:"Built for tour operators: marketing, ops, tech.", c:"travel", b:"Free"},
-  {n:"Travel Trends Podcast", m:"Dan Christian", d:"Agentic AI in travel discovery and booking.", c:"travel", b:"Free"},
-  {n:"In Phocus", m:"PhocusWire", d:"Travel tech news dissection with executives.", c:"travel", b:"Free"},
-  {n:"McKinsey Travel", m:"Research", d:"Macro, research-heavy strategy context.", c:"travel", b:"Free"},
-  {n:"Hacker News", m:"Aggregator", d:"Real-time signal on what the builder community respects.", c:"communities", b:"Free"},
-  {n:"r/singularity + r/ArtificialIntelligence", m:"Reddit", d:"Recurring 'best AI podcast/newsletter' threads for refresh checks.", c:"communities", b:"Free"},
-  {n:"Latent Space Discord", m:"Community", d:"Practitioner community around AI engineering.", c:"communities", b:"Free"},
-  {n:"Papers with Code", m:"Aggregator", d:"Track research and benchmarks.", c:"communities", b:"Free"},
-  {n:"Semantic Scholar Alerts", m:"Alerts", d:"Follow specific topics like 'LLM agents'.", c:"communities", b:"Free"},
-  {n:"Substack Tech Leaderboard", m:"Substack", d:"Spot rising AI newsletters early.", c:"communities", b:"Free"}
-];
-
-const PROMPTS = [
-  "Best new AI newsletters on Substack launched in the last 6 months, ranked by subscriber growth and recommendations",
-  "Top rated AI podcasts [current year], ranked by reviews and industry recommendations",
-  "Best free AI courses [current year] with certificates, no hidden paywalls",
-  "New travel industry AI newsletters or podcasts for tour operators and DMOs",
-  "What AI Substacks do researchers and engineers recommend most right now"
+  {n:"Elements of AI", m:"University of Helsinki \u00b7 ~30 hrs", d:"The standard free intro to AI concepts; consistently top-rated in free-course roundups.", c:"courses", b:"Free", u:"https://www.elementsofai.com", w:"elementsofai.com"},
+  {n:"AI Foundations", m:"IBM SkillsBuild \u00b7 ~10 hrs", d:"Free credential (AI Fundamentals); good for professional vocabulary.", c:"courses", b:"Free cert", u:"https://skillsbuild.org", w:"skillsbuild.org"},
+  {n:"AI Skills Navigator", m:"Microsoft \u00b7 self-paced", d:"Personalized AI learning paths from Microsoft Learn, LinkedIn and GitHub content.", c:"courses", b:"Free", u:"https://www.microsoft.com/en-us/corporate-responsibility/ai-skills-resources", w:"microsoft.com"},
+  {n:"OpenAI Academy", m:"OpenAI \u00b7 ~5 hrs", d:"Free short courses directly from a frontier lab.", c:"courses", b:"Free", u:"https://academy.openai.com", w:"academy.openai.com"},
+  {n:"Google AI Essentials", m:"Google / Coursera \u00b7 ~10 hrs", d:"Free to audit; solid non-technical grounding.", c:"courses", b:"Free audit", u:"https://www.coursera.org/learn/google-ai-essentials", w:"coursera.org"},
+  {n:"DeepLearning.AI Short Courses", m:"DeepLearning.AI \u00b7 1\u20135 hrs each", d:"Prompt engineering and more, taught with OpenAI/Anthropic/Google staff; constantly refreshed.", c:"courses", b:"Free", u:"https://www.deeplearning.ai/short-courses/", w:"deeplearning.ai"},
+  {n:"Generative AI Path", m:"Google Cloud Skills Boost", d:"Free labs and badges on applied generative AI.", c:"courses", b:"Free", u:"https://www.cloudskillsboost.google", w:"cloudskillsboost.google"},
+  {n:"AI Agents Course", m:"Hugging Face \u00b7 self-paced", d:"Free, hands-on, open-source agent building.", c:"courses", b:"Free", u:"https://huggingface.co/learn/agents-course", w:"huggingface.co"},
+  {n:"AWS Skill Builder (AI/ML)", m:"Amazon \u00b7 self-paced", d:"Free-tier courses on applied AI.", c:"courses", b:"Free tier", u:"https://skillbuilder.aws", w:"skillbuilder.aws"},
+  {n:"CS50 Intro to AI with Python", m:"HarvardX \u00b7 7 weeks", d:"Free to audit; rigorous classic.", c:"courses", b:"Free audit", u:"https://cs50.harvard.edu/ai/", w:"cs50.harvard.edu"},
+  {n:"Practical Deep Learning", m:"fast.ai \u00b7 7 parts", d:"Free, top-down, build-first philosophy; cult following.", c:"courses", b:"Free", u:"https://course.fast.ai", w:"course.fast.ai"},
+  {n:"Neural Networks: Zero to Hero", m:"Andrej Karpathy \u00b7 ~10 hrs", d:"Build GPT from scratch; the most-recommended free deep-dive series.", c:"courses", b:"Free", u:"https://www.youtube.com/@AndrejKarpathy", w:"youtube.com"},
+  {n:"MIT OpenCourseWare AI/ML", m:"MIT \u00b7 semester-length", d:"Free full university courses (6.034 and ML).", c:"courses", b:"Free", u:"https://ocw.mit.edu", w:"ocw.mit.edu"},
+  {n:"The AI Daily Brief", m:"Nathaniel Whittemore \u00b7 daily", d:"Stay current in 15\u201320 min; daily AI news plus analysis.", c:"podcasts", b:"Free", u:"https://aidailybrief.ai", w:"aidailybrief.ai"},
+  {n:"Hard Fork", m:"Roose & Newton (NYT) \u00b7 weekly", d:"Accessible AI + tech industry coverage with strong interviews.", c:"podcasts", b:"Free", u:"https://www.nytimes.com/column/hard-fork", w:"nytimes.com"},
+  {n:"Latent Space", m:"swyx & Alessio \u00b7 weekly", d:"How AI engineers actually ship; practitioner favorite.", c:"podcasts", b:"Free", u:"https://www.latent.space", w:"latent.space"},
+  {n:"Dwarkesh Podcast", m:"Dwarkesh Patel \u00b7 ~weekly", d:"Deep long-form interviews with frontier-lab leaders.", c:"podcasts", b:"Free", u:"https://www.dwarkesh.com", w:"dwarkesh.com"},
+  {n:"The Cognitive Revolution", m:"Nathan Labenz \u00b7 weekly", d:"AI capabilities and implications at practitioner depth.", c:"podcasts", b:"Free", u:"https://www.cognitiverevolution.ai", w:"cognitiverevolution.ai"},
+  {n:"No Priors", m:"Sarah Guo & Elad Gil \u00b7 weekly", d:"AI investing and research; market and startup lens.", c:"podcasts", b:"Free", u:"https://www.no-priors.com", w:"no-priors.com"},
+  {n:"Lex Fridman Podcast", m:"Lex Fridman \u00b7 weekly", d:"Long interviews with AI leaders; big-picture conversations.", c:"podcasts", b:"Free", u:"https://lexfridman.com/podcast/", w:"lexfridman.com"},
+  {n:"Practical AI", m:"Changelog \u00b7 weekly", d:"Applied ML and business use cases for non-researchers.", c:"podcasts", b:"Free", u:"https://changelog.com/practicalai", w:"changelog.com"},
+  {n:"Eye on AI", m:"Craig S. Smith \u00b7 biweekly", d:"Balanced research and industry interviews from a veteran NYT correspondent.", c:"podcasts", b:"Free", u:"https://www.eye-on.ai", w:"eye-on.ai"},
+  {n:"ML Street Talk", m:"Tim Scarfe et al. \u00b7 weekly", d:"Highest-rated technical AI podcast on Spotify; deeper chops.", c:"podcasts", b:"Free", u:"https://www.mlst.ai", w:"mlst.ai"},
+  {n:"One Useful Thing", m:"Ethan Mollick (Wharton)", d:"Practical, evidence-based AI use; tops best-AI-newsletter lists.", c:"substacks", b:"Free core", u:"https://www.oneusefulthing.org", w:"oneusefulthing.org"},
+  {n:"The Batch", m:"Andrew Ng / DeepLearning.AI", d:"Weekly AI news with expert framing.", c:"substacks", b:"Free", u:"https://www.deeplearning.ai/the-batch/", w:"deeplearning.ai"},
+  {n:"Import AI", m:"Jack Clark (Anthropic)", d:"Research analysis and policy; running since 2016, 100k+ readers.", c:"substacks", b:"Free", u:"https://importai.substack.com", w:"importai.substack.com"},
+  {n:"Ahead of AI", m:"Sebastian Raschka", d:"Technical but readable LLM internals.", c:"substacks", b:"Free core", u:"https://magazine.sebastianraschka.com", w:"magazine.sebastianraschka.com"},
+  {n:"Interconnects", m:"Nathan Lambert", d:"Frontier model analysis; strong open-model coverage.", c:"substacks", b:"Free core", u:"https://www.interconnects.ai", w:"interconnects.ai"},
+  {n:"AI Snake Oil", m:"Narayanan & Kapoor", d:"Debunks hype; a critical counterweight.", c:"substacks", b:"Free core", u:"https://www.aisnakeoil.com", w:"aisnakeoil.com"},
+  {n:"The Sequence", m:"Jesus Rodriguez et al.", d:"ML research and industry, accessible.", c:"substacks", b:"Free core", u:"https://thesequence.substack.com", w:"thesequence.substack.com"},
+  {n:"Superhuman AI", m:"Zain Kahn", d:"Largest AI newsletter globally; daily tools and news.", c:"substacks", b:"Free", u:"https://www.superhuman.ai", w:"superhuman.ai"},
+  {n:"The Algorithmic Bridge", m:"Alberto Romero", d:"AI explained plus society implications.", c:"substacks", b:"Free core", u:"https://thealgorithmicbridge.substack.com", w:"thealgorithmicbridge.substack.com"},
+  {n:"Mindstream", m:"Biddlecombe & Village", d:"Daily AI tools and business use.", c:"substacks", b:"Free", u:"https://www.mindstream.news", w:"mindstream.news"},
+  {n:"ChinAI", m:"Jeff Ding", d:"Chinese AI ecosystem \u2014 increasingly essential.", c:"substacks", b:"Free", u:"https://chinai.substack.com", w:"chinai.substack.com"},
+  {n:"Exponential View", m:"Azeem Azhar", d:"AI, society, and business strategy.", c:"substacks", b:"Free core", u:"https://www.exponentialview.co", w:"exponentialview.co"},
+  {n:"3Blue1Brown", m:"Grant Sanderson", d:"Neural network visual series; best intuitive math explanations.", c:"youtube", b:"Free", u:"https://www.youtube.com/@3blue1brown", w:"youtube.com"},
+  {n:"Andrej Karpathy", m:"Karpathy", d:"Zero to Hero plus 'Deep Dive into LLMs'.", c:"youtube", b:"Free", u:"https://www.youtube.com/@AndrejKarpathy", w:"youtube.com"},
+  {n:"Two Minute Papers", m:"K\u00e1roly Zsolnai-Feh\u00e9r", d:"Research paper summaries.", c:"youtube", b:"Free", u:"https://www.youtube.com/@TwoMinutePapers", w:"youtube.com"},
+  {n:"AI Explained", m:"Philip", d:"Model releases, benchmarks, skeptical takes.", c:"youtube", b:"Free", u:"https://www.youtube.com/@ai-explained-", w:"youtube.com"},
+  {n:"Yannic Kilcher", m:"Yannic Kilcher", d:"Technical paper deep-dives.", c:"youtube", b:"Free", u:"https://www.youtube.com/@YannicKilcher", w:"youtube.com"},
+  {n:"Everything AI in Travel", m:"Tony Carne \u00b7 weekly", d:"Dedicated AI-in-travel newsletter and podcast for operators.", c:"travel", b:"Free", u:"https://www.everythingaiintravel.com", w:"everythingaiintravel.com"},
+  {n:"Skift AI Coverage", m:"Skift \u00b7 weekly", d:"Flagship travel-industry coverage plus the Data + AI Summit.", c:"travel", b:"Free core", u:"https://skift.com", w:"skift.com"},
+  {n:"PhocusWire", m:"News + research", d:"Travel tech and distribution depth; weekly research newsletter.", c:"travel", b:"Free core", u:"https://www.phocuswire.com", w:"phocuswire.com"},
+  {n:"Travel Tech Essentialist", m:"Mauricio Prieto \u00b7 bi-weekly", d:"Ten curated insights on where travel tech leverage is shifting.", c:"travel", b:"Free", u:"https://traveltechessentialist.substack.com", w:"traveltechessentialist.substack.com"},
+  {n:"Peter Syme", m:"LinkedIn", d:"Tour-operator veteran sharing practical AI adoption guidance.", c:"travel", b:"Free", u:"https://www.linkedin.com/in/petersyme/", w:"linkedin.com"},
+  {n:"Arival", m:"Podcast + research", d:"Tours, activities and experiences sector; operator lens.", c:"travel", b:"Free core", u:"https://arival.travel", w:"arival.travel"},
+  {n:"Tourpreneur", m:"Podcast + community", d:"Built for tour operators: marketing, ops, tech.", c:"travel", b:"Free", u:"https://www.tourpreneur.com", w:"tourpreneur.com"},
+  {n:"Travel Trends Podcast", m:"Dan Christian \u00b7 3x/week", d:"#1 B2B travel podcast; strong agentic-AI-in-travel episodes.", c:"travel", b:"Free", u:"https://www.traveltrendspodcast.com", w:"traveltrendspodcast.com"},
+  {n:"In Phocus", m:"PhocusWire", d:"Travel tech news dissection with executives.", c:"travel", b:"Free", u:"https://www.phocuswire.com/In-Phocus-Podcast", w:"phocuswire.com"},
+  {n:"McKinsey Travel", m:"Research", d:"Macro, research-heavy strategy context.", c:"travel", b:"Free", u:"https://www.mckinsey.com/industries/travel-logistics-and-infrastructure", w:"mckinsey.com"},
+  {n:"Hacker News", m:"Aggregator", d:"Real-time signal on what the builder community respects.", c:"communities", b:"Free", u:"https://news.ycombinator.com", w:"news.ycombinator.com"},
+  {n:"r/singularity + r/ArtificialIntelligence", m:"Reddit", d:"Recurring 'best AI podcast/newsletter' threads for fresh picks.", c:"communities", b:"Free", u:"https://www.reddit.com/r/singularity/", w:"reddit.com"},
+  {n:"Latent Space Community", m:"swyx", d:"Practitioner community around AI engineering.", c:"communities", b:"Free", u:"https://www.latent.space", w:"latent.space"},
+  {n:"Papers with Code", m:"Aggregator", d:"Track research and benchmarks.", c:"communities", b:"Free", u:"https://paperswithcode.com", w:"paperswithcode.com"},
+  {n:"Semantic Scholar", m:"Research alerts", d:"Follow specific topics like 'LLM agents'.", c:"communities", b:"Free", u:"https://www.semanticscholar.org", w:"semanticscholar.org"},
+  {n:"Substack", m:"Discovery", d:"Browse the technology leaderboard to spot rising AI newsletters early.", c:"communities", b:"Free", u:"https://substack.com", w:"substack.com"}
 ];
 
 const grid = document.getElementById('grid');
@@ -199,16 +162,17 @@ let activeCat = 'all', query = '';
 function render() {
   const items = DATA.filter(x =>
     (activeCat === 'all' || x.c === activeCat) &&
-    (x.n + ' ' + x.m + ' ' + x.d).toLowerCase().includes(query)
+    (x.n + ' ' + x.m + ' ' + x.d + ' ' + x.w).toLowerCase().includes(query)
   );
   count.textContent = items.length + ' resources';
   grid.innerHTML = items.map(x => `
-    <div class="card">
-      <div class="card-top"><h3>${x.n}</h3><span class="badge">${x.b}</span></div>
+    <a class="card" href="${x.u}" target="_blank" rel="noopener">
+      <div class="card-top"><h3>${x.n}</h3><span class="arrow">\u2197</span></div>
+      <p class="domain">${x.w}</p>
       <p class="meta">${x.m}</p>
       <p class="desc">${x.d}</p>
-      <div class="tags"><span class="tag ${x.c}">${x.c}</span></div>
-    </div>`).join('');
+      <div class="tags"><span class="tag ${x.c}">${x.c === 'substacks' ? 'newsletter' : x.c}</span><span class="badge">${x.b}</span></div>
+    </a>`).join('');
 }
 
 document.getElementById('tabs').addEventListener('click', e => {
@@ -222,19 +186,6 @@ document.getElementById('tabs').addEventListener('click', e => {
 document.getElementById('q').addEventListener('input', e => {
   query = e.target.value.toLowerCase();
   render();
-});
-
-const promptsEl = document.getElementById('prompts');
-PROMPTS.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'prompt';
-  div.innerHTML = `<p>\u201c${p}\u201d</p><button class="copy">Copy</button>`;
-  div.querySelector('.copy').addEventListener('click', ev => {
-    navigator.clipboard.writeText(p);
-    ev.target.textContent = 'Copied \u2713';
-    setTimeout(() => ev.target.textContent = 'Copy', 1500);
-  });
-  promptsEl.appendChild(div);
 });
 
 render();
