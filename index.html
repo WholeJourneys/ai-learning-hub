@@ -1,194 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Learning Hub</title>
-<style>
-  :root {
-    --bg: #f6f7f9; --card: #ffffff; --ink: #1a1d23; --muted: #5c6470;
-    --line: #e4e7ec; --accent: #4f46e5; --accent-soft: #eef0ff;
-    --green: #047857; --green-soft: #e6f6f0;
-    --courses: #4f46e5; --podcasts: #0891b2; --substacks: #b45309;
-    --youtube: #dc2626; --travel: #047857; --communities: #7c3aed;
-  }
-  * { box-sizing: border-box; margin: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         background: var(--bg); color: var(--ink); line-height: 1.5; }
-  header { background: var(--card); border-bottom: 1px solid var(--line);
-           padding: 22px 24px 16px; }
-  .header-inner { max-width: 1180px; margin: 0 auto; }
-  header h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
-  .tagline { font-size: 0.9rem; color: var(--muted); margin-top: 4px; max-width: 560px; }
-  .version { display: inline-block; font-size: 0.72rem; background: var(--accent-soft);
-             color: var(--accent); padding: 3px 10px; border-radius: 999px;
-             font-weight: 600; margin-top: 10px; }
-  .toolbar { position: sticky; top: 0; z-index: 10; background: var(--bg);
-             padding: 14px 24px 6px; border-bottom: 1px solid var(--line); }
-  .toolbar-inner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-  .search { flex: 1 1 260px; }
-  .search input { width: 100%; padding: 10px 14px; border: 1px solid var(--line);
-                  border-radius: 8px; font-size: 0.9rem; background: var(--card); }
-  .search input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
-  nav { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tab { border: 1px solid var(--line); background: var(--card); color: var(--muted);
-         padding: 7px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
-         cursor: pointer; transition: all 0.15s; }
-  .tab:hover { border-color: var(--accent); color: var(--accent); }
-  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-  main { max-width: 1180px; margin: 0 auto; padding: 18px 24px 60px; }
-  .count { font-size: 0.8rem; color: var(--muted); margin: 4px 2px 14px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
-  a.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
-           padding: 16px 18px; display: flex; flex-direction: column; gap: 8px;
-           text-decoration: none; color: inherit;
-           transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s; }
-  a.card:hover { box-shadow: 0 4px 14px rgba(20, 25, 40, 0.10); transform: translateY(-2px);
-                 border-color: var(--accent); }
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-  .card h3 { font-size: 1rem; font-weight: 650; }
-  .arrow { color: var(--accent); font-weight: 700; font-size: 1rem; line-height: 1; }
-  .domain { font-size: 0.75rem; color: var(--accent); font-weight: 600; }
-  .meta { font-size: 0.78rem; color: var(--muted); }
-  .desc { font-size: 0.85rem; color: #3d4450; }
-  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
-  .tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
-         padding: 3px 9px; border-radius: 999px; color: #fff; }
-  .tag.courses { background: var(--courses); } .tag.podcasts { background: var(--podcasts); }
-  .tag.substacks { background: var(--substacks); } .tag.youtube { background: var(--youtube); }
-  .tag.travel { background: var(--travel); } .tag.communities { background: var(--communities); }
-  .badge { font-size: 0.68rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
-           background: var(--green-soft); color: var(--green); }
-  footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 30px 20px; }
-  @media (max-width: 640px) { .toolbar { position: static; } }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Current, credible AI learning resources translated for people who market, sell, and operate travel.">
+  <meta name="theme-color" content="#103d35">
+  <title>AI Learning Hub</title>
+  <style>
+    :root {
+      --forest-950:#0a2c28; --forest-900:#103d35; --forest-700:#246b59; --forest-100:#dfece5;
+      --cream:#f7f3e9; --paper:#fffdf8; --ink:#163b35; --text:#40514b; --muted:#66756f;
+      --sand:#e5dccd; --gold:#d7ad58; --shadow:0 18px 45px rgba(18,52,44,.10); --radius:22px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Avenir Next",Avenir,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+    button,a{font:inherit} a{color:inherit}
+    .skip{position:absolute;left:-9999px;top:10px;background:#fff;color:var(--ink);padding:10px 14px;border-radius:10px;z-index:20}.skip:focus{left:10px}
+    .wrap{width:min(1120px,100%);margin-inline:auto}
+    .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 13% 17%,rgba(98,164,137,.46),transparent 27%),radial-gradient(circle at 90% 12%,rgba(215,173,88,.25),transparent 22%),linear-gradient(135deg,#174f43,var(--forest-950) 68%);color:#fff;padding:20px 20px 42px}
+    .hero:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-25px;height:48px;background:var(--cream);border-radius:50% 50% 0 0}
+    .brand{display:flex;align-items:center;gap:10px;margin-bottom:27px}.mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.45);border-radius:50%;color:var(--gold);font-size:19px}
+    .brand-name{font-size:.78rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}.eyebrow{font-size:.72rem;letter-spacing:.15em;font-weight:850;color:#f0cb7f;text-transform:uppercase}
+    h1{max-width:760px;margin:6px 0 15px;font-size:clamp(2.35rem,6vw,4rem);line-height:.99;letter-spacing:-.052em}.hero-copy{max-width:690px;margin:0;color:#dfebe6;font-size:clamp(1rem,2.2vw,1.22rem)}
+    .update{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-top:24px;color:#e8f0ed;font-size:.8rem}.update strong{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 11px;border-radius:999px}
+    .dot{width:8px;height:8px;border-radius:50%;background:#f0cb7f;box-shadow:0 0 0 4px rgba(240,203,127,.14)}
+    .view-nav{padding:24px 20px 0}.view-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.view-tab{min-height:78px;border:1px solid #c8d2cc;border-radius:17px;background:var(--paper);padding:13px 15px;color:var(--ink);text-align:left;cursor:pointer;box-shadow:0 2px 0 rgba(25,52,44,.02)}.view-tab[aria-selected="true"]{background:var(--forest-900);border-color:var(--forest-900);color:#fff;box-shadow:var(--shadow)}.view-tab .tab-label{font-size:.9rem}.view-tab .tab-help{margin-top:4px}.view-tab[aria-selected="true"] .tab-help{color:#d6e4df}
+    .nav{margin:16px 20px 0}.control-panel{padding:16px 18px 17px;background:#eee8dc;border:1px solid var(--sand);border-radius:20px}.major-tabs{display:grid;grid-template-columns:1fr 1.35fr;gap:8px}.major-tab{border:1px solid #c8d2cc;border-radius:14px;background:var(--paper);padding:11px 14px;color:var(--ink);text-align:left;cursor:pointer}.major-tab[aria-selected="true"]{background:var(--forest-900);border-color:var(--forest-900);color:#fff}.tab-label{display:block;font-size:.85rem;font-weight:900}.tab-help{display:block;margin-top:1px;font-size:.68rem;color:var(--muted)}.major-tab[aria-selected="true"] .tab-help{color:#d6e4df}.subnav,.format-row{display:flex;align-items:center;gap:7px;overflow-x:auto;padding-top:10px;scrollbar-width:none}.subnav::-webkit-scrollbar,.format-row::-webkit-scrollbar{display:none}.subnav[hidden]{display:none}.format-label{flex:0 0 auto;margin-right:3px;color:var(--muted);font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.pill{flex:0 0 auto;border:1px solid #d1d7d0;background:var(--paper);border-radius:999px;padding:8px 12px;color:#50615a;font-size:.75rem;font-weight:800;cursor:pointer}.pill:hover{border-color:#8ea99f}.pill[aria-selected="true"],.pill[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}.pill small{font-weight:650;opacity:.8}
+    .view-tab:focus-visible,.major-tab:focus-visible,.pill:focus-visible,.open:focus-visible,.skip:focus-visible{outline:3px solid #e5b655;outline-offset:3px}
+    main{padding:30px 20px 70px}.view-panel:focus{outline:none}.intro{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:19px}.intro h2{margin:0;font-size:clamp(1.55rem,3vw,2rem);line-height:1.05;letter-spacing:-.035em}.intro p{max-width:650px;margin:8px 0 0;color:var(--muted);font-size:.9rem}.count{white-space:nowrap;color:var(--muted);font-size:.79rem}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{display:flex;flex-direction:column;min-height:350px;padding:21px;background:var(--paper);border:1px solid var(--sand);border-radius:var(--radius);box-shadow:0 2px 0 rgba(25,52,44,.02);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#b7cbc2}
+    .card-top{display:flex;justify-content:space-between;gap:9px;align-items:center}.label{border-radius:999px;padding:5px 8px;font-size:.64rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.label.new{background:#f7dfd4;color:#8d3519}.label.current{background:#dcefe6;color:#145c4b}.label.essential{background:#f6e9c8;color:#745113}.label.reference{background:#e1e9ed;color:#345c6a}.format{color:var(--muted);font-size:.72rem;font-weight:800;text-align:right}
+    .card h3{margin:17px 0 6px;font-size:1.27rem;line-height:1.13;letter-spacing:-.025em}.source{color:var(--forest-700);font-size:.79rem;font-weight:850}.dates{margin:8px 0 0;color:var(--muted);font-size:.72rem}.why{margin:16px 0 10px;color:var(--text);font-size:.9rem}.try{margin:0;padding:12px 13px;background:#f2f3ed;border-left:3px solid var(--gold);border-radius:4px 12px 12px 4px;color:#44534e;font-size:.82rem}.try strong,.why strong{color:var(--ink)}
+    .card-bottom{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:17px}.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{border-radius:999px;background:#eaf0eb;color:#4c5e56;padding:5px 8px;font-size:.67rem;font-weight:750;text-transform:capitalize}.open{flex:0 0 auto;color:var(--forest-700);font-size:.82rem;font-weight:900;text-decoration-thickness:1.5px;text-underline-offset:3px}
+    .empty{display:none;grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed #afc0b8;border-radius:18px}
+    .section-kicker{display:block;margin-bottom:7px;color:var(--forest-700);font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .safety-starter{display:grid;grid-template-columns:.72fr 1.28fr;gap:22px;margin:0 0 20px;padding:23px;background:#f8eadf;border:1px solid #e8c8b5;border-radius:20px}.safety-starter[hidden]{display:none}.safety-starter h3{margin:0;font-size:1.16rem}.safety-starter p{margin:7px 0 0;color:#6b3d29;font-size:.83rem}.safety-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.safety-check{padding:10px 12px;background:rgba(255,255,255,.58);border-radius:12px;color:#5e3a2b;font-size:.78rem}.safety-check strong{display:block;color:#70391f}
+    .source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .source-card{display:flex;flex-direction:column;min-height:175px;padding:17px;background:rgba(255,253,248,.72);border:1px solid var(--sand);border-radius:18px}.source-type{color:var(--forest-700);font-size:.64rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.source-card h3{margin:9px 0 7px;font-size:1.02rem;line-height:1.15}.source-card p{margin:0;color:var(--muted);font-size:.8rem}.source-card .open{margin-top:auto;padding-top:13px;align-self:flex-start}
+    .pathbox{margin:0 0 22px;padding:22px;background:#eef3ee;border:1px solid #c9d7cf;border-radius:20px}.pathbox h3{margin:0;font-size:1.15rem}.pathbox>p{margin:6px 0 15px;color:var(--text);font-size:.84rem}.path-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.path-step{padding:14px;background:var(--paper);border:1px solid var(--sand);border-radius:14px}.path-step strong{display:block;font-size:.88rem}.path-step span{display:block;margin:3px 0 8px;color:var(--forest-700);font-size:.72rem;font-weight:850}.path-step p{margin:0;color:var(--muted);font-size:.76rem}.path-step a{display:inline-block;margin-top:9px;font-size:.75rem}
+    .tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.tool-card{display:flex;flex-direction:column;min-height:285px;padding:20px;background:var(--paper);border:1px solid var(--sand);border-radius:20px}.tool-card.recommended{border-color:#8db6a5;box-shadow:inset 0 4px 0 var(--forest-700)}.tool-badge{align-self:flex-start;border-radius:999px;padding:5px 8px;background:var(--forest-100);color:var(--forest-700);font-size:.63rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.tool-card h3{margin:15px 0 2px;font-size:1.22rem}.tool-company{color:var(--muted);font-size:.75rem;font-weight:800}.tool-best{margin:14px 0 7px;color:var(--ink);font-size:.86rem;font-weight:850}.tool-card p{margin:0;color:var(--text);font-size:.82rem}.tool-start{margin-top:12px;padding-top:12px;border-top:1px solid var(--sand)}.tool-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:17px}.tool-actions a{font-size:.78rem}
+    .connections-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.connection-panel{padding:24px;background:var(--paper);border:1px solid var(--sand);border-radius:22px}.connection-panel h3{margin:0 0 9px;font-size:1.2rem}.connection-panel>p{margin:0;color:var(--text);font-size:.88rem}.connection-steps{counter-reset:steps;display:grid;gap:11px;margin-top:17px}.connection-step{position:relative;padding:0 0 0 36px;color:var(--text);font-size:.83rem}.connection-step:before{counter-increment:steps;content:counter(steps);position:absolute;left:0;top:-1px;width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:var(--forest-100);color:var(--forest-700);font-weight:900}.connection-step strong{display:block;color:var(--ink)}.prompt-example{margin-top:12px;padding:12px 14px;background:#eef2ed;border-radius:12px;color:#344a42;font-size:.78rem}.safety-note{margin-top:16px;padding:15px 16px;background:#f8eadf;border-left:4px solid #b9683d;border-radius:6px 14px 14px 6px;color:#6b3d29;font-size:.81rem}.safety-note strong{display:block;color:#70391f}
+    .glossary-tools{display:flex;align-items:center;gap:12px;margin:18px 0}.glossary-search{width:min(520px,100%);border:1px solid #bbc9c2;border-radius:999px;background:var(--paper);padding:12px 16px;color:var(--ink);font:inherit}.glossary-search:focus{outline:3px solid #e5b655;outline-offset:2px}.glossary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.term-card{padding:17px;background:rgba(255,253,248,.72);border:1px solid var(--sand);border-radius:16px}.term-card h3{margin:0 0 6px;font-size:.98rem}.term-card p{margin:0;color:var(--text);font-size:.8rem}.glossary-empty{display:none;color:var(--muted);padding:18px 0}
+    .whybox{margin-top:52px;padding:30px;background:var(--forest-950);color:#fff;border-radius:26px}.whybox h2{margin:0 0 8px;font-size:1.45rem;letter-spacing:-.03em}.whybox>p{max-width:760px;margin:0;color:#d2e1dc}.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:23px}.principle{padding-top:11px;border-top:1px solid rgba(255,255,255,.25);color:#dce7e2;font-size:.81rem}.principle strong{display:block;margin-bottom:3px;color:#f2d38d}
+    footer{padding:0 20px 42px;text-align:center;color:var(--muted);font-size:.75rem}
+    @media(max-width:960px){.view-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-grid,.glossary-grid,.path-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:880px){.source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.connections-grid{grid-template-columns:1fr}}
+    @media(max-width:760px){.intro{display:block}.count{margin-top:10px}.grid,.source-grid,.tool-grid,.glossary-grid,.path-grid{grid-template-columns:1fr}.card,.tool-card{min-height:0}.principles{grid-template-columns:repeat(2,1fr)}.major-tabs,.safety-starter{grid-template-columns:1fr}.subnav,.format-row{flex-wrap:wrap;overflow:visible}.tab-help{display:none}}
+    @media(max-width:480px){.view-tabs{grid-template-columns:1fr 1fr}.view-tab{min-height:61px;padding:11px}.nav{margin-inline:14px}.control-panel{padding:13px}.card{padding:18px}.card-bottom{display:block}.open{display:inline-block;margin-top:14px}.whybox{padding:24px 20px}.principles,.safety-checks{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+  </style>
 </head>
 <body>
+  <a class="skip" href="#resources">Skip to resources</a>
+  <header class="hero"><div class="wrap">
+    <div class="brand"><div class="mark" aria-hidden="true">✦</div><span class="brand-name">Whole Journeys</span></div>
+    <div class="eyebrow">Practical AI for travel</div>
+    <h1>Find something useful to try today.</h1>
+    <p class="hero-copy">A small, living collection of credible AI resources—translated for people who market, sell, advise on, and operate travel.</p>
+    <div class="update"><strong><span class="dot" aria-hidden="true"></span>Reviewed <span id="reviewed-on">September 2, 2026</span></strong><span>Current picks + evergreen essentials</span></div>
+  </div></header>
 
-<header>
-  <div class="header-inner">
-    <h1>AI Learning Hub</h1>
-    <p class="tagline">Free, highly rated resources for learning AI &mdash; curated for people in travel. No jargon, no hype. Tap any card to visit the source.</p>
-    <span class="version">Updated August 2026</span>
-  </div>
-</header>
+  <nav class="view-nav wrap" aria-label="Learning hub sections">
+    <div class="view-tabs" id="view-tabs" role="tablist" aria-label="Choose one section">
+      <button class="view-tab" id="view-tab-discover" type="button" role="tab" data-view="discover" aria-controls="view-discover" aria-selected="true"><span class="tab-label">Discover</span><span class="tab-help">Browse trusted, evergreen, and current resources</span></button>
+      <button class="view-tab" id="view-tab-tools" type="button" role="tab" data-view="tools" aria-controls="view-tools" aria-selected="false"><span class="tab-label">Learn one AI tool</span><span class="tab-help">Choose the right place to start</span></button>
+      <button class="view-tab" id="view-tab-connections" type="button" role="tab" data-view="connections" aria-controls="view-connections" aria-selected="false"><span class="tab-label">Connections</span><span class="tab-help">Use your files and services carefully</span></button>
+      <button class="view-tab" id="view-tab-glossary" type="button" role="tab" data-view="glossary" aria-controls="view-glossary" aria-selected="false"><span class="tab-label">Glossary</span><span class="tab-help">Look up AI language in plain English</span></button>
+    </div>
+  </nav>
 
-<div class="toolbar">
-  <div class="toolbar-inner">
-    <div class="search"><input id="q" type="text" placeholder="Search&hellip; (e.g. podcast, Karpathy, tour operators)"></div>
-    <nav id="tabs">
-      <button class="tab active" data-cat="all">All</button>
-      <button class="tab" data-cat="courses">Courses</button>
-      <button class="tab" data-cat="podcasts">Podcasts</button>
-      <button class="tab" data-cat="substacks">Newsletters</button>
-      <button class="tab" data-cat="youtube">YouTube</button>
-      <button class="tab" data-cat="travel">Travel AI</button>
-      <button class="tab" data-cat="communities">Communities</button>
-    </nav>
-  </div>
-</div>
+  <nav class="nav wrap" id="browse-controls" aria-label="Browse the learning library"><div class="control-panel">
+    <div class="major-tabs" id="major-tabs" role="tablist" aria-label="Choose how to browse">
+      <button class="major-tab" type="button" role="tab" data-mode="everything" aria-selected="true"><span class="tab-label">Everything</span><span class="tab-help">Browse by freshness and staying power</span></button>
+      <button class="major-tab" type="button" role="tab" data-mode="goal" aria-selected="false"><span class="tab-label">What do you want to learn?</span><span class="tab-help">Browse by the outcome you want</span></button>
+    </div>
+    <div class="subnav" id="everything-subtabs" role="tablist" aria-label="Everything categories">
+      <button class="pill" type="button" role="tab" data-sub="trusted" aria-selected="false">Trusted</button>
+      <button class="pill" type="button" role="tab" data-sub="evergreen" aria-selected="false">Evergreen <small>· built to last</small></button>
+      <button class="pill" type="button" role="tab" data-sub="current" aria-selected="true">Worth your time now <small>· new + interesting</small></button>
+    </div>
+    <div class="subnav" id="goal-subtabs" role="tablist" aria-label="Learning goals" hidden>
+      <button class="pill" type="button" role="tab" data-sub="findability" aria-selected="true">Get found in AI</button>
+      <button class="pill" type="button" role="tab" data-sub="marketing" aria-selected="false">Improve marketing</button>
+      <button class="pill" type="button" role="tab" data-sub="operations" aria-selected="false">Work smarter</button>
+      <button class="pill" type="button" role="tab" data-sub="tools" aria-selected="false">Understand AI tools</button>
+      <button class="pill" type="button" role="tab" data-sub="safety" aria-selected="false">AI safety</button>
+    </div>
+    <div class="format-row" id="format-tabs" aria-label="Choose a learning format"><span class="format-label">Format</span><button class="pill" type="button" data-format="all" aria-pressed="true">All</button><button class="pill" type="button" data-format="listen" aria-pressed="false">🎧 Listen</button><button class="pill" type="button" data-format="watch" aria-pressed="false">▶ Watch</button><button class="pill" type="button" data-format="read" aria-pressed="false">📖 Read</button></div>
+  </div></nav>
 
-<main>
-  <p class="count" id="count"></p>
-  <div class="grid" id="grid"></div>
-</main>
+  <main class="wrap" id="resources">
+    <section class="view-panel" id="view-discover" role="tabpanel" aria-labelledby="view-tab-discover" tabindex="-1">
+      <div class="intro"><div><span class="section-kicker" id="browse-kicker">Fresh and timely</span><h2 id="browse-title">Worth your time now</h2><p id="browse-description">New and interesting resources reviewed for practical value right now.</p></div><div class="count" id="browse-count" aria-live="polite"></div></div>
+      <aside class="pathbox" id="suggested-path" aria-labelledby="suggested-path-title"><span class="section-kicker">Optional, untimed route</span><h3 id="suggested-path-title">A suggested learning path</h3><p>Follow these in order when structure helps, or skip directly to the resource that fits today’s work. There is no fixed schedule and no deadline.</p><div class="path-grid" id="path-grid"></div></aside>
+      <aside class="safety-starter" id="safety-starter" aria-labelledby="safety-starter-title" hidden>
+        <div><span class="section-kicker">Start here</span><h3 id="safety-starter-title">Five rules for safer everyday AI use</h3><p>Safety is not a warning label on every AI topic. It is a practical habit: protect people and information, verify important work, and keep a person accountable.</p></div>
+        <div class="safety-checks"><div class="safety-check"><strong>Protect private information</strong>Do not paste passwords, financial or medical details, or private customer data into an unfamiliar tool.</div><div class="safety-check"><strong>Verify before relying</strong>Check important facts against trustworthy sources, especially current travel, legal, health, or financial information.</div><div class="safety-check"><strong>Keep a human responsible</strong>Review decisions and anything sent, published, booked, or changed on your behalf.</div><div class="safety-check"><strong>Look for bias and omissions</strong>Ask whose perspective, place, or customer might be missing from the answer.</div><div class="safety-check"><strong>Get consent and be transparent</strong>Ask before recording or sharing someone’s information, and disclose meaningful AI assistance when it matters.</div></div>
+      </aside>
+      <div class="grid" id="browse-grid"></div><div class="empty" id="browse-empty">Nothing matches this combination yet. Try “All” formats or another tab.</div>
+      <section class="whybox" aria-labelledby="why-title"><h2 id="why-title">Why these, not an endless list?</h2><p>AI changes fast. A good show can have an outdated episode; a great course can teach an old tool. This collection recommends individual resources that are useful now or genuinely durable.</p><div class="principles"><div class="principle"><strong>Current</strong>Time-sensitive recommendations are dated and checked.</div><div class="principle"><strong>Travel-specific</strong>Every item answers a real travel-business question.</div><div class="principle"><strong>Actionable</strong>Each recommendation suggests what to try or decide next.</div><div class="principle"><strong>Human-reviewed</strong>Credibility and practical value matter more than volume.</div></div></section>
+    </section>
+    <section class="view-panel" id="view-tools" role="tabpanel" aria-labelledby="view-tab-tools" tabindex="-1" hidden>
+      <div class="intro"><div><span class="section-kicker">Start with one</span><h2 id="tools-title">Choose an AI tool to learn</h2><p>ChatGPT, Claude, and Gemini are assistants powered by families of language models. Perplexity, Copilot, and Gemini Notebook package models with search, files, or workplace tools. You do not need to master all of them—pick the one closest to your real work.</p></div><div class="count" id="tool-count"></div></div>
+      <div class="tool-grid" id="tool-grid"></div>
+    </section>
+    <section class="view-panel" id="view-connections" role="tabpanel" aria-labelledby="view-tab-connections" tabindex="-1" hidden>
+      <div class="intro"><div><span class="section-kicker">Bring your own information</span><h2 id="connections-title">How connections work</h2><p>A connection lets an AI assistant use an outside service you authorize—such as Google Drive, Dropbox, Gmail, a calendar, or GitHub. Depending on the service, it may search, read, sync, or take an action.</p></div></div>
+      <div class="connections-grid">
+        <article class="connection-panel"><h3>Connect carefully</h3><p>The exact menu changes by product and plan. In ChatGPT and Codex, connections may appear inside a plugin or app. Availability, account authorization, and permission to take actions are separate controls.</p><div class="connection-steps"><div class="connection-step"><strong>Start with a job</strong>Choose one need, such as finding a document—not “connect everything.”</div><div class="connection-step"><strong>Use the official directory</strong>Open Plugins or Apps, choose the service, and select Connect when prompted.</div><div class="connection-step"><strong>Check the account and access</strong>Confirm which account you are signing into and review every requested permission.</div><div class="connection-step"><strong>Begin read-only</strong>Test search and summary tasks before allowing anything to create, edit, send, or delete.</div><div class="connection-step"><strong>Name the source in your request</strong>Use @ when available, or explicitly ask the assistant to use the connected service.</div><div class="connection-step"><strong>Review and remove</strong>Check citations or source files, approve important actions, and disconnect tools you no longer use.</div></div></article>
+        <article class="connection-panel"><h3>Good first connection exercises</h3><p>Use low-risk material while you learn what the assistant can access and how reliably it follows boundaries.</p><div class="prompt-example"><strong>Google Drive:</strong> “Use Google Drive to find the newest version of our visitor FAQ. Summarize it and cite the file. Do not edit anything.”</div><div class="prompt-example"><strong>Gmail:</strong> “Find messages from this sender from the last 30 days and summarize the open questions. Do not draft or send a reply.”</div><div class="prompt-example"><strong>Dropbox:</strong> “Find three files about this itinerary and tell me their names, dates, and likely purpose. Do not move or delete anything.”</div><div class="prompt-example"><strong>Calendar:</strong> “Show my appointments next week and identify open two-hour blocks. Do not create or change events.”</div><div class="safety-note"><strong>Connection rule of thumb</strong>Grant the least access needed. Do not connect sensitive financial, medical, password, or private customer information just to experiment. A connection can only use the access granted to its signed-in account, but the outside service’s own terms and privacy rules also apply.</div><div class="tool-actions"><a class="open" href="https://learn.chatgpt.com/docs/plugins" target="_blank" rel="noopener noreferrer">Official OpenAI plugin guide ↗</a><a class="open" href="https://learn.chatgpt.com/docs/enterprise/apps-and-connectors" target="_blank" rel="noopener noreferrer">Permissions guide ↗</a></div></article>
+      </div>
+    </section>
+    <section class="view-panel" id="view-glossary" role="tabpanel" aria-labelledby="view-tab-glossary" tabindex="-1" hidden>
+      <div class="intro"><div><span class="section-kicker">Plain-English reference</span><h2 id="glossary-title">AI glossary</h2><p>The useful vocabulary—without assuming you are technical. Search for a word you hear in a podcast, product, or course.</p></div><div class="count" id="glossary-count" aria-live="polite"></div></div>
+      <div class="glossary-tools"><label class="skip" for="glossary-search">Search the AI glossary</label><input class="glossary-search" id="glossary-search" type="search" placeholder="Search terms, for example: LLM, agent, prompt…" autocomplete="off"></div>
+      <div class="glossary-grid" id="glossary-grid"></div><div class="glossary-empty" id="glossary-empty">No glossary terms match that search.</div>
+    </section>
+  </main>
+  <footer>AI Learning Hub · An independent Whole Journeys learning resource</footer>
 
-<footer>Curated by Kathy Dragon &middot; Whole Journeys &middot; 56 free resources &middot; Updated August 2026</footer>
-
-<script>
-const DATA = [
-  {n:"Elements of AI", m:"University of Helsinki \u00b7 ~30 hrs", d:"The standard free intro to AI concepts; consistently top-rated in free-course roundups.", c:"courses", b:"Free", u:"https://www.elementsofai.com", w:"elementsofai.com"},
-  {n:"AI Foundations", m:"IBM SkillsBuild \u00b7 ~10 hrs", d:"Free credential (AI Fundamentals); good for professional vocabulary.", c:"courses", b:"Free cert", u:"https://skillsbuild.org", w:"skillsbuild.org"},
-  {n:"AI Skills Navigator", m:"Microsoft \u00b7 self-paced", d:"Personalized AI learning paths from Microsoft Learn, LinkedIn and GitHub content.", c:"courses", b:"Free", u:"https://www.microsoft.com/en-us/corporate-responsibility/ai-skills-resources", w:"microsoft.com"},
-  {n:"OpenAI Academy", m:"OpenAI \u00b7 ~5 hrs", d:"Free short courses directly from a frontier lab.", c:"courses", b:"Free", u:"https://academy.openai.com", w:"academy.openai.com"},
-  {n:"Google AI Essentials", m:"Google / Coursera \u00b7 ~10 hrs", d:"Free to audit; solid non-technical grounding.", c:"courses", b:"Free audit", u:"https://www.coursera.org/learn/google-ai-essentials", w:"coursera.org"},
-  {n:"DeepLearning.AI Short Courses", m:"DeepLearning.AI \u00b7 1\u20135 hrs each", d:"Prompt engineering and more, taught with OpenAI/Anthropic/Google staff; constantly refreshed.", c:"courses", b:"Free", u:"https://www.deeplearning.ai/short-courses/", w:"deeplearning.ai"},
-  {n:"Generative AI Path", m:"Google Cloud Skills Boost", d:"Free labs and badges on applied generative AI.", c:"courses", b:"Free", u:"https://www.cloudskillsboost.google", w:"cloudskillsboost.google"},
-  {n:"AI Agents Course", m:"Hugging Face \u00b7 self-paced", d:"Free, hands-on, open-source agent building.", c:"courses", b:"Free", u:"https://huggingface.co/learn/agents-course", w:"huggingface.co"},
-  {n:"AWS Skill Builder (AI/ML)", m:"Amazon \u00b7 self-paced", d:"Free-tier courses on applied AI.", c:"courses", b:"Free tier", u:"https://skillbuilder.aws", w:"skillbuilder.aws"},
-  {n:"CS50 Intro to AI with Python", m:"HarvardX \u00b7 7 weeks", d:"Free to audit; rigorous classic.", c:"courses", b:"Free audit", u:"https://cs50.harvard.edu/ai/", w:"cs50.harvard.edu"},
-  {n:"Practical Deep Learning", m:"fast.ai \u00b7 7 parts", d:"Free, top-down, build-first philosophy; cult following.", c:"courses", b:"Free", u:"https://course.fast.ai", w:"course.fast.ai"},
-  {n:"Neural Networks: Zero to Hero", m:"Andrej Karpathy \u00b7 ~10 hrs", d:"Build GPT from scratch; the most-recommended free deep-dive series.", c:"courses", b:"Free", u:"https://www.youtube.com/@AndrejKarpathy", w:"youtube.com"},
-  {n:"MIT OpenCourseWare AI/ML", m:"MIT \u00b7 semester-length", d:"Free full university courses (6.034 and ML).", c:"courses", b:"Free", u:"https://ocw.mit.edu", w:"ocw.mit.edu"},
-  {n:"The AI Daily Brief", m:"Nathaniel Whittemore \u00b7 daily", d:"Stay current in 15\u201320 min; daily AI news plus analysis.", c:"podcasts", b:"Free", u:"https://aidailybrief.ai", w:"aidailybrief.ai"},
-  {n:"Hard Fork", m:"Roose & Newton (NYT) \u00b7 weekly", d:"Accessible AI + tech industry coverage with strong interviews.", c:"podcasts", b:"Free", u:"https://www.nytimes.com/column/hard-fork", w:"nytimes.com"},
-  {n:"Latent Space", m:"swyx & Alessio \u00b7 weekly", d:"How AI engineers actually ship; practitioner favorite.", c:"podcasts", b:"Free", u:"https://www.latent.space", w:"latent.space"},
-  {n:"Dwarkesh Podcast", m:"Dwarkesh Patel \u00b7 ~weekly", d:"Deep long-form interviews with frontier-lab leaders.", c:"podcasts", b:"Free", u:"https://www.dwarkesh.com", w:"dwarkesh.com"},
-  {n:"The Cognitive Revolution", m:"Nathan Labenz \u00b7 weekly", d:"AI capabilities and implications at practitioner depth.", c:"podcasts", b:"Free", u:"https://www.cognitiverevolution.ai", w:"cognitiverevolution.ai"},
-  {n:"No Priors", m:"Sarah Guo & Elad Gil \u00b7 weekly", d:"AI investing and research; market and startup lens.", c:"podcasts", b:"Free", u:"https://www.no-priors.com", w:"no-priors.com"},
-  {n:"Lex Fridman Podcast", m:"Lex Fridman \u00b7 weekly", d:"Long interviews with AI leaders; big-picture conversations.", c:"podcasts", b:"Free", u:"https://lexfridman.com/podcast/", w:"lexfridman.com"},
-  {n:"Practical AI", m:"Changelog \u00b7 weekly", d:"Applied ML and business use cases for non-researchers.", c:"podcasts", b:"Free", u:"https://changelog.com/practicalai", w:"changelog.com"},
-  {n:"Eye on AI", m:"Craig S. Smith \u00b7 biweekly", d:"Balanced research and industry interviews from a veteran NYT correspondent.", c:"podcasts", b:"Free", u:"https://www.eye-on.ai", w:"eye-on.ai"},
-  {n:"ML Street Talk", m:"Tim Scarfe et al. \u00b7 weekly", d:"Highest-rated technical AI podcast on Spotify; deeper chops.", c:"podcasts", b:"Free", u:"https://www.mlst.ai", w:"mlst.ai"},
-  {n:"One Useful Thing", m:"Ethan Mollick (Wharton)", d:"Practical, evidence-based AI use; tops best-AI-newsletter lists.", c:"substacks", b:"Free core", u:"https://www.oneusefulthing.org", w:"oneusefulthing.org"},
-  {n:"The Batch", m:"Andrew Ng / DeepLearning.AI", d:"Weekly AI news with expert framing.", c:"substacks", b:"Free", u:"https://www.deeplearning.ai/the-batch/", w:"deeplearning.ai"},
-  {n:"Import AI", m:"Jack Clark (Anthropic)", d:"Research analysis and policy; running since 2016, 100k+ readers.", c:"substacks", b:"Free", u:"https://importai.substack.com", w:"importai.substack.com"},
-  {n:"Ahead of AI", m:"Sebastian Raschka", d:"Technical but readable LLM internals.", c:"substacks", b:"Free core", u:"https://magazine.sebastianraschka.com", w:"magazine.sebastianraschka.com"},
-  {n:"Interconnects", m:"Nathan Lambert", d:"Frontier model analysis; strong open-model coverage.", c:"substacks", b:"Free core", u:"https://www.interconnects.ai", w:"interconnects.ai"},
-  {n:"AI Snake Oil", m:"Narayanan & Kapoor", d:"Debunks hype; a critical counterweight.", c:"substacks", b:"Free core", u:"https://www.aisnakeoil.com", w:"aisnakeoil.com"},
-  {n:"The Sequence", m:"Jesus Rodriguez et al.", d:"ML research and industry, accessible.", c:"substacks", b:"Free core", u:"https://thesequence.substack.com", w:"thesequence.substack.com"},
-  {n:"Superhuman AI", m:"Zain Kahn", d:"Largest AI newsletter globally; daily tools and news.", c:"substacks", b:"Free", u:"https://www.superhuman.ai", w:"superhuman.ai"},
-  {n:"The Algorithmic Bridge", m:"Alberto Romero", d:"AI explained plus society implications.", c:"substacks", b:"Free core", u:"https://thealgorithmicbridge.substack.com", w:"thealgorithmicbridge.substack.com"},
-  {n:"Mindstream", m:"Biddlecombe & Village", d:"Daily AI tools and business use.", c:"substacks", b:"Free", u:"https://www.mindstream.news", w:"mindstream.news"},
-  {n:"ChinAI", m:"Jeff Ding", d:"Chinese AI ecosystem \u2014 increasingly essential.", c:"substacks", b:"Free", u:"https://chinai.substack.com", w:"chinai.substack.com"},
-  {n:"Exponential View", m:"Azeem Azhar", d:"AI, society, and business strategy.", c:"substacks", b:"Free core", u:"https://www.exponentialview.co", w:"exponentialview.co"},
-  {n:"3Blue1Brown", m:"Grant Sanderson", d:"Neural network visual series; best intuitive math explanations.", c:"youtube", b:"Free", u:"https://www.youtube.com/@3blue1brown", w:"youtube.com"},
-  {n:"Andrej Karpathy", m:"Karpathy", d:"Zero to Hero plus 'Deep Dive into LLMs'.", c:"youtube", b:"Free", u:"https://www.youtube.com/@AndrejKarpathy", w:"youtube.com"},
-  {n:"Two Minute Papers", m:"K\u00e1roly Zsolnai-Feh\u00e9r", d:"Research paper summaries.", c:"youtube", b:"Free", u:"https://www.youtube.com/@TwoMinutePapers", w:"youtube.com"},
-  {n:"AI Explained", m:"Philip", d:"Model releases, benchmarks, skeptical takes.", c:"youtube", b:"Free", u:"https://www.youtube.com/@ai-explained-", w:"youtube.com"},
-  {n:"Yannic Kilcher", m:"Yannic Kilcher", d:"Technical paper deep-dives.", c:"youtube", b:"Free", u:"https://www.youtube.com/@YannicKilcher", w:"youtube.com"},
-  {n:"Everything AI in Travel", m:"Tony Carne \u00b7 weekly", d:"Dedicated AI-in-travel newsletter and podcast for operators.", c:"travel", b:"Free", u:"https://www.everythingaiintravel.com", w:"everythingaiintravel.com"},
-  {n:"Skift AI Coverage", m:"Skift \u00b7 weekly", d:"Flagship travel-industry coverage plus the Data + AI Summit.", c:"travel", b:"Free core", u:"https://skift.com", w:"skift.com"},
-  {n:"PhocusWire", m:"News + research", d:"Travel tech and distribution depth; weekly research newsletter.", c:"travel", b:"Free core", u:"https://www.phocuswire.com", w:"phocuswire.com"},
-  {n:"Travel Tech Essentialist", m:"Mauricio Prieto \u00b7 bi-weekly", d:"Ten curated insights on where travel tech leverage is shifting.", c:"travel", b:"Free", u:"https://traveltechessentialist.substack.com", w:"traveltechessentialist.substack.com"},
-  {n:"Peter Syme", m:"LinkedIn", d:"Tour-operator veteran sharing practical AI adoption guidance.", c:"travel", b:"Free", u:"https://www.linkedin.com/in/petersyme/", w:"linkedin.com"},
-  {n:"Arival", m:"Podcast + research", d:"Tours, activities and experiences sector; operator lens.", c:"travel", b:"Free core", u:"https://arival.travel", w:"arival.travel"},
-  {n:"Tourpreneur", m:"Podcast + community", d:"Built for tour operators: marketing, ops, tech.", c:"travel", b:"Free", u:"https://www.tourpreneur.com", w:"tourpreneur.com"},
-  {n:"Travel Trends Podcast", m:"Dan Christian \u00b7 3x/week", d:"#1 B2B travel podcast; strong agentic-AI-in-travel episodes.", c:"travel", b:"Free", u:"https://www.traveltrendspodcast.com", w:"traveltrendspodcast.com"},
-  {n:"In Phocus", m:"PhocusWire", d:"Travel tech news dissection with executives.", c:"travel", b:"Free", u:"https://www.phocuswire.com/In-Phocus-Podcast", w:"phocuswire.com"},
-  {n:"McKinsey Travel", m:"Research", d:"Macro, research-heavy strategy context.", c:"travel", b:"Free", u:"https://www.mckinsey.com/industries/travel-logistics-and-infrastructure", w:"mckinsey.com"},
-  {n:"Hacker News", m:"Aggregator", d:"Real-time signal on what the builder community respects.", c:"communities", b:"Free", u:"https://news.ycombinator.com", w:"news.ycombinator.com"},
-  {n:"r/singularity + r/ArtificialIntelligence", m:"Reddit", d:"Recurring 'best AI podcast/newsletter' threads for fresh picks.", c:"communities", b:"Free", u:"https://www.reddit.com/r/singularity/", w:"reddit.com"},
-  {n:"Latent Space Community", m:"swyx", d:"Practitioner community around AI engineering.", c:"communities", b:"Free", u:"https://www.latent.space", w:"latent.space"},
-  {n:"Papers with Code", m:"Aggregator", d:"Track research and benchmarks.", c:"communities", b:"Free", u:"https://paperswithcode.com", w:"paperswithcode.com"},
-  {n:"Semantic Scholar", m:"Research alerts", d:"Follow specific topics like 'LLM agents'.", c:"communities", b:"Free", u:"https://www.semanticscholar.org", w:"semanticscholar.org"},
-  {n:"Substack", m:"Discovery", d:"Browse the technology leaderboard to spot rising AI newsletters early.", c:"communities", b:"Free", u:"https://substack.com", w:"substack.com"}
-];
-
-const grid = document.getElementById('grid');
-const count = document.getElementById('count');
-let activeCat = 'all', query = '';
-
-function render() {
-  const items = DATA.filter(x =>
-    (activeCat === 'all' || x.c === activeCat) &&
-    (x.n + ' ' + x.m + ' ' + x.d + ' ' + x.w).toLowerCase().includes(query)
-  );
-  count.textContent = items.length + ' resources';
-  grid.innerHTML = items.map(x => `
-    <a class="card" href="${x.u}" target="_blank" rel="noopener">
-      <div class="card-top"><h3>${x.n}</h3><span class="arrow">\u2197</span></div>
-      <p class="domain">${x.w}</p>
-      <p class="meta">${x.m}</p>
-      <p class="desc">${x.d}</p>
-      <div class="tags"><span class="tag ${x.c}">${x.c === 'substacks' ? 'newsletter' : x.c}</span><span class="badge">${x.b}</span></div>
-    </a>`).join('');
-}
-
-document.getElementById('tabs').addEventListener('click', e => {
-  const btn = e.target.closest('.tab'); if (!btn) return;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  activeCat = btn.dataset.cat;
-  render();
-});
-
-document.getElementById('q').addEventListener('input', e => {
-  query = e.target.value.toLowerCase();
-  render();
-});
-
-render();
-</script>
+  <script src="resources.js"></script>
+  <script>
+    const library=window.DRAGON_LEARNING;
+    const labels={new:'New this week',current:'Current pick',essential:'Still essential',reference:'Reference'};
+    const formats={listen:'🎧 Listen',watch:'▶ Watch',read:'📖 Read'};
+    const tagNames={findability:'AI search',marketing:'marketing',operations:'operations',agents:'AI tools',safety:'AI safety',foundations:'AI foundations'};
+    const sourceNames={podcast:'Podcast',youtube:'YouTube',newsletter:'Newsletter / Substack',learning:'Course / training',web:'Travel website'};
+    const sourceFormats={podcast:'listen',youtube:'watch',newsletter:'read',learning:'read',web:'read'};
+    const browseCopy={
+      current:{kicker:'Fresh and timely',title:'Worth your time now',description:'New and interesting resources reviewed for practical value right now.'},
+      evergreen:{kicker:'Built to last',title:'Evergreen',description:'Durable learning that stays useful even when models, products, and interfaces change.'},
+      trusted:{kicker:'Follow selectively',title:'Trusted sources',description:'Podcasts, YouTube educators, newsletters, courses, and travel-industry websites worth returning to.'}
+    };
+    const goalCopy={
+      findability:{kicker:'What do you want to learn?',title:'Get found in AI',description:'Help travelers and AI assistants discover, understand, and accurately describe your business.'},
+      marketing:{kicker:'What do you want to learn?',title:'Improve marketing',description:'Use AI to strengthen useful, distinctive marketing without losing your human perspective.'},
+      operations:{kicker:'What do you want to learn?',title:'Work smarter',description:'Apply AI to recurring tasks, research, planning, and day-to-day operations.'},
+      tools:{kicker:'What do you want to learn?',title:'Understand AI tools',description:'Learn how assistants, models, agents, and practical AI workflows fit together.'},
+      safety:{kicker:'What do you want to learn?',title:'AI safety',description:'Protect sensitive information, verify important outputs, and keep people responsible for consequential decisions.'}
+    };
+    let activeView='discover'; let browseMode='everything'; let everythingSub='current'; let goalSub='findability'; let activeFormat='all';
+    document.getElementById('reviewed-on').textContent=library.reviewedOn;
+    function cardMarkup(item){return `<article class="card"><div class="card-top"><span class="label ${item.label}">${labels[item.label]}</span><span class="format">${formats[item.format]} · ${item.time}</span></div><h3>${item.title}</h3><div class="source">${item.source}</div><div class="dates">Published ${item.published} · Reviewed ${library.reviewedOn}</div><p class="why"><strong>Why this matters for travel:</strong> ${item.why}</p><p class="try"><strong>Try this next:</strong> ${item.next}</p><div class="card-bottom"><div class="tags">${item.tags.map(tag=>`<span class="tag">${tagNames[tag]}</span>`).join('')}</div><a class="open" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${item.title} in a new tab">Open resource ↗</a></div></article>`}
+    function sourceMarkup(item){return `<article class="source-card"><div class="source-type">${sourceNames[item.kind]} · ${formats[sourceFormats[item.kind]]}</div><h3>${item.name}</h3><p>${item.note}</p><a class="open" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${item.name} in a new tab">Visit source ↗</a></article>`}
+    function matchesFormat(item,isSource=false){return activeFormat==='all'||(isSource?sourceFormats[item.kind]:item.format)===activeFormat}
+    function matchesGoal(item,goal){return goal==='tools'?(item.tags.includes('agents')||item.tags.includes('foundations')):item.tags.includes(goal)}
+    function renderBrowse(){
+      const grid=document.getElementById('browse-grid'); let items=[]; let copy; let trusted=false;
+      if(browseMode==='everything'){
+        copy=browseCopy[everythingSub]; trusted=everythingSub==='trusted';
+        items=trusted?library.trustedSources:(everythingSub==='evergreen'?library.evergreen:library.currentPicks);
+      }else{
+        copy=goalCopy[goalSub]; items=[...library.currentPicks,...library.evergreen].filter(item=>matchesGoal(item,goalSub));
+      }
+      const list=items.filter(item=>matchesFormat(item,trusted));
+      document.getElementById('browse-kicker').textContent=copy.kicker;
+      document.getElementById('browse-title').textContent=copy.title;
+      document.getElementById('browse-description').textContent=copy.description;
+      document.getElementById('safety-starter').hidden=!(browseMode==='goal'&&goalSub==='safety');
+      grid.className=trusted?'source-grid':'grid';
+      grid.innerHTML=list.map(item=>trusted?sourceMarkup(item):cardMarkup(item)).join('');
+      document.getElementById('browse-count').textContent=`Showing ${list.length} of ${items.length}`;
+      document.getElementById('browse-empty').style.display=list.length?'none':'block';
+    }
+    function renderTools(){
+      document.getElementById('tool-grid').innerHTML=library.aiTools.map(item=>`<article class="tool-card ${item.recommended?'recommended':''}"><span class="tool-badge">${item.recommended?'Strong first choice':item.type}</span><h3>${item.name}</h3><div class="tool-company">${item.company}</div><div class="tool-best">Best starting point for</div><p>${item.best}</p><p class="tool-start"><strong>First exercise:</strong> ${item.start}</p><div class="tool-actions"><a class="open" href="${item.url}" target="_blank" rel="noopener noreferrer">Open tool ↗</a><a class="open" href="${item.learnUrl}" target="_blank" rel="noopener noreferrer">Official learning ↗</a></div></article>`).join('');
+      document.getElementById('tool-count').textContent=`${library.aiTools.length} major tools`;
+    }
+    function renderSuggestedPath(){
+      document.getElementById('path-grid').innerHTML=library.suggestedPath.map((item,index)=>`<article class="path-step"><span>Step ${index+1} · ${item.creator}</span><strong>${item.name}</strong><p>${item.note}</p><a class="open" href="${item.url}" target="_blank" rel="noopener noreferrer">Open course ↗</a></article>`).join('');
+    }
+    function renderGlossary(query=''){
+      const normalized=query.trim().toLowerCase();
+      const list=library.glossary.filter(item=>!normalized||`${item.term} ${item.definition}`.toLowerCase().includes(normalized));
+      document.getElementById('glossary-grid').innerHTML=list.map(item=>`<article class="term-card"><h3>${item.term}</h3><p>${item.definition}</p></article>`).join('');
+      document.getElementById('glossary-count').textContent=`Showing ${list.length} of ${library.glossary.length}`;
+      document.getElementById('glossary-empty').style.display=list.length?'none':'block';
+    }
+    function setView(view,moveToContent=true){
+      activeView=view;
+      document.querySelectorAll('#view-tabs .view-tab').forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.view===view)));
+      document.querySelectorAll('.view-panel').forEach(panel=>{panel.hidden=panel.id!==`view-${view}`});
+      document.getElementById('browse-controls').hidden=view!=='discover';
+      if(moveToContent){
+        const panel=document.getElementById(`view-${view}`);
+        panel.focus({preventScroll:true});
+        document.getElementById('resources').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+      }
+    }
+    document.getElementById('view-tabs').addEventListener('click',event=>{const button=event.target.closest('.view-tab');if(!button||button.dataset.view===activeView)return;setView(button.dataset.view)});
+    document.getElementById('major-tabs').addEventListener('click',event=>{const button=event.target.closest('.major-tab');if(!button)return;browseMode=button.dataset.mode;document.querySelectorAll('#major-tabs .major-tab').forEach(tab=>tab.setAttribute('aria-selected',String(tab===button)));document.getElementById('everything-subtabs').hidden=browseMode!=='everything';document.getElementById('goal-subtabs').hidden=browseMode!=='goal';renderBrowse()});
+    document.getElementById('everything-subtabs').addEventListener('click',event=>{const button=event.target.closest('.pill');if(!button)return;everythingSub=button.dataset.sub;document.querySelectorAll('#everything-subtabs .pill').forEach(tab=>tab.setAttribute('aria-selected',String(tab===button)));renderBrowse()});
+    document.getElementById('goal-subtabs').addEventListener('click',event=>{const button=event.target.closest('.pill');if(!button)return;goalSub=button.dataset.sub;document.querySelectorAll('#goal-subtabs .pill').forEach(tab=>tab.setAttribute('aria-selected',String(tab===button)));renderBrowse()});
+    document.getElementById('format-tabs').addEventListener('click',event=>{const button=event.target.closest('.pill');if(!button)return;activeFormat=button.dataset.format;document.querySelectorAll('#format-tabs .pill').forEach(tab=>tab.setAttribute('aria-pressed',String(tab===button)));renderBrowse()});
+    document.getElementById('glossary-search').addEventListener('input',event=>renderGlossary(event.target.value));
+    renderBrowse(); renderTools(); renderSuggestedPath(); renderGlossary(); setView('discover',false);
+  </script>
 </body>
 </html>
