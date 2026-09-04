@@ -2,16 +2,17 @@
 
 A living, mobile-first learning hub for people who market, sell, advise on, and operate travel.
 
-The public experience has four separate views, so the heading always matches the content directly beneath it:
+The public experience is organized around the questions a travel advisor or tour operator is most likely to have:
 
-1. **Discover** — browse Trusted, Evergreen, or Worth your time now; or choose a learning goal and a Listen, Watch, or Read format.
-2. **Learn one AI tool** — a beginner-friendly directory of major assistants, their best starting use, and official learning links.
-3. **Connections** — a plain-English guide to connecting outside services safely, beginning with read-only work.
-4. **Glossary** — searchable definitions of essential AI terms without technical prerequisites.
+1. **Explore learning** — search the full library or begin with a quick action such as Find a podcast, Watch and learn, Read a newsletter, Improve marketing, or Get found in AI.
+2. **Learn an AI tool** — choose one major assistant, try a useful first exercise, and open its official learning material.
+3. **Connect your apps** — learn how to connect outside services safely, beginning with low-risk read-only work.
+4. **AI glossary** — expand and search plain-English definitions, then jump to related learning.
+5. **My learning list** — save resources and tools in this browser for later. A future account-based module can replace the local-only storage without changing the catalogue.
 
 The learning-goal categories are Get found in AI, Improve marketing, Work smarter, Understand AI tools, and AI safety. AI safety contains only safety-focused material plus a practical five-rule starter; incidental mentions of guardrails do not qualify a resource for that category.
 
-The optional suggested path preserves the strongest structured courses from the earlier curriculum without imposing weeks, dates, or deadlines. The Trusted catalogue also retains the useful listening, watching, reading, travel, marketing, findability, and workflow sources from that curriculum, with duplicates consolidated around a canonical link.
+The optional suggested path sits below the resource results so it does not block exploration. It preserves the strongest structured courses from the earlier curriculum without imposing weeks, dates, or deadlines. The Trusted catalogue also retains the useful listening, watching, reading, travel, marketing, findability, and workflow sources from that curriculum, with duplicates consolidated around a canonical link.
 
 ## Updating the catalogue
 
