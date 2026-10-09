@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Claude effectively — current 9 October 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF6;--card:#FFFFFF;--sand:#F2F0E8;
+  --ink:#1A2320;--ink-2:#3D4A45;--mute:#6B7A73;
+  --pine:#2E4A3F;--gorse:#B8860B;--gr-red:#B23A2E;--act:#B5502F;
+  --line:rgba(26,35,32,.13);--line2:rgba(26,35,32,.26);
+  --display:"Bricolage Grotesque",Georgia,serif;
+  --body:"Public Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wrap:1080px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+ background-image:linear-gradient(rgba(26,35,32,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(26,35,32,.045) 1px,transparent 1px);
+ background-size:64px 64px;background-position:-1px -1px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.waymark{display:inline-block;width:14px;height:22px;flex:0 0 14px}
+.waymark i{display:block;height:9px;background:var(--gr-red)}
+.waymark i+i{margin-top:4px;background:var(--pine)}
+
+.hero{padding:48px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px;margin:0 0 18px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,62px);line-height:1;letter-spacing:-.03em;margin:0 0 16px;max-width:17ch}
+h1 em{font-style:normal;color:var(--gorse)}
+.standfirst{max-width:62ch;font-size:clamp(15.5px,2vw,18px);color:var(--ink-2);margin:0}
+
+h2{font-family:var(--display);font-weight:600;font-size:clamp(22px,3.2vw,30px);letter-spacing:-.02em;margin:0 0 6px;line-height:1.08}
+.sec{padding:42px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.sec-head p{margin:0;color:var(--mute);max-width:66ch;font-size:14.8px}
+
+/* chooser */
+.chooser{width:100%;border-collapse:collapse;font-size:14.6px}
+.chooser th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:0 12px 10px 0;border-bottom:1px solid var(--line2);font-weight:400}
+.chooser td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.chooser td:nth-child(2){font-weight:600;color:var(--pine);white-space:nowrap}
+.chooser td:nth-child(3){color:var(--mute);font-size:13.8px}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tab{font-family:var(--body);font-size:15px;font-weight:600;background:var(--card);color:var(--ink-2);
+ border:1px solid var(--line2);padding:11px 20px;cursor:pointer;transition:.15s}
+.tab:hover{color:var(--ink);border-color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--pine);color:#FFF;border-color:var(--pine)}
+.tab:focus-visible{outline:2px solid var(--gorse);outline-offset:2px}
+
+.pane[hidden]{display:none}
+.pane-top{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:30px}
+.role{background:var(--sand);border-left:3px solid var(--pine);padding:18px}
+.role h3{font-family:var(--display);font-size:20px;margin:0 0 8px;font-weight:600}
+.role p{margin:0;font-size:14.8px;color:var(--ink-2)}
+.plans{background:var(--card);padding:18px;border:1px solid var(--line)}
+.plans h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 10px;font-weight:400}
+.plans ul{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:12.5px}
+.plans li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dotted var(--line);color:var(--ink-2)}
+.plans li b{color:var(--ink);font-weight:600}
+.plans .note{font-family:var(--body);font-size:13px;color:var(--act);margin:10px 0 0;font-weight:500}
+
+.steps{counter-reset:s;margin-bottom:34px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.tick{width:26px;height:26px;border:1px solid var(--line2);background:transparent;cursor:pointer;color:transparent;
+ font-size:15px;line-height:1;padding:0;margin-top:2px;transition:.15s;flex:0 0 26px}
+.tick:hover{border-color:var(--ink)}
+.tick[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:#FFF}
+.tick:focus-visible{outline:2px solid var(--gorse);outline-offset:2px}
+.step h4{font-family:var(--body);font-weight:600;font-size:17px;margin:0 0 6px;letter-spacing:-.01em}
+.step .where{font-family:var(--mono);font-size:11.5px;color:var(--gorse);margin:0 0 8px;font-weight:500}
+.step p{margin:0 0 9px;font-size:15px;color:var(--ink-2);max-width:72ch}
+.step .done{font-size:13.8px;color:var(--ink-2);border-left:2px solid var(--pine);padding-left:11px;margin:9px 0 0}
+.step .done b{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--pine);display:block;margin-bottom:2px}
+.step.done h4{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--line2)}
+
+.snippet{background:#20302A;border:1px solid #20302A;margin:10px 0 0;position:relative}
+.snippet pre{margin:0;padding:14px 16px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#E4EAE4;white-space:pre-wrap;overflow-x:auto}
+.copy{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+ background:rgba(255,255,255,.12);color:#E4EAE4;border:1px solid rgba(255,255,255,.3);padding:5px 9px;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.22);border-color:#FFF}
+.copy.ok{color:#20302A;background:#E7C34F;border-color:#E7C34F}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
+.box{background:var(--card);border:1px solid var(--line);padding:18px}
+.box.new{border-top:3px solid var(--pine)}
+.box.soon{border-top:3px solid var(--act)}
+.box h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px;font-weight:400}
+.box.new h4{color:var(--pine)}
+.box.soon h4{color:var(--act)}
+.box ul{margin:0;padding-left:17px;font-size:14.4px;color:var(--ink-2)}
+.box li{margin-bottom:9px}
+.box li b{color:var(--ink)}
+.box .dt{font-family:var(--mono);font-size:11px;color:var(--mute);display:block}
+
+.first{background:var(--sand);border:1px solid var(--line2);padding:20px;margin-bottom:30px}
+.first h4{font-family:var(--display);font-size:19px;margin:0 0 6px;font-weight:600}
+.first>p{margin:0 0 4px;font-size:14.5px;color:var(--ink-2);max-width:66ch}
+
+.mistakes{margin-bottom:10px}
+.mistakes h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 12px;font-weight:400}
+.mistakes ul{margin:0;padding:0;list-style:none}
+.mistakes li{padding:11px 14px 11px 16px;border-left:3px solid var(--act);margin-bottom:9px;font-size:14.5px;color:var(--ink-2);background:#FBF3EF}
+.mistakes li b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+
+.privacy{border:1px solid var(--gr-red);background:#FBF0EE;padding:16px 18px;margin-bottom:30px}
+.privacy h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gr-red);margin:0 0 9px;font-weight:400}
+.privacy p{margin:0 0 8px;font-size:14.4px;color:var(--ink-2)}
+.privacy p:last-child{margin:0}
+
+.updated{display:flex;flex-wrap:wrap;gap:0;margin-top:22px;max-width:760px;border:1px solid var(--line2);background:var(--card)}
+.u-item{padding:12px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.u-item:last-child{border-right:0}
+.u-wide{flex:1 1 100%;border-right:0;border-top:1px solid var(--line)}
+.u-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.u-val{font-family:var(--display);font-size:20px;font-weight:600;color:var(--pine);letter-spacing:-.01em}
+.u-val.u-plain{font-family:var(--body);font-size:14.4px;font-weight:400;color:var(--ink-2);letter-spacing:0;line-height:1.5}
+.refresh .src-line{margin:16px 0 0;font-size:13.2px;color:var(--mute)}
+.refresh .src-line a{color:var(--pine)}
+.refresh{background:var(--sand);border:1px solid var(--line2);padding:22px}
+.refresh h3{font-family:var(--display);font-size:20px;margin:0 0 6px;font-weight:600}
+.refresh>p{margin:0 0 15px;font-size:14.5px;color:var(--ink-2);max-width:66ch}
+.refresh ol{margin:0;padding-left:20px;font-size:14.6px;color:var(--ink-2)}
+.refresh li{margin-bottom:9px}
+.refresh code{font-family:var(--mono);font-size:12.5px;color:var(--pine);word-break:break-all}
+footer{padding:36px 0 70px;color:var(--mute);font-size:13.5px}
+footer p{max-width:72ch;margin:0 0 11px}
+footer .src{font-family:var(--mono);font-size:11px;color:var(--mute)}
+
+@media (max-width:760px){
+  .pane-top,.split{grid-template-columns:1fr}
+  .chooser td:nth-child(3){display:none}
+  .tab{flex:1 1 45%;padding:10px 12px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.snippet pre{padding-right:84px}
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--pine);color:#fff;border:1px solid var(--pine);padding:10px 16px;cursor:pointer;margin-top:18px}
+.btn:hover{background:var(--ink)}
+.lvl{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;padding:13px 0;border-top:1px solid var(--line)}
+.lvl:last-of-type{border-bottom:1px solid var(--line)}
+.lvl b{font-family:var(--display);font-size:18px;font-weight:600;color:var(--pine)}
+.lvl b small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:400;margin-top:2px}
+.lvl span{color:var(--ink-2);font-size:15px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+.g3{grid-template-columns:repeat(3,1fr)}.l3{grid-template-columns:repeat(3,1fr)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.ladder .box h4{color:var(--pine)}
+.ladder .box p{margin:0;font-size:14px;color:var(--ink-2)}
+.verify{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#FBF3EF;color:var(--act);border:1px solid var(--act);padding:2px 7px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+.callout{border-left:3px solid var(--gorse);background:var(--sand);padding:14px 18px;margin:18px 0 0;font-size:14.8px;color:var(--ink-2);max-width:78ch}
+.callout b{color:var(--ink)}
+.chooser td:nth-child(2),.chooser td:nth-child(3){white-space:normal}
+.chooser td:nth-child(3){color:var(--ink-2);font-size:14.6px}
+.chooser td:first-child{width:46%}
+.sec p.lead{max-width:72ch;color:var(--ink-2);font-size:15px;margin:0 0 14px}
+.names{width:100%;border-collapse:collapse;font-size:14.4px;margin-top:6px}
+.names td{padding:9px 12px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.names td:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);width:130px}
+.names td:nth-child(2){font-family:var(--mono);font-size:13px;color:var(--pine)}
+@media (max-width:760px){.grid2,.ladder,.g3,.l3{grid-template-columns:1fr}.chooser{display:block;overflow-x:auto}.lvl{grid-template-columns:1fr}.chooser td:nth-child(3){display:table-cell}.chooser td:first-child{width:auto}}
+@media print{body{background:#fff}.btn,.copy,.noprint{display:none!important}.sec{break-inside:avoid-page;padding:22px 0}.hero{padding:20px 0}a{color:inherit}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow" style="margin-bottom:10px"><a href="https://learnai.dragonportfolio.com/" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">&larr; AI Learning Hub</a></p>
+    <p class="eyebrow"><span class="waymark"><i></i><i></i></span> Current as of 9 October 2026 &middot; refreshed every two weeks &middot; check your own picker</p>
+    <h1>Using <em>Claude</em> effectively</h1>
+    <p class="standfirst">Pick the right model, spend less of your usage, and choose the right app for the job. You choose the model and the effort, and you can change either at any point in a chat.</p>
+    <div class="updated">
+      <div class="u-item"><span class="u-label">Updated</span><span class="u-val" id="u-date">9 October 2026</span></div>
+      <div class="u-item"><span class="u-label">Next update</span><span class="u-val" id="u-next">22 October 2026</span></div>
+      <div class="u-item u-wide"><span class="u-label">This round</span><span class="u-val u-plain" id="u-round">Haiku 5.5 launched on 7 October and is the first Haiku with an effort setting. Cowork now works in every Claude conversation. Fable 5.1 sits above Opus. Memory entries are now editable.</span></div>
+    </div>
+    <button class="btn noprint" type="button" onclick="window.print()">Print or save as PDF</button>
+  </div>
+</header>
+<main class="wrap">
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>1. Match the model to the job</h2><p>Pick the lowest setting that looks right. If the answer is thin or loses the thread, move up one step and carry on in the same chat.</p></div></div><div class="lvl"><b>Haiku<small>Fastest, lightest</small></b><span>Quick questions, reformatting, short rewrites, simple lookups. Haiku 5.5 (7 October) is the first Haiku with an effort setting, default medium. <span class="verify">check your picker</span></span></div><div class="lvl"><b>Sonnet<small>Start here</small></b><span>Everyday work: drafting emails and posts, summaries, pulling data from exports, building simple documents and graphics. Medium effort.</span></div><div class="lvl"><b>Opus<small>Heavier lifting</small></b><span>Messy multi-step jobs: matching several sources, browser-based tasks, long analysis, debugging something that keeps breaking. High effort.</span></div><div class="lvl"><b>Fable<small>Top tier</small></b><span>Rarely needed. The most capable tier, above Opus, for genuinely hard problems where Opus on High has already fallen short. Availability depends on your plan.</span></div><div class="callout"><b>Effort is a separate dial</b> from the model. Extra high and Max are effort settings, not models. Keep them for problems a lighter setting has already failed.</div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>2. Habits that save more than the model choice</h2></div></div><div class="steps"><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>1. Start a new chat for each new job.</h4><p>Long chats cost more per message. Carry over only what the next job needs (see section 8).</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>2. Give Claude files instead of making it browse.</h4><p>An export or attachment is faster and far cheaper than clicking through a website.</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>3. Paste the exact link or file up front.</h4><p>Naming the source saves a round of searching.</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>4. Optional: switch off tools you will not use.</h4><p>Mainly for long, heavy sessions. See section 5 for what to keep on.</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>5. Ask Claude to flag the setting.</h4><p>Use the standing instruction below so it tells you when a lighter or stronger setup fits.</p></div></div></div><p class="lead"><b>Standing instruction to copy.</b> Paste it, then say &ldquo;Save that as a preference.&rdquo;</p><div class="snippet"><button class="copy" type="button" data-copy="s1">Copy</button><pre id="s1">At the start of each task, tell me in one line if a lighter model or lower effort would handle it, or if it needs a stronger one.</pre></div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>3. Desktop app or web: which to open</h2><p>Rule of thumb: if the work lives in the conversation or in your connected apps, use web. If it lives in files or windows on your computer, use desktop.</p></div></div><div class="grid2"><div class="box new"><h4>Web or phone</h4><ul><li>Quick questions, brainstorming and writing on the go</li><li>Research with web search, summaries and drafts</li><li>Building shareable pages, documents and graphics</li><li>Connected apps such as email, calendar and cloud storage</li><li>Picking a chat back up from another device</li><li>Longer tasks you can leave running: Cowork now works in every conversation and on web and mobile (rolling out gradually) <span class="verify">check your picker</span></li></ul></div><div class="box new"><h4>Desktop app</h4><ul><li>Reading and saving files in folders on your computer</li><li>Working in websites where you are already signed in, through the browser tools</li><li>Operating apps on your screen when there is no other route in</li><li>Anything that touches many local files at once</li></ul></div></div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>4. What to use for common travel jobs</h2><p>Treat these as starting points. If the result is thin, move up one step and continue in the same chat.</p></div></div><table class="chooser"><thead><tr><th>Job</th><th>Model</th><th>Effort</th><th>Best place</th></tr></thead><tbody><tr><td>Quick answers, reformatting an itinerary, trimming copy</td><td>Haiku</td><td>Default</td><td>Web or phone</td></tr><tr><td>Client emails, trip descriptions, social posts, supplier follow-ups</td><td>Sonnet</td><td>Medium</td><td>Web or phone</td></tr><tr><td>Destination research and comparing suppliers across several sources (start at Sonnet, step up if thin)</td><td>Sonnet, then Opus</td><td>Medium to High</td><td>Web, with web search on</td></tr><tr><td>Infographics, regional guides and simple maps as PDF or web pages</td><td>Sonnet</td><td>Medium</td><td>Web; desktop if you want files saved to a folder</td></tr><tr><td>Building or rebuilding a website, or a larger travel tool</td><td>Opus</td><td>High</td><td>Desktop for a full site; web for a single page</td></tr><tr><td>Fixing a broken site or script, or matching data across several sources</td><td>Opus</td><td>High</td><td>Desktop</td></tr><tr><td>Bulk work on many files: photos, spreadsheets, contact exports</td><td>Sonnet</td><td>Medium</td><td>Desktop</td></tr><tr><td>Clicking through websites on your behalf, such as logins and forms</td><td>Opus</td><td>High</td><td>Desktop (uses your own browser)</td></tr></tbody></table></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>5. Connectors and web search: what to keep on</h2><p>Optional housekeeping. Leaving everything on works fine for most days. Pruning matters most in long, heavy sessions.</p></div></div><div class="grid2"><div class="box new"><h4>Keep on day to day</h4><ul><li><b>Gmail and Google Calendar.</b> Drafting client replies, checking dates and availability.</li><li><b>Google Drive and Dropbox.</b> Itineraries, photo archives and source documents.</li><li><b>Web search.</b> Anything current: prices, schedules, opening times, rules.</li></ul></div><div class="box new"><h4>Turn on only when needed</h4><ul><li><b>Airtable.</b> Operator and supplier lists, data matching, imports.</li><li><b>Supabase.</b> Only when working on a database-backed tool.</li><li><b>Replit and Lovable.</b> Only while building or checking a site or app.</li><li><b>Canva.</b> Only while designing graphics, flyers or social posts.</li><li><b>Todoist.</b> When you want tasks read, added or updated.</li><li><b>Web search off</b> for pure writing and editing jobs.</li></ul></div></div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>6. Two dials: model and effort</h2><p>They do different jobs.</p></div></div><div class="grid2"><div class="box new"><h4>Model = how capable</h4><p>Which Claude you use. A bigger model copes with harder, messier, longer jobs. Like choosing which planner to hire.</p></div><div class="box new"><h4>Effort = how long it thinks</h4><p>How long it thinks before it answers. More effort means more care and checking, but slower replies and more of your usage. Like how much time that planner spends on your request.</p></div></div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>7. Which dial to turn: climb one step at a time</h2><p>Go up only as far as you need, in the same chat. You can step back down at any time.</p></div></div><div class="ladder"><div class="box "><h4>Step 1</h4><p><b>Sonnet + Medium.</b> Start here for most work.</p></div><div class="box "><h4>Step 2</h4><p><b>Sonnet + High.</b> Raise the effort when the answer is the right kind but sloppy, shallow or missed details.</p></div><div class="box "><h4>Step 3</h4><p><b>Opus + High.</b> Switch the model when it loses the thread, the job is big or tangled, or Step 2 is still off.</p></div><div class="box "><h4>Step 4</h4><p><b>Opus + Extra high / Max.</b> Rarely, only when High has genuinely fallen short.</p></div></div><p class="lead">Know it is a big job from the start? Skip straight to Step 3. Simple job and the answer is slow or overkill? Lower the effort first, then drop to a smaller model.</p><div class="callout"><b>In one line:</b> effort is about care, the model is about capability. Sloppy answer? Raise effort. Job too big for it? Switch the model.</div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>8. When to start a new chat</h2></div></div><div class="grid2"><div class="box new"><h4>Time to move on when…</h4><ul><li>Replies slow down, or your usage drains faster than it should</li><li>Claude forgets earlier details, repeats itself or contradicts itself</li><li>The job is finished and you are starting a different one</li><li>The chat is full of dead ends and corrections</li></ul></div><div class="box new"><h4>Stay in the same chat when…</h4><ul><li>You are still refining the same piece of work</li><li>Claude needs to keep lots of detail from earlier in the chat</li><li>It is a short follow-up or a quick fix</li><li>The chat is still working well and answers stay on track</li></ul></div></div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>9. Carry it over in four steps</h2></div></div><div class="steps"><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>1. Ask for a handoff note before you leave.</h4><p>Paste this into the long chat and let Claude write it:</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>2. Save the real files.</h4><p>A note carries words, not attachments. Download PDFs, images and documents, or save them to Drive or Dropbox.</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>3. Start the new chat and paste the note first.</h4><p>Re-attach only the files it needs, then say: &ldquo;Continue from this note.&rdquo;</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><h4>4. Name it right away, and keep the old chat.</h4><p>The old chat is your backup. Do not delete it until the new one is working well.</p></div></div></div><div class="snippet"><button class="copy" type="button" data-copy="s2">Copy</button><pre id="s2">Write a handoff note so I can continue in a new chat. Include: the goal, decisions made, final wording or versions, file names, what is finished, what is left to do, and any rules to follow. Keep it to one page.</pre></div><p class="lead" style="margin-top:16px">For things you use again and again (brand notes, templates, style guides), put them in a Project so every chat inside it starts with them. Memory can help recall earlier work (Settings, then Memory; entries are now editable under Topics <span class="verify">check your picker</span>), but a handoff note is the safest way to carry the details of one job.</p></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>10. Name chats so you can find them</h2><p>Subject - Task - Part number - Month Year. Put the main subject first so related chats sit together.</p></div></div><table class="names"><tbody><tr><td>Chat</td><td>Regional Guide - Map Draft - Part 2 - Oct 2026</td></tr><tr><td>Chat</td><td>Client Emails - Follow-ups - Oct 2026</td></tr><tr><td>Finished</td><td>Website - Fix Contact Form - Part 3 - DONE</td></tr></tbody></table><p class="lead" style="margin-top:12px">Add &ldquo;Part 2&rdquo; when you continue a job in a new chat. Add DONE to finished jobs. Use words you would search for. To rename on the web, open the chat, click its name at the top and choose Rename; in the apps look for Rename in the chat menu.</p></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>11. Worked example: an itinerary chat</h2><p>Sample scenario (fictional): a designer is laying out a complicated 9-day walking itinerary with three bases, optional days and ferry transfers. The chat has run long. She wants to keep every decision and the reasons behind them, and reuse the approach on future itineraries.</p></div></div><p class="lead"><b>A handoff note must carry six things. Ask for them by name:</b> decisions and why, rejected options and why, constraints, layout and style rules, current status, open questions.</p></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>12. Step 1: hand off at a milestone, not when the chat is full</h2><p>Ask early. A summary from a chat that is already confused will be confused too. Milestones: layout agreed, days 1 to 5 drafted, final review.</p></div></div><div class="snippet"><button class="copy" type="button" data-copy="s3">Copy</button><pre id="s3">Write a handoff note so I can continue in a new chat. Include: the goal; layout decisions and WHY; options we rejected and WHY; constraints; style and wording rules; status of each day; open questions; and the next step. Then tell me what you left out.</pre></div><p class="lead" style="margin-top:16px"><b>Sample note it produces (fictional)</b></p><div class="snippet"><pre>HANDOFF  Coastal Walk, 9 days, Part 1 to 2
+GOAL     Two-column day layout: schedule left, notes right
+DECIDED  3 bases, so luggage moves twice (fewer transfers). Max 6 hrs walking a day (client pace)
+REJECTED Daily hotel changes (too many transfers). Single column (too long to scan)
+CONSTRAINTS Arrive Saturday only. Ferry runs Tue to Sun
+STATUS   Days 1-5 drafted, days 6-9 outlined
+OPEN     Rest day: day 4 or day 6?
+RULES    Plain language. 24h times. End each day with a "tonight" line
+NEXT     Draft days 6-9 in the same layout</pre></div><p class="lead" style="margin-top:12px">Read the note and correct it before you leave. It is your record.</p></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>13. Step 2: turn the thinking into a playbook</h2><p>Leave out client details. Then reuse it on every new itinerary.</p></div></div><div class="snippet"><button class="copy" type="button" data-copy="s4">Copy</button><pre id="s4">From this chat, write a reusable itinerary layout playbook: the layout structure, pacing rules, how we handle options and transfers, wording style, and a checklist to run before sending. Explain the reason behind each rule.</pre></div><div class="steps" style="margin-top:16px"><div class="step"><span class="tick" style="visibility:hidden"></span><div><p>1. Save the playbook as a file and keep it in a Project, Drive or Dropbox.</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><p>2. Start a new chat and attach the playbook.</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><p>3. Say: &ldquo;Use this playbook to build an itinerary for [trip]. Ask me what is missing first.&rdquo;</p></div></div><div class="step"><span class="tick" style="visibility:hidden"></span><div><p>4. At the end, ask Claude to suggest updates to the playbook. Keep the name and raise the version.</p></div></div></div></section>
+<section class="sec"><div class="sec-head"><span class="waymark"><i></i><i></i></span><div><h2>14. Names that keep it all findable</h2><p>Subject first, so related chats sit together. &ldquo;Part 2&rdquo; links a chat to the one before. Dates written year-month-day sort in order. The playbook keeps one name and only the version changes.</p></div></div><table class="names"><tbody><tr><td>Chat</td><td>Itinerary Layout - Coastal Walk 9-Day - Part 2 - Oct 2026</td></tr><tr><td>Handoff file</td><td>Handoff - Coastal Walk 9-Day - Part 1 to 2 - 2026-10-06</td></tr><tr><td>Playbook</td><td>Playbook - Itinerary Layout - v2 - 2026-10</td></tr><tr><td>Finished</td><td>Itinerary Layout - Coastal Walk 9-Day - Part 3 - DONE</td></tr></tbody></table></section>
+
+<section class="sec" style="border-bottom:0">
+  <div class="refresh">
+    <h3>How this page stays current</h3>
+    <p>Model names, plan limits and settings change fast, so this page is re-checked against the vendor's official notes every two weeks. Each pass looks for four things, in this order:</p>
+    <ol>
+      <li><b>A setting or feature this page teaches being renamed, moved or retired.</b></li>
+      <li>Plan, price and limit changes.</li>
+      <li>New models or levels in the picker.</li>
+      <li>New abilities that save a small operator real time.</li>
+    </ol>
+    <p class="src-line">Sources: <a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a></p>
+  </div>
+</section>
+</main>
+<footer class="wrap">
+  <p>By Kathy Dragon &middot; <a href="https://wholejourneys.com">Whole Journeys</a>. A cheat sheet for travel professionals.</p>
+  <p class="src">Model names and settings change over time. Always check the options in your own picker.</p>
+</footer>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){
+  var t=document.getElementById(b.dataset.copy).innerText;
+  var done=function(){b.textContent='Copied';b.classList.add('ok');setTimeout(function(){b.textContent='Copy';b.classList.remove('ok')},1600)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){})}
+})});
+</script>
+</body>
+</html>
