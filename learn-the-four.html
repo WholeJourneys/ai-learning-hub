@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learn the four — AI training for tour operators, current October 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF6;--card:#FFFFFF;--sand:#F2F0E8;
+  --ink:#1A2320;--ink-2:#3D4A45;--mute:#6B7A73;
+  --pine:#2E4A3F;--gorse:#B8860B;--gr-red:#B23A2E;--act:#B5502F;
+  --line:rgba(26,35,32,.13);--line2:rgba(26,35,32,.26);
+  --display:"Bricolage Grotesque",Georgia,serif;
+  --body:"Public Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wrap:1080px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+ background-image:linear-gradient(rgba(26,35,32,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(26,35,32,.045) 1px,transparent 1px);
+ background-size:64px 64px;background-position:-1px -1px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.waymark{display:inline-block;width:14px;height:22px;flex:0 0 14px}
+.waymark i{display:block;height:9px;background:var(--gr-red)}
+.waymark i+i{margin-top:4px;background:var(--pine)}
+
+.hero{padding:48px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px;margin:0 0 18px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,62px);line-height:1;letter-spacing:-.03em;margin:0 0 16px;max-width:17ch}
+h1 em{font-style:normal;color:var(--gorse)}
+.standfirst{max-width:62ch;font-size:clamp(15.5px,2vw,18px);color:var(--ink-2);margin:0}
+
+h2{font-family:var(--display);font-weight:600;font-size:clamp(22px,3.2vw,30px);letter-spacing:-.02em;margin:0 0 6px;line-height:1.08}
+.sec{padding:42px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.sec-head p{margin:0;color:var(--mute);max-width:66ch;font-size:14.8px}
+
+/* chooser */
+.chooser{width:100%;border-collapse:collapse;font-size:14.6px}
+.chooser th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:0 12px 10px 0;border-bottom:1px solid var(--line2);font-weight:400}
+.chooser td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.chooser td:nth-child(2){font-weight:600;color:var(--pine);white-space:nowrap}
+.chooser td:nth-child(3){color:var(--mute);font-size:13.8px}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tab{font-family:var(--body);font-size:15px;font-weight:600;background:var(--card);color:var(--ink-2);
+ border:1px solid var(--line2);padding:11px 20px;cursor:pointer;transition:.15s}
+.tab:hover{color:var(--ink);border-color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--pine);color:#FFF;border-color:var(--pine)}
+.tab:focus-visible{outline:2px solid var(--gorse);outline-offset:2px}
+
+.pane[hidden]{display:none}
+.pane-top{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:30px}
+.role{background:var(--sand);border-left:3px solid var(--pine);padding:18px}
+.role h3{font-family:var(--display);font-size:20px;margin:0 0 8px;font-weight:600}
+.role p{margin:0;font-size:14.8px;color:var(--ink-2)}
+.plans{background:var(--card);padding:18px;border:1px solid var(--line)}
+.plans h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 10px;font-weight:400}
+.plans ul{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:12.5px}
+.plans li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dotted var(--line);color:var(--ink-2)}
+.plans li b{color:var(--ink);font-weight:600}
+.plans .note{font-family:var(--body);font-size:13px;color:var(--act);margin:10px 0 0;font-weight:500}
+
+.steps{counter-reset:s;margin-bottom:34px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.tick{width:26px;height:26px;border:1px solid var(--line2);background:transparent;cursor:pointer;color:transparent;
+ font-size:15px;line-height:1;padding:0;margin-top:2px;transition:.15s;flex:0 0 26px}
+.tick:hover{border-color:var(--ink)}
+.tick[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:#FFF}
+.tick:focus-visible{outline:2px solid var(--gorse);outline-offset:2px}
+.step h4{font-family:var(--body);font-weight:600;font-size:17px;margin:0 0 6px;letter-spacing:-.01em}
+.step .where{font-family:var(--mono);font-size:11.5px;color:var(--gorse);margin:0 0 8px;font-weight:500}
+.step p{margin:0 0 9px;font-size:15px;color:var(--ink-2);max-width:72ch}
+.step .done{font-size:13.8px;color:var(--ink-2);border-left:2px solid var(--pine);padding-left:11px;margin:9px 0 0}
+.step .done b{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--pine);display:block;margin-bottom:2px}
+.step.done h4{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--line2)}
+
+.snippet{background:#20302A;border:1px solid #20302A;margin:10px 0 0;position:relative}
+.snippet pre{margin:0;padding:14px 16px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#E4EAE4;white-space:pre-wrap;overflow-x:auto}
+.copy{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+ background:rgba(255,255,255,.12);color:#E4EAE4;border:1px solid rgba(255,255,255,.3);padding:5px 9px;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.22);border-color:#FFF}
+.copy.ok{color:#20302A;background:#E7C34F;border-color:#E7C34F}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
+.box{background:var(--card);border:1px solid var(--line);padding:18px}
+.box.new{border-top:3px solid var(--pine)}
+.box.soon{border-top:3px solid var(--act)}
+.box h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px;font-weight:400}
+.box.new h4{color:var(--pine)}
+.box.soon h4{color:var(--act)}
+.box ul{margin:0;padding-left:17px;font-size:14.4px;color:var(--ink-2)}
+.box li{margin-bottom:9px}
+.box li b{color:var(--ink)}
+.box .dt{font-family:var(--mono);font-size:11px;color:var(--mute);display:block}
+
+.first{background:var(--sand);border:1px solid var(--line2);padding:20px;margin-bottom:30px}
+.first h4{font-family:var(--display);font-size:19px;margin:0 0 6px;font-weight:600}
+.first>p{margin:0 0 4px;font-size:14.5px;color:var(--ink-2);max-width:66ch}
+
+.mistakes{margin-bottom:10px}
+.mistakes h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 12px;font-weight:400}
+.mistakes ul{margin:0;padding:0;list-style:none}
+.mistakes li{padding:11px 14px 11px 16px;border-left:3px solid var(--act);margin-bottom:9px;font-size:14.5px;color:var(--ink-2);background:#FBF3EF}
+.mistakes li b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+
+.privacy{border:1px solid var(--gr-red);background:#FBF0EE;padding:16px 18px;margin-bottom:30px}
+.privacy h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gr-red);margin:0 0 9px;font-weight:400}
+.privacy p{margin:0 0 8px;font-size:14.4px;color:var(--ink-2)}
+.privacy p:last-child{margin:0}
+
+.updated{display:flex;flex-wrap:wrap;gap:0;margin-top:22px;max-width:760px;border:1px solid var(--line2);background:var(--card)}
+.u-item{padding:12px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.u-item:last-child{border-right:0}
+.u-wide{flex:1 1 100%;border-right:0;border-top:1px solid var(--line)}
+.u-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.u-val{font-family:var(--display);font-size:20px;font-weight:600;color:var(--pine);letter-spacing:-.01em}
+.u-val.u-plain{font-family:var(--body);font-size:14.4px;font-weight:400;color:var(--ink-2);letter-spacing:0;line-height:1.5}
+.refresh .src-line{margin:16px 0 0;font-size:13.2px;color:var(--mute)}
+.refresh .src-line a{color:var(--pine)}
+.refresh{background:var(--sand);border:1px solid var(--line2);padding:22px}
+.refresh h3{font-family:var(--display);font-size:20px;margin:0 0 6px;font-weight:600}
+.refresh>p{margin:0 0 15px;font-size:14.5px;color:var(--ink-2);max-width:66ch}
+.refresh ol{margin:0;padding-left:20px;font-size:14.6px;color:var(--ink-2)}
+.refresh li{margin-bottom:9px}
+.refresh code{font-family:var(--mono);font-size:12.5px;color:var(--pine);word-break:break-all}
+footer{padding:36px 0 70px;color:var(--mute);font-size:13.5px}
+footer p{max-width:72ch;margin:0 0 11px}
+footer .src{font-family:var(--mono);font-size:11px;color:var(--mute)}
+
+@media (max-width:760px){
+  .pane-top,.split{grid-template-columns:1fr}
+  .chooser td:nth-child(3){display:none}
+  .tab{flex:1 1 45%;padding:10px 12px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow" style="margin-bottom:10px"><a href="https://learnai.dragonportfolio.com/" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">&larr; AI Learning Hub</a></p>
+    <p class="eyebrow"><span class="waymark"><i></i><i></i></span> Current as of 9 October 2026 · refreshed monthly · check prices before you buy</p>
+    <h1>Learn the <em>four</em></h1>
+    <p class="standfirst">ChatGPT, Claude, Gemini and Perplexity — what each one is actually for, how to set it up properly, and what changed last month. Work through one tool at a time. Tick the steps as you go. You do not need all four.</p>
+    <div class="updated">
+      <div class="u-item"><span class="u-label">Updated</span><span class="u-val" id="u-date">9 October 2026</span></div>
+      <div class="u-item"><span class="u-label">Next update</span><span class="u-val" id="u-next">1 November 2026</span></div>
+      <div class="u-item u-wide"><span class="u-label">This round</span><span class="u-val u-plain" id="u-round">Cowork now sits inside every Claude chat. Gems are becoming Skills in Gemini. Custom GPTs are being retired. ChatGPT can now take audio uploads.</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="sec">
+  <div class="sec-head"><span class="waymark"><i></i><i></i></span>
+    <div><h2>Start here: which tool for which job</h2>
+    <p>Pick by the job in front of you, not by which tool you've heard most about. Most operators end up using two.</p></div>
+  </div>
+  <table class="chooser">
+    <thead><tr><th>The job</th><th>Reach for</th><th>Because</th></tr></thead>
+    <tbody id="chooser"></tbody>
+  </table>
+</section>
+
+<section class="sec">
+  <div class="sec-head"><span class="waymark"><i></i><i></i></span>
+    <div><h2>The training</h2>
+    <p>Each tool takes about thirty minutes to set up properly. Setting one up properly beats having four set up badly.</p></div>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="panes"></div>
+</section>
+
+<section class="sec" style="border-bottom:0">
+  <div class="refresh">
+    <h3>How this page stays current</h3>
+    <p>On the first of every month the four platforms' official release notes are re-read and this page is rebuilt. Each pass looks for four things, in this order:</p>
+    <ol>
+      <li><b>A feature these guides teach being replaced or retired</b> — the change most likely to make a step wrong.</li>
+      <li>Price and plan-name changes.</li>
+      <li>Announced shutdown dates and deadlines.</li>
+      <li>New abilities that save a small operator real time.</li>
+    </ol>
+    <p class="src-line">Sources: <a href="https://help.openai.com/chatgpt-release-notes">ChatGPT release notes</a> · <a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes</a> · <a href="https://gemini.google/release-notes/">Gemini release notes</a> · <a href="https://www.perplexity.ai/changelog">Perplexity changelog</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Ticks reset when you reload — this is a worksheet, not an account. Print it or keep the tab open while you work.</p>
+  <p class="src">Compiled 4 August 2026 from vendor release notes and pricing pages. Plan names, prices and model versions change monthly; verify anything you're about to pay for.</p>
+</footer>
+
+<script>
+const CHOOSER=[
+["Replying to enquiries in Gmail","Gemini","Works inside the inbox — no copying between tabs"],
+["Booking data and spreadsheets","Gemini","Native in Sheets, writes the formulas too"],
+["A finished document, SOP or deck","Claude Cowork","Produces real files you open and send, not chat text"],
+["Long-form writing in your voice","Claude","Follows a voice file more closely than the others"],
+["A quick caption or a fast draft","ChatGPT","Fastest from blank page to something usable"],
+["A weekly social system in your voice","Claude Cowork","Reads your voice file and past posts every time"],
+["Research you'll act on or cite","Perplexity","Every claim carries a source you can click"],
+["Research that must land in a Doc","Gemini","Deep Research exports straight into Docs"],
+["Competitor pricing and market checks","Perplexity","Cross-references sources instead of one summary"],
+["What travellers really think","Perplexity","Searches Reddit and forums, not curated reviews"],
+["Brainstorming and idea generation","ChatGPT","Best at going wide before you narrow"],
+["Replying to a review","Any of them","All four handle this well with good instructions"]
+];
+
+const T=[
+{
+ id:"chatgpt",name:"ChatGPT",
+ role:"Your fast first draft",
+ roleP:"Best when you need something usable in ninety seconds — an enquiry reply, a caption, a rough outline. Works in a chat window, so you'll still paste the output somewhere else. Set up properly it stops sounding generic.",
+ plans:[["Free","$0"],["Go","low tier"],["Plus","$20/mo"],["Pro 200","$200/mo"],["Pro 500","$500/mo"]],
+ plansNote:"Plus is still the plan for a solo operator. The Pro tiers are for heavy daily use.",
+ steps:[
+  {h:"Set your Custom Instructions",w:"Settings → Personalisation → Custom Instructions",
+   p:"The single highest-value ten minutes. Whatever you write here applies to every chat, so you stop re-explaining your business. Paste this and edit the brackets.",
+   code:"About me: I run a small tour operator. We sell [type of tours] in [destination]. Our ideal customers are [audience]. We position ourselves as [budget/mid-range/premium]. Our booking channels are [direct website / OTA names].\n\nHow to respond: Simple, clear English. Concise and practical. Tables where useful. No jargon. Guest-facing content warm and clear; internal content direct and actionable. Sound human, expert and calm — never robotic or overexcited.\n\nPriorities: increase conversion, save time, improve guest experience, protect margin. Never promise anything operationally risky. Prefer premium positioning over discounting.",
+   done:"Ask it anything and the reply opens in your register — not with \"Certainly! Here's a great option.\" If it still does, your instructions are too vague."},
+  {h:"Understand what memory now does",w:"Settings → Personalisation → Memory",
+   p:"This changed in June 2026. Memory used to wait for you to say \"remember this\" — now it builds a picture from your conversations automatically in the background. That makes it more useful and raises the stakes. Open it and read what it has already stored about you.",
+   done:"You've read the stored memories and deleted anything you wouldn't want a new member of staff to read."},
+  {h:"Create four Projects",w:"Sidebar → Projects",
+   p:"Without these you get dozens of disconnected chats. Create Sales & Enquiries, Marketing & Content, Product & Itineraries, and Operations. Upload roughly ten files across them: your best itinerary, FAQ, pricing sheet, cancellation policy, a few strong reviews, two sample emails, one SOP.",
+   done:"You can open a project, ask a question, and the answer references your actual pricing or policy without you pasting it."},
+  {h:"Upload a voice memo instead of typing",w:"The attach button · paid plans",
+   p:"New on 6 October 2026. You can upload an audio file and get a transcript, a summary, or answers about what was said — so a recce walked with your phone in your pocket, a supplier call, or a debrief in the car becomes written material you can work from. Record on your phone's voice memo app, upload, then ask for what you need. Transcripts can contain errors, so check names, numbers and anything safety-related.",
+   done:"You've turned one spoken note into something written without typing it up yourself."},
+  {h:"Learn the prompt formula",w:"Any chat",
+   p:"When output disappoints, one of these six is missing: role (who it's acting as), context (the business facts that matter), task (one clear job), constraints (tone, length, format), source (which files to use), output (the exact deliverable). You won't need all six every time.",
+   done:"You can look at a weak answer and name which of the six you left out."},
+  {h:"Know when to switch to Search",w:"The search toggle",
+   p:"Use Search for anything where being out of date would hurt you — opening times, visa rules, competitor prices, local events. But Search shifts attention to the web and away from your uploaded files. Writing from your own material? Stay in the project. Researching? Search.",
+   done:"You've run the same question both ways and seen the difference in the answers."},
+  {h:"Put it on a weekly rhythm",w:"Your calendar",
+   p:"Monday: ask your Sales project for the week's priorities as a table. Every enquiry: draft a reply. Every review: summarise the lesson and draft a response. End of week: ask what patterns showed up. The operators who get value use it on a rhythm, not at random.",
+   done:"It's in your calendar, not just your intentions."}
+ ],
+ first:"Open your Sales & Enquiries project and paste in a real enquiry you haven't answered yet. Ask: \"Write a reply. Warm, confident, under 180 words. Answer the likely objection and include one upsell. Use the pricing sheet and cancellation policy in this project.\"",
+ whatsNew:[
+  ["7 Oct 2026","<b>GPT-6 arrived</b> in the Chat tab. Plus, Pro and Business first; Free and Go the next day on a lighter version."],
+  ["6 Oct 2026","<b>Audio file upload</b> for paid subscribers — transcripts, summaries and questions about a recording."],
+  ["29 Sep 2026","<b>New top tiers:</b> Pro 500 at $500/mo with a faster model, and Pro 200 back at $200/mo."],
+  ["17 Sep 2026","<b>ChatGPT for Word</b> launched on all plans, including Free."],
+  ["25 Aug 2026","Scheduled tasks can use webhooks and be shared. Free users get up to three."],
+  ["27 Aug 2026","Temporary chats can now use memory, plugins and custom instructions — chosen at the start."]
+ ],
+ soon:[
+  ["No date set","<b>Custom GPTs are being retired</b> (announced 11 Sep), with a migration path to plugins. If you built any, don't build more — and note what's in them while you still can."],
+  ["Done, 14 Sep","Automatic switching from Instant to Thinking was retired for Plus and Pro, and the Higher intelligence setting removed on web."],
+  ["Passed","Atlas stopped working 9 Aug and the DALL·E GPT retired 30 Aug, both as scheduled."]
+ ],
+ mistakes:[
+  ["One random chat for everything","Your marketing prompt sits next to your supplier email with no context between them. Use Projects."],
+  ["Treating it like Google","\"Best tours in Rome?\" gets a generic list. \"Given our guest profile and positioning, what second product would work in Rome?\" gets something useful."],
+  ["Building Custom GPTs at all now","They are slated for retirement. A Project with good files was always the better bet; now it is the only one worth your setup time."],
+  ["Trusting facts without checking","It states prices, opening times and local details confidently and sometimes wrongly. Verify anything you'll publish."]
+ ]
+},
+{
+ id:"claude",name:"Claude",
+ role:"Your finished documents",
+ roleP:"Cowork is the part that matters for operators: hand it a task and it reads your files and produces real deliverables — a Word document, a spreadsheet, a deck, an email sequence. Closer to a junior team member than a chatbot. It won't touch your booking system or send email for you.",
+ plans:[["Free","$0"],["Pro","$20/mo"],["Max","$100–200/mo"],["Team / Enterprise","per seat"]],
+ plansNote:"Cowork is now part of every conversation on Pro and Max — no separate mode.",
+ steps:[
+  {h:"Stop looking for a Cowork tab",w:"claude.ai, mobile, or the desktop app",
+   p:"This changed on 16 September 2026 and it catches everyone who learned the old way. Cowork is no longer a separate mode you switch into — it is part of every conversation on Pro and Max, across web, desktop and mobile. You just ask, and it does the file work. The desktop app is still what you need for anything touching your own machine: local files, local connectors, browser use.",
+   done:"You asked for a document in an ordinary conversation and got one, without hunting for a tab."},
+  {h:"Pick the model by the job, not the name",w:"The model dropdown",
+   p:"Model names change every few months, so learn the rule instead: if the task would take you more than half an hour by hand, use the top tier with extended thinking. If it's a five-minute job, use the mid tier. As of October 2026 the range is Opus 5.5 at the top, Sonnet 5.5 in the middle, and Haiku 5.5 for fast, high-volume work.",
+   done:"You know which one you're on and why."},
+  {h:"Build a context folder",w:"On your computer or your Drive",
+   p:"Make one folder — Claude Context — with three subfolders. ABOUT ME holds the three files below. PROJECTS holds one subfolder per active piece of work, with reference material. TEMPLATES holds your best existing work: a tour description you're proud of, an email that converts.",
+   done:"The folder exists and has something real in all three subfolders."},
+  {h:"Write three context files",w:"ABOUT ME folder, saved as .md",
+   p:"These replace prompting. about-me.md: what the business does day to day — write it like you're briefing someone on their first day. my-voice.md: your tone, words you use, words you hate, and three pieces of writing you're happy with pasted in full. my-rules.md: how you want it to work — show a plan first, never invent pricing or availability, British English, ask before deleting anything.",
+   done:"The voice file is the one that matters most. Without it you get competent and soulless."},
+  {h:"Check what memory has stored",w:"Settings → Memory → Topics",
+   p:"Since 25 August 2026 memory works across chat and cloud Cowork, and you can see and edit every remembered item under Topics. It is on by default for Free, Pro and Max, off by default for Team and Enterprise. Sensitive topics such as health or beliefs stay out unless you deliberately turn that on — leave it off for a business account.",
+   done:"You've read the list and deleted anything you wouldn't want a new member of staff to read."},
+  {h:"Set your global instruction",w:"Settings → Cowork → Edit Global Instructions",
+   p:"One short instruction that runs at the start of every session. Keep it brief — the context files do the heavy lifting.",
+   code:"I'm [Your Name], owner of [Business Name]. We run [type of tours] in [location]. Read my context files in the ABOUT ME folder before starting any task. Ask clarifying questions before executing. Show me a plan before producing final output. Never invent pricing, availability, or guest numbers. Never delete files without asking.",
+   done:"Set once. You never do it again."},
+  {h:"Decide what never goes in the folder",w:"Before your first real session",
+   p:"This step doesn't exist in most guides and it should. Cowork reads whole folders, so the exposure is bigger than pasting into a chat box. Keep passenger manifests, passport scans, medical and dietary notes, next-of-kin details and payment information out of any folder you point it at. Business context — products, pricing, policies, content — is fine.",
+   done:"You've actually looked inside the folder rather than assuming you know what's in it."},
+  {h:"Run one real task",w:"Cowork",
+   p:"Not a test — something you need this week. Notice how short the prompt can be once the context files are doing their job. And ask for a file: a .docx, a .xlsx, a .pptx. If you're only reading answers on screen you're using a fraction of it.",
+   done:"You opened a finished file it produced and sent or edited it."}
+ ],
+ first:"\"Read the reviews in my PROJECTS/review-audit folder. Identify the top five things guests love and the top three complaints. Give me a one-page summary as a Word document I can share with my guides.\"",
+ whatsNew:[
+  ["16 Sep 2026","<b>Cowork is in every conversation</b> on Pro and Max — no separate mode. Chats, tasks, projects, connectors and skills carry across."],
+  ["16 Sep 2026","<b>Designs, decks and documents in any chat</b> via Claude Design, Slides and Docs. Artifacts now on every plan, including Free."],
+  ["25 Aug 2026","<b>Memory spans chat and cloud Cowork</b>, with every item visible and editable under Topics in Settings."],
+  ["22 Sep – 7 Oct 2026","Model refresh: <b>Opus 5.5</b>, then Sonnet 5.5, then Haiku 5.5 for fast high-volume work."],
+  ["7 Oct 2026","Max and Team plans now include monthly API credits for running your own apps and agents."]
+ ],
+ soon:[
+  ["Rolling out","The every-conversation change is arriving gradually on Pro and Max. If your account still shows a separate tab, it has not reached you yet."],
+  ["Watch","Model names moved three times in six weeks. Learn the deep-work-versus-quick-job rule rather than memorising a version number."]
+ ],
+ mistakes:[
+  ["No context folder selected","You write a great prompt and get generic output. Check you've pointed it at the folder."],
+  ["Using the top model for everything","It's slower and burns your allowance. Save it for the work that matters."],
+  ["Skipping the voice file","Highest-impact file you can write. Without it your tour description reads like every other AI listing."],
+  ["Treating it like a chatbot","Ask for files. Open them. Edit them. Send them."],
+  ["Summarising instead of supplying","Don't describe your listings — put the actual listings in the folder. It works from source material, not your summary of it."]
+ ]
+},
+{
+ id:"gemini",name:"Gemini",
+ role:"Already inside your Google",
+ roleP:"The lowest-friction option if your business runs on Gmail, Sheets, Docs and Drive — it appears in a side panel inside the tools you're already in, so there's no copying between tabs. Writing quality is good rather than best-in-class. Its strength is integration.",
+ plans:[["Free","$0"],["Google AI Plus","$4.99/mo"],["Google AI Pro","$19.99/mo"],["Google AI Ultra","$99.99+"]],
+ plansNote:"On Workspace Business? Gemini is bundled — check before buying anything.",
+ steps:[
+  {h:"Work out what you already have",w:"gemini.google.com, or your Workspace admin",
+   p:"Do this before paying. Gemini Advanced and Google One AI Premium no longer exist — the ladder is now AI Plus, AI Pro and AI Ultra. And if you're on Workspace Business Standard, Plus or Enterprise, Gemini is already included, so buying a consumer plan means paying twice. Note that the free tier lost the Pro-class models in April 2026, so evaluating on free means judging a weaker model than the one you'd buy.",
+   done:"You know which tier you're on and whether you're paying for it twice."},
+  {h:"Build four saved assistants — as Skills, not Gems",w:"Skills, left sidebar",
+   p:"Google announced on 30 September 2026 that Skills will replace Gems. Existing Gems migrate automatically when Gems are retired, but no date has been given, so build new ones as Skills. Make four: an Enquiry Responder, a Content Writer, an Itinerary Builder and a Review Analyst. The instruction text below works in either. Skills can also be built from a chat you've already had, and stacked together.",
+   code:"You write marketing content for [company name], a [type] tour operator in [destination]. Our audience is [description]. Write in a warm, knowledgeable tone — like an experienced local sharing insider tips. Never use clichés like 'hidden gem' or 'off the beaten path'. Keep social posts under 150 words.",
+   done:"Four saved assistants exist and you've used at least two of them on real work."},
+  {h:"Turn on the Workspace side panel",w:"Gmail, Docs, Sheets, Slides",
+   p:"This is the whole point of Gemini, and it's the step most people skip. In Gmail: summarise a long thread and draft the reply. In Sheets: write the margin formula, or find the trend in your booking data. In Docs: rewrite an itinerary for a premium audience. You never leave the tool you're in.",
+   done:"You've drafted a real reply without leaving your inbox."},
+  {h:"Try deck generation in Slides",w:"Google Slides",
+   p:"New in July 2026 and the most useful thing Google has shipped for operators this year. Describe the presentation, point it at an existing deck to match your formatting, and it gathers context from your Docs, Sheets and PDFs, asks clarifying questions, then builds an editable deck. Agent one-pagers, guide briefings, partner pitches.",
+   done:"You've generated one deck and seen how close to usable it is."},
+  {h:"Run one Deep Research report",w:"Deep Research mode",
+   p:"It plans a research strategy, visits dozens of sources and produces a cited report you can export to Docs. The trick most people miss: when it shows you its plan, edit it. Remove irrelevant angles, add specific competitors, narrow the focus. The plan stage is where you control the quality.",
+   done:"You've edited a research plan before letting it run."},
+  {h:"Know which account you're in",w:"Your Google profile",
+   p:"Google's newer personal features — Personal Intelligence, and Photos-connected image generation — require a personal Google Account you manage yourself. They don't work on a Workspace business account. So the account you run the business from and the account with the shiny features may be two different logins. Decide deliberately which one your business work lives in, because it determines what's available and where your data goes.",
+   done:"You know which account you're signed into and why, and you're not accidentally doing business work in a personal one."},
+  {h:"Know what not to upload",w:"Every conversation",
+   p:"Fine: booking spreadsheets, review exports, competitor brochures, your itineraries, rate sheets. Not fine: passport copies, card details, staff personal information, confidential supplier agreements. The rule that travels: don't upload anything you wouldn't email to a freelancer.",
+   done:"You've said it out loud to anyone else who uses the account."}
+ ],
+ first:"Open your booking spreadsheet in Sheets, open the Gemini side panel, and ask: \"Analyse this booking data. Show me monthly trends, my best-selling products, and my average lead time between booking and departure.\" Most operators have never looked at this properly.",
+ whatsNew:[
+  ["30 Sep 2026","<b>Skills roll out globally</b> in Gemini chat for users 18+. Build one from a chat you've already had, and stack several together."],
+  ["10 Sep 2026","<b>A Windows app</b> — Alt+Space opens Gemini from anywhere on the PC."],
+  ["19 Aug 2026","Students get a free year of AI Pro (US) or AI Plus (140+ countries), redeemable to 31 Dec 2026."],
+  ["2026","<b>Plan names retired.</b> Gemini Advanced and Google One AI Premium are gone — it's AI Plus, AI Pro and AI Ultra now."],
+  ["1 Apr 2026","<b>Pro models removed from the free tier.</b> Free is Flash-tier only."],
+  ["July 2026","<b>Slides generates whole decks</b> from a description, matching your existing brand formatting."],
+  ["July 2026","Images, diagrams and infographics can be generated inside Docs using the document's own context."],
+  ["15 Jul 2026","Gemini can now open and edit Docs, Sheets and Slides — including shared files."],
+  ["Jun 2026","<b>Google Photos connects to Gemini</b> for personalised image generation — expanded from paid-only to all eligible US users with a <b>personal</b> account. Not available in Texas or Illinois. Business Workspace accounts can't use it."],
+  ["Jan 2026","<b>Personal Intelligence</b> lets Gemini reason across your Gmail, Photos, Search and YouTube history. Opt-in, and off by default."],
+  ["July 2026","Gemini in Docs added 11 more languages including Mandarin, Dutch, Polish and Turkish."]
+ ],
+ soon:[
+  ["No date set","<b>Gems are being retired</b> and replaced by Skills (announced 30 Sep). Yours migrate automatically — but build anything new as a Skill."],
+  ["Done, 21 Sep","The Workspace admin setting governing smart features and personalisation took effect. If your side panel behaves differently, check there."],
+  ["Undated","Gemini in Chrome beyond US English, and beyond consumer plans."]
+ ],
+ mistakes:[
+  ["Using it like a search engine","The value is in a saved assistant with real instructions, not one-line questions."],
+  ["Ignoring the side panel","If you only ever use gemini.google.com you're missing the entire advantage."],
+  ["Not editing the research plan","Review it before it runs. That's where you shape the output."],
+  ["Building ten assistants on day one","Start with three or four. Add more when you know what's missing."],
+  ["Assuming you need to buy it","Check your Workspace plan first."],
+  ["Mixing personal and business accounts","Personal Intelligence and Photos connection need a personal account. Handy for you, wrong place for guest data."]
+ ]
+},
+{
+ id:"perplexity",name:"Perplexity",
+ role:"Answers with receipts",
+ roleP:"A search engine that can chat, rather than a chatbot that can search. Every claim comes with a clickable citation, which matters when you're deciding on a new market, checking a regulation, or comparing competitor pricing. Not a writing tool — research here, write elsewhere.",
+ plans:[["Free","$0"],["Pro","$20/mo"],["Max","$200/mo"],["Enterprise Pro","$40/seat"]],
+ plansNote:"Pro is the plan. Max is ten times the price, not double.",
+ steps:[
+  {h:"Start free, and get Comet",w:"perplexity.ai",
+   p:"The free tier gives unlimited basic searches with citations and a handful of deeper searches a day — enough to find out whether cited answers change how you work. Comet, Perplexity's browser, is a free download on Mac, Windows, iOS and Android with no subscription. It's the lowest-commitment way to try any of this.",
+   done:"You've run one real business question and clicked through to a source."},
+  {h:"Set up four Spaces",w:"Spaces, left sidebar",
+   p:"Spaces hold their own threads, files and custom instructions, so research doesn't start from zero every time. Build Destination Research, Competitor Intelligence, Content & Marketing, and Industry & Regulations. Give each one instructions naming your company, your competitors and what you always want included.",
+   code:"I run [company name], a tour operator based in [location] offering [tour types] in [destinations]. When I research destinations, always include: visa and entry requirements, safety advisories, seasonal weather, local regulations affecting tours, and transport infrastructure. Cite government sources and recent travel advisories. Use British English.",
+   done:"You can ask a question in a Space and get an answer already shaped to your business."},
+  {h:"Learn the Focus Modes",w:"The mode selector",
+   p:"Most people never switch these, and it's the biggest single improvement available. Academic filters out marketing content entirely — use it for visitor statistics and tourism research. Reddit finds what travellers actually say rather than curated reviews. News for anything current. Check the current set in your own account; the line-up has changed more than once.",
+   done:"You've run the same question in two different modes and compared."},
+  {h:"Use Deep Research for real decisions",w:"Deep Research mode",
+   p:"It runs dozens of searches, reads hundreds of sources, reasons through contradictions and returns a long report with citations. Takes minutes rather than seconds. The rule: if the answer will influence a decision — pricing, a new market, a supplier — use it. If you're just curious, don't.",
+   done:"You've run one on a question you were genuinely undecided about."},
+  {h:"Check the sources it gives you",w:"Check Sources, and the citation panel",
+   p:"New in July 2026: it will now verify individual claims against the evidence behind them and flag the ones that are weakly supported, with a panel keeping the sources alongside the answer. This turns the old advice — always click the citations — into something you can actually do at scale. For any number you'll put in a business case, still click through yourself.",
+   done:"You've caught at least one claim that the sources didn't fully support."},
+  {h:"Set one research job to run on its own",w:"Automations",
+   p:"Added 5 October 2026. Instead of remembering to run your Monday market scan, set it as an automation and read the result when it lands. Good candidates: a weekly competitor check, a monthly regulation sweep for the countries you operate in, a watch on trail or transport closures in shoulder season. Threads can now also hold interactive visualisations rather than flat text.",
+   done:"One recurring question runs without you starting it."},
+  {h:"Turn research into a Page",w:"Convert to Page",
+   p:"Any thread or report becomes a formatted, shareable document with a public link and all citations intact. Destination briefings for guides. Market summaries for partners. Supplier comparisons so the whole team is looking at the same evidence rather than someone's recollection.",
+   done:"You've shared one with someone who doesn't use Perplexity."}
+ ],
+ first:"\"Research the top ten [your tour type] operators in [your destination]. For each: pricing, duration, group size, review rating, and their one clear selling point. Present as a comparison table with sources.\" Then click three citations and see whether they hold up.",
+ whatsNew:[
+  ["5 Oct 2026","<b>Automations</b> for recurring research, plus interactive visualisations inside threads."],
+  ["5 Oct 2026","Newest models added, including GPT-6.1 Sol and Claude Opus 5.5 — model switching keeps pace."],
+  ["21 Sep 2026","A <b>Skills Marketplace</b>, an effort-level setting for Computer, and questions in Side Chat."],
+  ["4 Aug 2026","<b>Shared workspaces</b> — Computer Projects with shared files, plus a Personal Computer app for Windows."],
+  ["28 Jul 2026","<b>Check Sources</b> verifies individual claims against the underlying evidence and flags weak ones."],
+  ["Ongoing","<b>Comet is free for everyone</b>, on Mac, Windows, iOS and Android."]
+ ],
+ soon:[
+  ["Direction of travel","Perplexity keeps moving from research tool towards doing-things tool — Computer, automations, shared workspaces, a skills marketplace. Worth watching, but the core advice holds: research here, write somewhere else."],
+  ["Verify in-app","Focus Modes and Spaces have both been reshaped more than once and the changelog no longer mentions them by those names. Check what your own account actually shows before following any guide, including this one."]
+ ],
+ mistakes:[
+  ["Using it like ChatGPT","It's a research tool, not a writing tool. Research here, then write in Claude or ChatGPT."],
+  ["Leaving it on default Web mode","Like using Google without knowing about site: search."],
+  ["Skipping Spaces","Twenty minutes of setup makes every session afterwards faster and more relevant."],
+  ["Quick search for a real decision","If it affects pricing, a market or a supplier, use Deep Research. Minutes instead of seconds, hundreds of sources instead of five."],
+  ["Not clicking the citations","They're the whole point, and they only work if you use them."]
+ ]
+}
+];
+
+/* chooser */
+document.getElementById("chooser").innerHTML=CHOOSER.map(r=>
+ "<tr><td>"+r[0]+"</td><td>"+r[1]+"</td><td>"+r[2]+"</td></tr>").join("");
+
+/* tabs + panes */
+const tabsEl=document.getElementById("tabs"),panesEl=document.getElementById("panes");
+T.forEach((t,i)=>{
+  const b=document.createElement("button");
+  b.className="tab";b.setAttribute("role","tab");b.setAttribute("aria-selected",i===0);
+  b.dataset.id=t.id;b.textContent=t.name;tabsEl.appendChild(b);
+
+  const p=document.createElement("div");
+  p.className="pane";p.id="pane-"+t.id;p.hidden=i!==0;
+  p.innerHTML=
+   '<div class="pane-top">'+
+     '<div class="role"><h3>'+t.role+'</h3><p>'+t.roleP+'</p></div>'+
+     '<div class="plans"><h4>Plans · Aug 2026</h4><ul>'+
+       t.plans.map(x=>'<li><span>'+x[0]+'</span><b>'+x[1]+'</b></li>').join("")+
+     '</ul><p class="note">'+t.plansNote+'</p></div>'+
+   '</div>'+
+   '<div class="steps">'+t.steps.map((s,n)=>
+     '<div class="step"><button class="tick" aria-pressed="false" aria-label="Mark step '+(n+1)+' done">&#10003;</button>'+
+     '<div><h4>'+(n+1)+'. '+s.h+'</h4><p class="where">'+s.w+'</p><p>'+s.p+'</p>'+
+     (s.code?'<div class="snippet"><button class="copy">Copy</button><pre>'+s.code.replace(/</g,"&lt;")+'</pre></div>':'')+
+     '<p class="done"><b>You\'ll know it worked when</b>'+s.done+'</p></div></div>').join("")+'</div>'+
+   '<div class="first"><h4>Your first real task</h4><p>Not a test — something you actually need. Do this one now.</p>'+
+     '<div class="snippet"><button class="copy">Copy</button><pre>'+t.first.replace(/</g,"&lt;")+'</pre></div></div>'+
+   '<div class="split">'+
+     '<div class="box new"><h4>Changed recently</h4><ul>'+t.whatsNew.map(x=>'<li><span class="dt">'+x[0]+'</span>'+x[1]+'</li>').join("")+'</ul></div>'+
+     '<div class="box soon"><h4>Coming / watch for</h4><ul>'+t.soon.map(x=>'<li><span class="dt">'+x[0]+'</span>'+x[1]+'</li>').join("")+'</ul></div>'+
+   '</div>'+
+   '<div class="mistakes"><h4>Common mistakes</h4><ul>'+t.mistakes.map(m=>'<li><b>'+m[0]+'</b>'+m[1]+'</li>').join("")+'</ul></div>';
+  panesEl.appendChild(p);
+});
+
+tabsEl.addEventListener("click",e=>{
+  const b=e.target.closest(".tab");if(!b)return;
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",String(t===b)));
+  document.querySelectorAll(".pane").forEach(p=>p.hidden=(p.id!=="pane-"+b.dataset.id));
+  window.scrollTo({top:tabsEl.offsetTop-90,behavior:"smooth"});
+});
+
+panesEl.addEventListener("click",e=>{
+  const tick=e.target.closest(".tick");
+  if(tick){
+    const on=tick.getAttribute("aria-pressed")==="true";
+    tick.setAttribute("aria-pressed",String(!on));
+    tick.closest(".step").classList.toggle("done",!on);
+    return;
+  }
+  const cp=e.target.closest(".copy");
+  if(cp){
+    const txt=cp.parentElement.querySelector("pre").innerText;
+    const finish=()=>{cp.textContent="Copied";cp.classList.add("ok");setTimeout(()=>{cp.textContent="Copy";cp.classList.remove("ok")},1600)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(finish).catch(()=>{})}
+    else{const ta=document.createElement("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();
+      try{document.execCommand("copy");finish()}catch(err){}document.body.removeChild(ta)}
+  }
+});
+</script>
+</body>
+</html>
