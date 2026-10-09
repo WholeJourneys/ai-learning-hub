@@ -1,12 +1,12 @@
 // Editorial content for the AI Learning Hub.
 // Update this file without changing the site's layout in index.html.
 window.DRAGON_LEARNING = {
-  reviewedOn: 'September 2, 2026',
-  currentReviewedAt: '2026-09-02',
-  evergreenReviewedAt: '2026-09-02',
-  sourcesReviewedAt: '2026-09-02',
-  toolsReviewedAt: '2026-09-02',
-  connectionsReviewedAt: '2026-09-02',
+  reviewedOn: 'October 9, 2026',
+  currentReviewedAt: '2026-10-09',
+  evergreenReviewedAt: '2026-10-09',
+  sourcesReviewedAt: '2026-10-09',
+  toolsReviewedAt: '2026-10-09',
+  connectionsReviewedAt: '2026-10-09',
   currentPicks: [
     {title:'As AI travel discovery moves, who keeps the booking?',source:'Everything AI in Travel · Tony Carne',url:'https://everythingaiintravel.beehiiv.com/p/as-ai-travel-discovery-moves-who-keeps-the-booking',format:'read',label:'new',time:'6 min',published:'October 9, 2026',tags:['findability','agents','operations'],why:'The direct-booking question every small operator faces as AI assistants become the front door to travel discovery.',next:'List where guests currently book you, then note which of those steps an AI assistant could take over.'},
     {title:'What happens to community-based tourism if AI becomes how travellers discover and book',source:'Everything AI in Travel · Tony Carne',url:'https://everythingaiintravel.beehiiv.com/p/new-podcast-what-happens-to-community-based-tourism-if-ai-becomes-the-new-way-travellers-discover-an',format:'listen',label:'new',time:'Podcast',published:'September 30, 2026',tags:['findability','agents'],why:'Small, local operators are the subject, so the discovery and booking questions apply to a boutique tour business directly.',next:'Note one thing that makes your tours bookable without a middleman, and check an AI assistant can find it.'},
